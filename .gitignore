@@ -1,0 +1,5 @@
+/keys
+modules/__pycache__/
+.gradio
+.venv
+.firebaserc
