@@ -1,0 +1,90 @@
+event_date,int64,,The date when the event was logged (YYYYMMDD format in the registered timezone of your app).
+event_name,object,,The name of the event.
+event_timestamp,int64,,"The time (in microseconds, UTC) when the event was logged on the client."
+event_previous_timestamp,float64,,"The time (in microseconds, UTC) when the event was previously logged on the client."
+event_value_in_usd,float64,,"The currency-converted value (in USD) of the event's ""value"" parameter."
+event_bundle_sequence_id,int64,,The sequential ID of the bundle in which these events were uploaded.
+event_server_timestamp_offset,int64,,Timestamp offset between collection time and upload time in micros.
+user_id,float64,,The unique ID assigned to a user.
+user_pseudo_id,object,,"The pseudonymous id (e.g., app instance ID) for the user. A unique identifier that is assigned to a user when they first open the app or visit the site."
+user_first_touch_timestamp,int64,,The time (in microseconds) at which the user first opened the app or visited the site.
+stream_id,int64,,The numeric ID of the data stream from which the event originated.
+platform,object,,"The data stream platform (Web, IOS or Android) from which the event originated."
+is_active_user,bool,,Whether the user was active (True) or inactive (False) at any point in the calendar day. Included in only the daily tables (events_YYYYMMDD).
+batch_event_index,int64,,A number indicating the sequential order of each event within a batch based on their order of occurrence on the device.
+batch_page_id,float64,,A sequential number assigned to a page that increases for each subsequent page within an engagement.
+batch_ordering_id,float64,,A monotonically increasing number that is incremented each time a network request is sent from a given page.
+event_params.ga_session_id,int64,,
+event_params.firebase_screen_id,float64,,
+event_params.ga_session_number,float64,,
+event_params.ad_platform,object,Custom,
+event_params.firebase_screen_class,object,,
+event_params.ad_shown_where,object,Custom,
+event_params.ad_unit_id,object,Custom,
+event_params.engaged_session_event,float64,,
+event_params.firebase_event_origin,object,,
+user.first_open_time,int64,,The time (in microseconds) at which the user first opened the app or visited the site.
+user.ga_session_number,float64,,
+user.ga_session_id,float64,,
+privacy_info.analytics_storage,object,,"Whether Analytics storage is enabled for the user. Possible values: Yes, No, Unset"
+privacy_info.ads_storage,object,,"Whether ad targeting is enabled for a user. Possible values: Yes, No, Unset"
+privacy_info.uses_transient_token,object,,"Whether a web user has denied Analytics storage and the developer has enabled measurement without cookies based on transient tokens in server data. Possible values: Yes, No, Unset"
+user_ltv,object,,The Lifetime Value (revenue) of the user. This field is not populated in intraday tables.
+device.category,object,,"The device category (mobile, tablet, desktop)."
+device.mobile_brand_name,object,,The device brand name.
+device.mobile_model_name,object,,The device model name.
+device.mobile_marketing_name,object,,The device marketing name.
+device.mobile_os_hardware_model,object,,The device model information retrieved directly from the operating system.
+device.operating_system,object,,The operating system of the device.
+device.operating_system_version,object,,The OS version.
+device.vendor_id,object,,IDFV (present only if IDFA is not collected).
+device.advertising_id,object,,Advertising ID/IDFA.
+device.language,object,,The OS language.
+device.is_limited_ad_tracking,object,,"The device's Limit Ad Tracking setting. On iOS14+, returns false if the IDFA is non-zero."
+device.time_zone_offset_seconds,int64,,The offset from GMT in seconds.
+device.browser,object,,The browser in which the user viewed content.
+device.browser_version,object,,The version of the browser in which the user viewed content.
+device.web_info,object,,
+geo.city,object,,"The city from which events were reported, based on IP address."
+geo.country,object,,"The country from which events were reported, based on IP address."
+geo.continent,object,,"The continent from which events were reported, based on IP address."
+geo.region,object,,"The region from which events were reported, based on IP address."
+geo.sub_continent,object,,"The subcontinent from which events were reported, based on IP address."
+geo.metro,object,,"The metro from which events were reported, based on IP address."
+app_info.id,object,,The package name or bundle ID of the app.
+app_info.version,object,,The app's versionName (Android) or short bundle version.
+app_info.install_store,object,,
+app_info.firebase_app_id,object,,The Firebase App ID associated with the app
+app_info.install_source,object,,The store that installed the app.
+event_dimensions,float64,,
+traffic_source.name,object,,Name of the marketing campaign that first acquired the user. This field is not populated in intraday tables.
+traffic_source.medium,object,,"Name of the medium (paid search, organic search, email, etc.) that first acquired the user. This field is not populated in intraday tables."
+traffic_source.source,object,,Name of the network that first acquired the user. This field is not populated in intraday tables.
+ecommerce,float64,,
+collected_traffic_source,float64,,
+event_params.update_with_analytics,float64,,
+event_params.system_app_update,float64,,
+event_params.firebase_conversion,float64,,
+event_params.system_app,float64,,
+event_params.previous_first_open_count,float64,,
+event_params.engagement_time_msec,float64,,
+event_params.time_spent,float64,Custom,
+event_params.menu_name,object,Custom,
+event_params.entrances,float64,,
+event_params.ad_network,object,Custom,
+event_params.ad_format,object,Custom,
+event_params.session_engaged,float64,,
+event_params.current_qi,object,Custom,
+event_params.character_name,object,Custom,
+event_params.current_tier,object,Custom,
+event_params.mini_game_ri,object,Custom,
+event_params.mini_game_name,object,Custom,
+event_params.answered_wrong,float64,Custom,
+event_params.where_its_earned,object,Custom,
+event_params.currency_name,object,Custom,
+event_params.earned_amount,float64,Custom,
+event_params.how_its_earned,object,Custom,
+event_params.spent_amount,float64,Custom,
+event_params.where_its_spent,object,Custom,
+event_params.spent_to,object,Custom,
+event_params.firebase_error,float64,,

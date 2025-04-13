@@ -1,3 +1,10 @@
+"""
+
+bunların alayının derlenip toplanması lazım
+
+"""
+
+
 import json
 import pandas as pd
 
