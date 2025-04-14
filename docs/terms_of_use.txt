@@ -1,0 +1,17 @@
+﻿Terms of Service
+
+Agreement to Terms
+By using [Game Name], you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, do not use the game.
+
+Data Collection and Use
+As part of our service, we collect certain data from you. This includes:
+- Personal Information: [Details if applicable]
+- Behavioral Information: Data on how you interact with the game, your preferences, and in-game actions.
+- Device Information: Your device type, operating system, etc.
+
+This data is collected for the purpose of improving the game and your experience.
+
+Consent for Data Collection
+Before we collect any data from you, we will ask for your explicit consent. You can withdraw your consent at any time. Withdrawing consent may limit some features of the game.
+
+For more details, please refer to our Privacy Policy.
