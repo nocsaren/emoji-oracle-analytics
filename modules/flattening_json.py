@@ -146,3 +146,4 @@ def flatten_row(row):
     flatten_nested_column(row, 'collected_traffic_source', flat, default_keys=None)  # Provide keys if needed
 
     return flat
+
