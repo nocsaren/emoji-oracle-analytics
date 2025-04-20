@@ -71,6 +71,7 @@ column_order = [
     'event_params.answered_wrong',
     'event_params.character_name',
     'event_params.current_qi',
+    'event_params.current_question_index',
     'event_params.current_tier',
     'event_params.earned_amount',
     'event_params.engaged_session_event',
