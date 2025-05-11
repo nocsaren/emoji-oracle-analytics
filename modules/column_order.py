@@ -1,3 +1,4 @@
+
 column_order = [
     'event_name',
 
@@ -116,5 +117,13 @@ column_order = [
     'is_active_user',
     'platform',
     'stream_id',
-    'user_ltv'
+    'user_ltv',
+
+    # Time Series
+    'event_datetime',
+    'ts_weekday',
+    'ts_is_weekend', 
+    'ts_local_time', 
+    'ts_hour', 
+    'ts_daytime_named'
 ]
