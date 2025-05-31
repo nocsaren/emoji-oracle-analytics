@@ -7,6 +7,7 @@ column_order = [
     'event_time', 
     'event_previous_date', 
     'event_previous_time',
+    'time_delta',
     'event_first_touch_date', 
     'event_first_touch_time',
 
