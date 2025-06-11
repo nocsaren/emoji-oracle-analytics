@@ -1,3 +1,10 @@
+'''
+This module contains lists and maps used for organizing and displaying data in the application.
+designed to be used in conjunction with the main application logic.
+'''
+
+
+# This is a list and order of the column names that I used for conveniancy in early transformation. 
 
 df_column_order = [
     'event_name',
@@ -130,7 +137,8 @@ df_column_order = [
 ]
 
 
-
+# These dictionaries map the COLUMN NAMES to their display names
+# and the order in which they should appear in the table UI.
 
 mini_game_related_column_order = {
     'event_name': 'event_name',
@@ -144,10 +152,37 @@ mini_game_related_column_order = {
     'event_params__earned_amount': 'amount_earned'
 }
 
+crystal_related_column_order = {
+    'inferred_session_id': 'inferred_session_id',
+    'event_datetime': 'event_datetime',
+    'user_pseudo_id': 'user_pseudo_id',
+    'event_params__where_its_spent': 'where_spent',
+    'event_params__spent_to': 'spent_to',
+    'event_params__spent_amount': 'spent_amount',
+    'last_character_name': 'character_name',
+    'last_tier': 'tier',
+    'last_question_index': 'question_index',
+}
 
+session_times_column_order = {
+    'inferred_session_id': 'inferred_session_id', 
+    'session_screen_time_seconds': 'session_screen_time_seconds',
+    'date_time': 'date_time', 
+    'local_datetime': 'local_datetime', 
+    'local_date': 'local_date', 
+    'local_time': 'local_time', 
+    'ts_weekday': 'ts_weekday', 
+    'ts_is_weekend': 'ts_is_weekend', 
+    'ts_hour': 'ts_hour', 
+    'ts_daytime_named': 'ts_daytime_named', 
+    'user_pseudo_id': 'user_pseudo_id',
+}
+
+# These dictionaries map specific VALUES to their display names.
+# They are used to convert raw values in the data to more user-friendly names.
 
 mini_game_related_value_map = {
-    'stone_mini_game': 'Stone Mini Game',
+    'stone_mini_game': 'Stone Mini Game', # böyle comment atabilirsin 
     'stone_game': 'Stone Game',
     'cauldron_mini_game': 'Cauldron Mini Game',
     'cauldron_game': 'Cauldron Game',
@@ -177,4 +212,5 @@ mini_game_related_value_map = {
     'mini_game_failed': 'Mini Game Failed',
     'voodoo_mini_game': 'Voodoo Mini Game',
     'T': 'Character T',
+    'catch_up_cauldron': 'Catch Up Cauldron',
 }
