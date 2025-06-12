@@ -6,211 +6,312 @@ designed to be used in conjunction with the main application logic.
 
 # This is a list and order of the column names that I used for conveniancy in early transformation. 
 
-df_column_order = [
-    'event_name',
+df_column_names_map = {
 
-    # Dates (event.*)
-    'event_date', 
-    'event_time', 
-    'event_previous_date', 
-    'event_previous_time',
-    'time_delta',
-    'event_first_touch_date', 
-    'event_first_touch_time',
+    # 🎯 Event Core Info
+    'event_name': 'event_type',
+    'event_bundle_sequence_id': 'event_batch_id',
+    'user_pseudo_id': 'user_pseudo_id',
+    'stream_id': 'stream_identifier',
+    'platform': 'platform',
+    'is_active_user': 'is_active_user',
+    'batch_event_index': 'event_index_in_batch',
 
-    # Top-level IDs
-    'event_bundle_sequence_id', 
-    'user_id', 
-    'user_pseudo_id',
+    # ⏱️ Event Timing
+    'event_datetime': 'event_datetime',
+    'event_date': 'event_date',
+    'event_time': 'event_time',
+    'event_previous_date': 'previous_event_date',
+    'event_previous_time': 'previous_event_time',
+    'event_first_touch_date': 'first_touch_date',
+    'event_first_touch_time': 'first_touch_time',
+    'time_delta': 'time_since_previous_event',
+    'ts_weekday': 'weekday',
+    'ts_local_time': 'local_time',
+    'ts_hour': 'hour_of_day',
+    'ts_daytime_named': 'time_of_day',
+    'ts_is_weekend': 'is_weekend',
+    'device__time_zone_offset_hours': 'time_zone_offset_hours',
+    'event_server_delay_seconds': 'server_delay_seconds',
 
-    # user.*
-    'user.first_open_date',
-    'user.first_open_time', 
-    'user.ga_session_id', 
-    'user.ga_session_number',
+    # 🧭 Session Tracking
+    'event_params__ga_session_id': 'session_id',
+    'event_params__ga_session_number': 'session_number',
+    'event_params__firebase_event_origin': 'firebase_event_origin',
+    'event_params__engaged_session_event': 'engaged_session_event',
+    'event_params__session_engaged': 'session_was_engaged',
+    'user__ga_session_number': 'user_session_count',
+    'user__ga_session_id': 'user_session_id',
+    'inferred_session_id': 'inferred_session_id',
 
-    # app_info.*
-    'app_info.id', 
-    'app_info.firebase_app_id', 
-    'app_info.version',
-    'app_info.install_store', 
-    'app_info.install_source',
+    # 📺 Screen & Navigation
+    'event_params__firebase_screen_id': 'screen_id',
+    'event_params__firebase_screen_class': 'screen_class',
+    'event_params__menu_name': 'menu_name',
+    'event_params__entrances': 'entrances_count',
 
-    # device.*
-    'device.advertising_id', 
-    'device.vendor_id',
-    'device.category', 
-    'device.mobile_brand_name', 
-    'device.mobile_model_name',
-    'device.mobile_marketing_name', 
-    'device.mobile_os_hardware_model',
-    'device.operating_system', 
-    'device.operating_system_version',
-    'device.language', 
-    'device.is_limited_ad_tracking',
-    'device.browser', 
-    'device.browser_version', 
-    'device.web_info',
-    'device.time_zone_offset_hours',
+    # 📱 Device Info
+    'device__category': 'device_type',
+    'device__mobile_brand_name': 'mobile_brand',
+    'device__mobile_model_name': 'mobile_model',
+    'device__mobile_os_hardware_model': 'device_hardware_model',
+    'device__operating_system': 'operating_system',
+    'device__operating_system_version': 'os_version',
+    'device__advertising_id': 'advertising_id',
+    'device__language': 'device_language',
+    'device__is_limited_ad_tracking': 'ad_tracking_limited',
 
-    # geo.*
-    'geo.city', 
-    'geo.country', 
-    'geo.continent', 
-    'geo.region',
-    'geo.sub_continent', 
-    'geo.metro',
+    # 🌍 Geolocation
+    'geo__city': 'city',
+    'geo__country': 'country',
+    'geo__continent': 'continent',
+    'geo__region': 'region',
+    'geo__sub_continent': 'subcontinent',
+    'geo__metro': 'metro_area',
 
-    # traffic_source.*
-    'traffic_source.name', 
-    'traffic_source.medium', 
-    'traffic_source.source',
+    # 📲 App Metadata
+    'app_info__id': 'app_id',
+    'app_info__version': 'app_version',
+    'app_info__install_store': 'install_store',
+    'app_info__firebase_app_id': 'firebase_app_id',
+    'app_info__install_source': 'app_install_source',
 
-    # collected_traffic_source (top-level)
-    'collected_traffic_source',
+    # 🔒 Privacy Settings
+    'privacy_info__analytics_storage': 'consent_analytics_storage',
+    'privacy_info__ads_storage': 'consent_ads_storage',
 
-    # event_params.* IDs first
-    'event_params.ga_session_id', 
-    'event_params.firebase_screen_id', 
-    'event_params.ad_unit_id',
-    'event_params.ad_format',
-    'event_params.ad_network',
-    'event_params.ad_platform',
-    'event_params.ad_shown_where',
-    'event_params.answered_wrong',
-    'event_params.character_name',
-    'event_params.current_qi',
-    'event_params.current_question_index',
-    'event_params.current_tier',
-    'event_params.earned_amount',
-    'event_params.engaged_session_event',
-    'event_params.engagement_time_seconds',
-    'event_params.entrances',
-    'event_params.firebase_conversion',
-    'event_params.firebase_error',
-    'event_params.firebase_event_origin',
-    'event_params.firebase_screen_class',
-    'event_params.ga_session_number',
-    'event_params.how_its_earned',
-    'event_params.menu_name',
-    'event_params.mini_game_name',
-    'event_params.mini_game_ri',
-    'event_params.previous_first_open_count',
-    'event_params.session_engaged',
-    'event_params.spent_amount',
-    'event_params.spent_to',
-    'event_params.system_app',
-    'event_params.system_app_update',
-    'event_params.time_spent_seconds',
-    'event_params.update_with_analytics',
-    'event_params.where_its_earned',
-    'event_params.where_its_spent',
-    'event_params.currency_name',
+    # 📈 Ads & Monetization
+    'event_params__ad_platform': 'ad_platform',
+    'event_params__ad_shown_where': 'ad_shown_in',
+    'event_params__ad_unit_id': 'ad_unit_id',
+    'event_params__ad_network': 'ad_network',
+    'event_params__ad_format': 'ad_format',
+    'event_params__firebase_conversion': 'conversion_event',
 
-    # batch_*
-    'batch_event_index', 
-    'batch_ordering_id', 
-    'batch_page_id',
+    # 🛠️ Debug / Quality
+    'event_params__firebase_error': 'firebase_error',
+    'event_params__fatal': 'fatal_error',
+    'event_params__timestamp': 'raw_timestamp',
 
-    # privacy_info.*
-    'privacy_info.ads_storage', 
-    'privacy_info.analytics_storage',
-    'privacy_info.uses_transient_token',
+    # ⏳ Engagement & Duration
+    'event_params__engagement_time_seconds': 'session_duration_seconds',
+    'event_params__time_spent_seconds': 'time_spent_on_activity_seconds',
 
-    # Misc / top-level
-    'event_dimensions',    
-    'event_server_delay_seconds',
-    'event_value_in_usd',
-    'ecommerce',
-    'is_active_user',
-    'platform',
-    'stream_id',
-    'user_ltv',
+    # 🧠 Gameplay (Maze & Buffs)
+    'maze_gender': 'maze_gender',
+    'maze_hand': 'maze_hand',
+    'maze_level': 'maze_level',
+    'buff_type': 'buff_type',
+    'buff_gift': 'buff_gift',
+    'buff_gold': 'buff_gold',
+    'earned_buff_type': 'earned_buff_type',
 
-    # Time Series
-    'event_datetime',
-    'ts_weekday',
-    'ts_is_weekend', 
-    'ts_local_time', 
-    'ts_hour', 
-    'ts_daytime_named'
+    # 🎮 Game Event Data
+    'event_params__current_question_index': 'current_question_index',
+    'event_params__current_qi': 'original_qi',
+    'event_params__character_name': 'character_name',
+    'event_params__current_tier': 'current_tier',
+    'event_params__mini_game_ri': 'mini_game_round_index',
+    'event_params__mini_game_name': 'mini_game_name',
+    'event_params__answered_wrong': 'answered_incorrectly',
+
+    # 💰 Currency Events
+    'event_params__where_its_earned': 'where_currency_was_earned',
+    'event_params__currency_name': 'currency_name',
+    'event_params__earned_amount': 'currency_earned',
+    'event_params__how_its_earned': 'how_currency_was_earned',
+    'event_params__spent_amount': 'currency_spent',
+    'event_params__where_its_spent': 'where_currency_was_spent',
+    'event_params__spent_to': 'spent_on',
+
+    # 🛒 Shop
+    'doll_name': 'doll_name',
+    'spent_in_crystal': 'spent_in_crystal',
+    'shop_permanent_item': 'permanent_item',
+    'shop_consumable_item': 'consumable_item',
+    'board_item': 'board_item',
+
+    # 🔄 User Lifecycle
+    'user__first_open_time': 'user_first_open_time',
+    'user__first_open_date': 'user_first_open_date',
+    'event_params__previous_first_open_count': 'previous_first_open_count',
+}
+
+
+
+
+columns_to_drop = ['event_timestamp',
+                    'event_previous_timestamp', 
+                    'user_first_touch_timestamp', 
+                    'event_server_timestamp_offset', 
+                    'device__time_zone_offset_seconds', 
+                    'event_params__engagement_time_msec',
+                    'event_previous_datetime',
+                    'event_params__time_spent',
+                    'event_first_touch_datetime',
+                    'user__first_open_datetime',
+                    'event_value_in_usd', 
+                    'user_id', 
+                    'batch_page_id',	
+                    'batch_ordering_id', 
+                    'privacy_info__uses_transient_token',
+                    'user_ltv',
+                    'device__mobile_marketing_name', 
+                    'device__vendor_id',
+                    'device__browser', 
+                    'device__browser_version', 
+                    'device__web_info', 
+                    'event_dimensions',
+                    'traffic_source__name', 
+                    'traffic_source__medium',	
+                    'traffic_source__source',	
+                    'ecommerce', 
+                    'event_params__update_with_analytics', 
+                    'event_params__system_app_update',
+                    'collected_traffic_source',
+                    'event_params__system_app'
 ]
 
 
-# These dictionaries map the COLUMN NAMES to their display names
-# and the order in which they should appear in the table UI.
-
-mini_game_related_column_order = {
-    'event_name': 'event_name',
-    'event_date': 'event_date',
-    'event_time': 'event_time',
-    'event_params__mini_game_name': 'mini_game_name',
-    'event_params__mini_game_ri': 'mini_game_ri',
-    'event_params__time_spent_seconds': 'time_spent',
-    'event_params__where_its_earned': 'where_earned',
-    'event_params__how_its_earned': 'how_earned',
-    'event_params__earned_amount': 'amount_earned'
-}
-
-crystal_related_column_order = {
-    'inferred_session_id': 'inferred_session_id',
-    'event_datetime': 'event_datetime',
-    'user_pseudo_id': 'user_pseudo_id',
-    'event_params__where_its_spent': 'where_spent',
-    'event_params__spent_to': 'spent_to',
-    'event_params__spent_amount': 'spent_amount',
-    'last_character_name': 'character_name',
-    'last_tier': 'tier',
-    'last_question_index': 'question_index',
-}
-
-session_times_column_order = {
-    'inferred_session_id': 'inferred_session_id', 
-    'session_screen_time_seconds': 'session_screen_time_seconds',
-    'date_time': 'date_time', 
-    'local_datetime': 'local_datetime', 
-    'local_date': 'local_date', 
-    'local_time': 'local_time', 
-    'ts_weekday': 'ts_weekday', 
-    'ts_is_weekend': 'ts_is_weekend', 
-    'ts_hour': 'ts_hour', 
-    'ts_daytime_named': 'ts_daytime_named', 
-    'user_pseudo_id': 'user_pseudo_id',
-}
 
 # These dictionaries map specific VALUES to their display names.
 # They are used to convert raw values in the data to more user-friendly names.
 
-mini_game_related_value_map = {
-    'stone_mini_game': 'Stone Mini Game', # böyle comment atabilirsin 
-    'stone_game': 'Stone Game',
-    'cauldron_mini_game': 'Cauldron Mini Game',
-    'cauldron_game': 'Cauldron Game',
-    'star_mini_game': 'Star Mini Game',
-    'maze_mini_game': 'Maze Mini Game',
-    'coffee_mini_game': 'Coffee Mini Game',
-    'coffee_game': 'Coffee Game',
-    'card_mini_game': 'Card Mini Game',
-    'card_game': 'Card Game',
-    'wheel_of_fortune': 'Wheel of Fortune',
-    'daily_spin': 'Daily Spin',
-    'gift': 'Gift',
-    True: 'True',
-    False: 'False',
-    'completed': 'Completed',
-    'question': 'Question',
-    'combo': 'Combo',
-    'normal': 'Normal',
-    'mini_game': 'Mini Game',
-    'mini_game_completed': 'Mini Game Completed',
-    'wanna_play': 'Wanna Play',
-    'energy_gold_exchange': 'Energy Gold Exchange',
-    'CauldronMiniGame': 'Cauldron Mini Game',
-    'CoffeeMiniGame': 'Coffee Mini Game',
-    'spin_skipped': 'Spin Skipped',
-    'failed': 'Failed',
-    'mini_game_failed': 'Mini Game Failed',
-    'voodoo_mini_game': 'Voodoo Mini Game',
-    'T': 'Character T',
-    'catch_up_cauldron': 'Catch Up Cauldron',
+
+event_name_map = {'ad_clicked': 'Ad Clicked',
+                  'app_remove': 'App Removed',
+                  'first_open': 'First Open',
+                  'menu_closed': 'Menu Closed',
+                  'menu_opened': 'Menu Opened',
+                  'screen_view': 'Screen Viewed',
+                  'ad_impression': 'Ad Impression',
+                  'session_start': 'Session Started',
+                  'app_clear_data': 'App Data Cleared',
+                  'user_engagement': 'User Engagement',
+                  'question_started': 'Question Started',
+                  'mini_game_started': 'Mini-game Started',
+                  'question_completed': 'Question Completed',
+                  'mini_game_completed': 'Mini-game Completed',
+                  'earn_virtual_currency': 'Earned Virtual Currency',
+                  'spend_virtual_currency': 'Spent Virtual Currency',
+                  'mini_game_failed': 'Mini-game Failed',
+                  'app_exception': 'App Exception'
+                    }
+
+
+
+event_params__mini_game_ri_map = {'stone_game': 'Stone Game',                                 
+                                  'cauldron_game': 'Cauldron Game',
+                                  'coffee_game': 'Coffee Game',
+                                  'card_game': 'Card Game',
+                                  'daily_spin': 'Daily Spin',
+                                  'completed': 'Completed',
+                                  'failed': 'Failed',
+                                  'gold_500': 'Gold 500',
+                                      }
+
+event_params__menu_name_map = {'ScrollMenu' : 'Scroll Menu',
+                               'CrystalMenu' : 'Crystal Menu',
+                               'CrystalAligninMenu' : 'Crystal Alignin Menu',
+                               'WannaPlayMenu' : 'Wanna Play Menu',
+                               'ShopMenu' : 'Shop Menu',
+                               'BoardMenu' : 'Board Menu',
+                               'CrystalCharacterMenu' : 'Crystal Character Menu',
+                               'EnergyGoldExchange' : 'Energy Gold Exchange',
+                               'CrystalCauldronMenu' : 'Crystal Cauldron Menu',
+                               'CrystalEnergyMenu' : 'Crystal Energy Menu',
+                               'CrystalCoffeeMenu' : 'Crystal Coffee Menu',
+                               'WheelOfFortune' : 'Wheel of Fortune',
+                               'scroll_menu' : 'Scroll Menu',
+                                    }
+ 
+event_params__character_name_map = { 'aturtle': 'A Turtle',
+                                     'littlea': 'Little A',
+                                     'sinnct': 'Sinnct',
+                                     'obviousjoe': 'Obvious Joe',
+                                     'erjohn': 'Er John',
+                                     'billy': 'Billy',
+                                     'maydenis': 'Maydenis',
+                                     'almiralotus': 'Almira Lotus',
+                                     't': 'T',
+                                     'mrspearl': 'Mrs. Pearl',
+                                     'therock': 'The Rock',
+                                     'army': 'Army',
+                                     'ladydodo': 'Lady Dodo',
+                                     'dlion': 'D Lion',
+                                     'frenchie': 'Frenchie',
+                                     'mi': 'Mi',
+                                     'biga': 'Biga',
+                                     'cjay': 'C Jay',
+                                     'mo': 'Mo',
+                                     'mryogurt': "Mr. Yogurt",
+                                     'crystalraw': "Crystal Raw",
+                                     'aisha': "Aisha",
+                                     'mustafa': "Mustafa",
+                                     'fathergold': "Father Gold",
+                                     'tracy': "Tracy",
+                                     'whymargaret': "Why Margaret",
+                                     'suedoluni': "Sue Doluni"
+                                        }
+
+event_params__mini_game_name_map = { 'stone_mini_game': 'Stone Game',
+                                     'cauldron_mini_game': 'Cauldron Game',
+                                     'star_mini_game': 'Star Game',
+                                     'maze_mini_game': 'Maze Game',
+                                     'coffee_mini_game': 'Coffee Game',
+                                     'card_mini_game': 'Card Game',
+                                     'wheel_of_fortune': 'Wheel of Fortune',
+                                     'voodoo_mini_game': 'Voodoo Game',
+                                     'catch_up_cauldron': 'Catch Up Cauldron'
+                                        }
+
+
+
+
+
+event_params__where_its_earned_map = { 'mini_game': 'Mini-game',
+                                       'question': 'Question',
+                                       'wanna_play': 'Wanna Play',
+                                       'energy_gold_exchange': 'Energy Gold Exchange',
 }
+
+
+
+event_params__currency_name_map = { 'gold': 'Gold',
+                                    'energy': 'Energy'
+}
+
+
+event_params__how_its_earned_map = { 'combo': 'Combo',
+                                     'normal': 'Normal',
+                                     'mini_game_completed': 'Mini-game Completed',
+                                     'star_mini_game': 'Star Game',
+                                     'CauldronMiniGame': 'Cauldron Game',
+                                     'CoffeeMiniGame': 'Coffee Game',
+                                     'card_mini_game': 'Card Game',
+                                     'maze_mini_game': 'Maze Game',
+                                     'mini_game_failed': 'Mini-game Failed',
+}
+                                    
+event_params__where_its_spent_map = { 'shop': 'Shop',
+                                      'board': 'Board',
+                                      'crystal': 'Crystal',
+}
+
+
+
+map_of_maps = {
+    'event_name': event_name_map,
+    'event_params__mini_game_ri': event_params__mini_game_ri_map,
+    'event_params__menu_name': event_params__menu_name_map,
+    'event_params__character_name': event_params__character_name_map,
+    'event_params__mini_game_name': event_params__mini_game_name_map,
+    'event_params__where_its_earned': event_params__where_its_earned_map,
+    'event_params__currency_name': event_params__currency_name_map,
+    'event_params__how_its_earned': event_params__how_its_earned_map,
+    'event_params__where_its_spent': event_params__where_its_spent_map
+}
+
+
+
+
