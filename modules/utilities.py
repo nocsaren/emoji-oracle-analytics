@@ -5,6 +5,8 @@ from google.api_core.exceptions import GoogleAPICallError, RetryError
 import os
 import pandas as pd
 
+import traceback
+
 def pull_and_append(credentials, project_id, dataset_id, data_path, backup_path):
     """
     Ensures all available BigQuery tables are backed up as JSON files in backup_path.
@@ -139,3 +141,5 @@ def upload_named_dataframes_to_bq(dataframes, dataset_id, project_id, bq_client)
             print(f"Retry error uploading '{name}' to {table_id}: {retry_error}")
         except Exception as e:
             print(f"Unexpected error uploading '{name}' to {table_id}: {e}")
+            print(f"Exception type: {type(e)}")
+            traceback.print_exc()

@@ -9,7 +9,7 @@ designed to be used in conjunction with the main application logic.
 df_column_names_map = {
 
     # 🎯 Event Core Info
-    'event_name': 'event_type',
+    'event_name': 'event_name',
     'event_bundle_sequence_id': 'event_batch_id',
     'user_pseudo_id': 'user_pseudo_id',
     'stream_id': 'stream_identifier',
@@ -43,6 +43,7 @@ df_column_names_map = {
     'user__ga_session_number': 'user_session_count',
     'user__ga_session_id': 'user_session_id',
     'inferred_session_id': 'inferred_session_id',
+    'session_duration_seconds': 'session_duration_seconds',
 
     # 📺 Screen & Navigation
     'event_params__firebase_screen_id': 'screen_id',
@@ -94,7 +95,7 @@ df_column_names_map = {
     'event_params__timestamp': 'raw_timestamp',
 
     # ⏳ Engagement & Duration
-    'event_params__engagement_time_seconds': 'session_duration_seconds',
+    'event_params__engagement_time_seconds': 'engagement_time_seconds',
     'event_params__time_spent_seconds': 'time_spent_on_activity_seconds',
 
     # 🧠 Gameplay (Maze & Buffs)
@@ -107,10 +108,14 @@ df_column_names_map = {
     'earned_buff_type': 'earned_buff_type',
 
     # 🎮 Game Event Data
-    'event_params__current_question_index': 'current_question_index',
     'event_params__current_qi': 'original_qi',
+    'question_address': 'question_address',
     'event_params__character_name': 'character_name',
     'event_params__current_tier': 'current_tier',
+    'event_params__current_question_index': 'current_question_index',
+    'event_params__current_qi': 'original_qi',
+    'cumulative_question_index': 'cumulative_question_index',
+    'question_address': 'question_address',
     'event_params__mini_game_ri': 'mini_game_round_index',
     'event_params__mini_game_name': 'mini_game_name',
     'event_params__answered_wrong': 'answered_incorrectly',
@@ -229,7 +234,7 @@ event_params__character_name_map = { 'aturtle': 'A Turtle',
                                      'littlea': 'Little A',
                                      'sinnct': 'Sinnct',
                                      'obviousjoe': 'Obvious Joe',
-                                     'erjohn': 'Er John',
+                                     'erjohn': 'ER John',
                                      'billy': 'Billy',
                                      'maydenis': 'Maydenis',
                                      'almiralotus': 'Almira Lotus',
