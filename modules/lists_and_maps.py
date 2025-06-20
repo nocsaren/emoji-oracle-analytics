@@ -4,7 +4,7 @@ designed to be used in conjunction with the main application logic.
 '''
 
 
-# This is a list and order of the column names that I used for conveniancy in early transformation. 
+# This is a list and order of the column names that I used for conveniancy in EDA and LookerStudio. 
 
 df_column_names_map = {
 
@@ -44,6 +44,8 @@ df_column_names_map = {
     'user__ga_session_id': 'user_session_id',
     'inferred_session_id': 'inferred_session_id',
     'session_duration_seconds': 'session_duration_seconds',
+    'session_start_time': 'session_start_time',
+    'session_end_time': 'session_end_time',
 
     # 📺 Screen & Navigation
     'event_params__firebase_screen_id': 'screen_id',
@@ -119,6 +121,7 @@ df_column_names_map = {
     'event_params__mini_game_ri': 'mini_game_round_index',
     'event_params__mini_game_name': 'mini_game_name',
     'event_params__answered_wrong': 'answered_incorrectly',
+    'question_correct_incorrect': 'question_correct_incorrect',
 
     # 💰 Currency Events
     'event_params__where_its_earned': 'where_currency_was_earned',
@@ -303,6 +306,62 @@ event_params__where_its_spent_map = { 'shop': 'Shop',
                                       'crystal': 'Crystal',
 }
 
+event_params__ad_shown_where_map = { 'crystal_character_ad': 'Crystal Character',
+                                     'crystal_energy_ad': 'Crystal Energy',
+                                     'wheel_of_fortune_ad': 'Wheel of Fortune',
+                                     'ad_shown_where': 'ADSHOWNWHERE',
+                                     'wanna_play_ad': 'Wanna Play',
+                                     'EnergyGoldExchangeAd': 'Energy Gold Exchange'
+}
+
+event_params__menu_name_map = { 'Scroll Menu': 'Scroll Menu',
+                                'crystal_menu': 'Crystal Menu',
+                                'crystal_aliginn_menu': 'Crystal AliCin Menu',
+                                'wanna_play_menu': 'Wanna Play Menu',
+                                'shop_menu': 'Shop Menu',
+                                'board_menu': 'Board Menu',
+                                'crystal_character_menu': 'Crystal Character Menu',
+                                'energy_gold_exchange': 'Energy Gold Exchange',
+                                'crystal_cauldron_menu': 'Crystal Cauldron Menu',
+                                'crystal_energy_menu': 'Crystal Energy Menu',
+                                'crystal_coffee_menu': 'Crystal Coffee Menu',
+                                'wheel_of_fortune': 'Wheel of Fortune',
+                                'scroll_menu': 'Scroll Menu',
+}
+
+
+
+
+spent_in_crystal_map = {'cauldron' : 'Cauldron',
+                        'aliginn' : 'AliCin',
+                        'coffee' : 'Coffee'
+}
+
+
+shop_consumable_item_map = {'potion': 'Potion',
+                            'incense': 'Incense',
+                            'amulet': 'Amulet',
+                            'ıncense': 'Incense',
+}
+                            
+shop_permanent_item_map = {'dreamcatcher': 'Dreamcatcher',
+                           'catcollar': 'Cat Collar',
+                           'library1': 'Library 1',
+                           'library2': 'Library 2',
+                           'bugspray': 'Bug Spray',
+                           'schedule': 'Schedule',
+                           'crystal': 'Crystal',
+                           'horseshoe': 'Horseshoe'
+}
+
+ts_weekday_map = {'Monday': 'Pazartesi',
+                  'Tuesday': 'Salı',
+                  'Wednesday': 'Çarşamba',
+                  'Thursday': 'Perşembe',
+                  'Friday': 'Cuma',
+                  'Saturday': 'Cumartesi',
+                  'Sunday': 'Pazar'
+}
 
 
 map_of_maps = {
@@ -314,9 +373,13 @@ map_of_maps = {
     'event_params__where_its_earned': event_params__where_its_earned_map,
     'event_params__currency_name': event_params__currency_name_map,
     'event_params__how_its_earned': event_params__how_its_earned_map,
-    'event_params__where_its_spent': event_params__where_its_spent_map
+    'event_params__where_its_spent': event_params__where_its_spent_map,
+    'event_params__ad_shown_where': event_params__ad_shown_where_map,
+    'doll_name' : event_params__character_name_map,
+    'spent_in_crystal': spent_in_crystal_map,
+    'shop_consumable_item': shop_consumable_item_map,
+    'shop_permanent_item': shop_permanent_item_map,
+    'ts_weekday': ts_weekday_map,
+    'event_params__menu_name': event_params__menu_name_map
 }
-
-
-
 
