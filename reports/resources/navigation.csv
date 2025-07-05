@@ -1,0 +1,12 @@
+Menu_ID, Menu_Label, Shape_File_Name, Parameter_Value
+1, Ana Sayfa, home.png, Ana Sayfa
+2, Oturumlar, sessions.png, Oturumlar
+3, Oyuncular, players.png, Oyuncular
+4, Karakterler, chars.png, Karakterler
+5, Sorular, questions.png, Sorular
+6, Mini Oyunlar, mini_games.png, Mini Oyunlar
+7, Kristal Küre ve Enerji, crystal.png, Kristal Küre ve Enerji
+8, Lamba ve Gold, lamp_gold.png, Lamba ve Gold
+9, Reklamlar, ads.png, Reklamlar
+10, Pazarlama, marketing.png, Pazarlama
+11, Değerlendirmeler ve Öngörüler, evaluations.png, Değerlendirmeler ve Öngörüler

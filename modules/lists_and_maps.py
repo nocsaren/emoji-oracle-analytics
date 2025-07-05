@@ -121,7 +121,6 @@ df_column_names_map = {
     'event_params__mini_game_ri': 'mini_game_round_index',
     'event_params__mini_game_name': 'mini_game_name',
     'event_params__answered_wrong': 'answered_incorrectly',
-    'question_correct_incorrect': 'question_correct_incorrect',
 
     # 💰 Currency Events
     'event_params__where_its_earned': 'where_currency_was_earned',
@@ -218,20 +217,22 @@ event_params__mini_game_ri_map = {'stone_game': 'Stone Game',
                                   'gold_500': 'Gold 500',
                                       }
 
-event_params__menu_name_map = {'ScrollMenu' : 'Scroll Menu',
-                               'CrystalMenu' : 'Crystal Menu',
-                               'CrystalAligninMenu' : 'Crystal Alignin Menu',
-                               'WannaPlayMenu' : 'Wanna Play Menu',
-                               'ShopMenu' : 'Shop Menu',
-                               'BoardMenu' : 'Board Menu',
-                               'CrystalCharacterMenu' : 'Crystal Character Menu',
-                               'EnergyGoldExchange' : 'Energy Gold Exchange',
-                               'CrystalCauldronMenu' : 'Crystal Cauldron Menu',
-                               'CrystalEnergyMenu' : 'Crystal Energy Menu',
-                               'CrystalCoffeeMenu' : 'Crystal Coffee Menu',
-                               'WheelOfFortune' : 'Wheel of Fortune',
+event_params__menu_name_map = {'Scroll Menu' : 'Scroll Menu',
+                               'crystal_menu' : 'Crystal Menu',
+                               'crystal_aliginn_menu' : 'Crystal Alignin Menu',
+                               'wanna_play_menu' : 'Wanna Play Menu',
+                               'shop_menu' : 'Shop Menu',
+                               'board_menu' : 'Board Menu',
+                               'crystal_character_menu' : 'Crystal Character Menu',
+                               'energy_gold_exchange' : 'Energy Gold Exchange',
+                               'crystal_cauldron_menu' : 'Crystal Cauldron Menu',
+                               'crystal_energy_menu' : 'Crystal Energy Menu',
+                               'crystal_coffee_menu' : 'Crystal Coffee Menu',
+                               'wheel_of_fortune' : 'Wheel of Fortune',
                                'scroll_menu' : 'Scroll Menu',
                                     }
+
+
  
 event_params__character_name_map = { 'aturtle': 'A Turtle',
                                      'littlea': 'Little A',
@@ -249,7 +250,7 @@ event_params__character_name_map = { 'aturtle': 'A Turtle',
                                      'dlion': 'D Lion',
                                      'frenchie': 'Frenchie',
                                      'mi': 'Mi',
-                                     'biga': 'Biga',
+                                     'biga': 'Big A',
                                      'cjay': 'C Jay',
                                      'mo': 'Mo',
                                      'mryogurt': "Mr. Yogurt",
@@ -270,7 +271,8 @@ event_params__mini_game_name_map = { 'stone_mini_game': 'Stone Game',
                                      'card_mini_game': 'Card Game',
                                      'wheel_of_fortune': 'Wheel of Fortune',
                                      'voodoo_mini_game': 'Voodoo Game',
-                                     'catch_up_cauldron': 'Catch Up Cauldron'
+                                     'catch_up_cauldron': 'Catch Up Cauldron',
+                                     'catch_up_coffee': 'Catch Up Coffee',
                                         }
 
 
@@ -313,22 +315,6 @@ event_params__ad_shown_where_map = { 'crystal_character_ad': 'Crystal Character'
                                      'wanna_play_ad': 'Wanna Play',
                                      'EnergyGoldExchangeAd': 'Energy Gold Exchange'
 }
-
-event_params__menu_name_map = { 'Scroll Menu': 'Scroll Menu',
-                                'crystal_menu': 'Crystal Menu',
-                                'crystal_aliginn_menu': 'Crystal AliCin Menu',
-                                'wanna_play_menu': 'Wanna Play Menu',
-                                'shop_menu': 'Shop Menu',
-                                'board_menu': 'Board Menu',
-                                'crystal_character_menu': 'Crystal Character Menu',
-                                'energy_gold_exchange': 'Energy Gold Exchange',
-                                'crystal_cauldron_menu': 'Crystal Cauldron Menu',
-                                'crystal_energy_menu': 'Crystal Energy Menu',
-                                'crystal_coffee_menu': 'Crystal Coffee Menu',
-                                'wheel_of_fortune': 'Wheel of Fortune',
-                                'scroll_menu': 'Scroll Menu',
-}
-
 
 
 
@@ -380,6 +366,5 @@ map_of_maps = {
     'shop_consumable_item': shop_consumable_item_map,
     'shop_permanent_item': shop_permanent_item_map,
     'ts_weekday': ts_weekday_map,
-    'event_params__menu_name': event_params__menu_name_map
 }
 
