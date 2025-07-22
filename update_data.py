@@ -25,7 +25,8 @@ import openpyxl
 from modules.utilities import (
     pull_and_append,
     rebuild_data_json_from_backups,
-    upload_named_dataframes_to_bq
+    upload_named_dataframes_to_bq,
+    convert_bool_to_int
 )
 
 from modules.flattening import (
@@ -43,7 +44,9 @@ from modules.cleaning import (
 from modules.lists_and_maps import (
     df_column_names_map, 
     columns_to_drop,
-    map_of_maps
+    map_of_maps,
+    df_splits,
+    df_filters
     )
 
 
@@ -134,7 +137,6 @@ df['event_params__engagement_time_seconds'] = df['event_params__engagement_time_
 df['event_server_delay_seconds'] = df['event_server_timestamp_offset'] / 1000 # ms to seconds 
 df['event_params__time_spent_seconds'] = df['event_params__time_spent'] # just renaming for clarity
 
-
 print("Date and time cleanup and transformation completed successfully.")
 
 
@@ -162,6 +164,79 @@ df['ts_weekday'] = df['ts_weekday'].astype(str) # convert to string for consiste
 
 
 print("Time-based features added successfully.")
+
+
+
+# --- Session Definition and Duration Calculation ---
+
+''' 
+
+Create a calculated session times dataframe from the events dataframe.
+This will infer session times based on the time gaps between events for each user.
+
+This is done by:
+1. Sorting events by user and timestamp.
+2. Calculating the time difference between consecutive events for each user.
+3. Defining a session timeout (6 minutes).
+4. Assigning session IDs based on the time gaps.
+
+'''
+
+# Ensure events are sorted per user
+df_sorted = df.sort_values(by=['user_pseudo_id', 'event_datetime'])
+
+# Compute time gap between events per user
+df_sorted['time_diff'] = df_sorted.groupby('user_pseudo_id')['event_datetime'].diff()
+
+# Use 6-minute timeout
+SESSION_TIMEOUT = pd.Timedelta(minutes=6)
+
+# Define inferred session ID using 6-minute gaps
+df_sorted['inferred_session_id'] = (
+    (df_sorted['time_diff'] > SESSION_TIMEOUT) | df_sorted['time_diff'].isna()
+).cumsum()
+
+# Assign session IDs to the original DataFrame
+df['inferred_session_id'] = df_sorted['inferred_session_id'].loc[df.index]
+
+# Calculate session duration
+df['session_duration_seconds'] = df.groupby(['user_pseudo_id', 'inferred_session_id'])['event_datetime'].transform(
+    lambda x: (x.max() - x.min()).total_seconds()
+).round(3)
+
+df['session_duration_minutes'] = (df['session_duration_seconds'] / 60).round(2)
+df['session_duration_hours'] = (df['session_duration_seconds'] / 3600).round(3)
+
+# Session start and end times
+df['session_start_time'] = df.groupby(['user_pseudo_id', 'inferred_session_id'])['event_datetime'].transform('min')
+df['session_end_time'] = df.groupby(['user_pseudo_id', 'inferred_session_id'])['event_datetime'].transform('max')
+
+print(f"Session IDs assigned and durations calculated for {df['inferred_session_id'].nunique()} unique sessions.")
+
+
+# Infer and forward-fill the character name, current tier, and current question index within each session
+
+# Step 1: Sort chronologically within sessions
+df_sorted = df.sort_values(by=['user_pseudo_id', 'inferred_session_id', 'event_datetime'])
+
+# Step 2: Forward-fill the relevant columns per user-session group
+cols_to_fill = [
+    'event_params__character_name',
+    'event_params__current_tier',
+    'event_params__current_qi',
+]
+
+df_sorted[cols_to_fill] = (
+    df_sorted
+    .groupby(['user_pseudo_id', 'inferred_session_id'])[cols_to_fill]
+    .ffill()
+)
+
+df.loc[df_sorted.index, cols_to_fill] = df_sorted[cols_to_fill]
+
+print(f"Character names, tiers, and question indices forward-filled for {df['inferred_session_id'].nunique()} unique sessions.")
+
+
 # --- Question Index Clean-up ---
 """
 Tier 1: 16 Questions, Except t: 12
@@ -202,8 +277,9 @@ print(f"Question index cleaned up for {df['event_params__current_question_index'
 
 # Calculate cumulative question index
 
-df['cumulative_question_index'] = df['event_params__current_question_index']
+df['cumulative_question_index'] = df['event_params__current_question_index'].copy()
 
+df['cumulative_question_index'] = pd.to_numeric(df['cumulative_question_index'], errors='coerce')
 
 # Tier 2
 df.loc[(df['event_params__current_tier'] == 2) & (df['event_params__character_name'] == 't'), 'cumulative_question_index'] += 12
@@ -223,73 +299,16 @@ df.loc[df['event_params__current_tier'].isna(), 'cumulative_question_index'] = p
 print(f"Cumulative question index calculated for {df['cumulative_question_index'].notna().sum()} rows.")
 
 
-# --- Session Definition and Duration Calculation ---
-
-''' 
-
-Create a calculated session times dataframe from the events dataframe.
-This will infer session times based on the time gaps between events for each user.
-
-This is done by:
-1. Sorting events by user and timestamp.
-2. Calculating the time difference between consecutive events for each user.
-3. Defining a session timeout (6 minutes).
-4. Assigning session IDs based on the time gaps.
-
-'''
-
-# Ensure events are sorted per user
-df_sorted = df.sort_values(by=['user_pseudo_id', 'event_datetime'])
-
-# Compute time gap between events per user
-df_sorted['time_diff'] = df_sorted.groupby('user_pseudo_id')['event_datetime'].diff()
-
-# Use 6-minute timeout
-SESSION_TIMEOUT = pd.Timedelta(minutes=6)
-
-# Define inferred session ID using 6-minute gaps
-df_sorted['inferred_session_id'] = (
-    (df_sorted['time_diff'] > SESSION_TIMEOUT) | df_sorted['time_diff'].isna()
-).cumsum()
-
-# Assign session IDs to the original DataFrame
-df['inferred_session_id'] = df_sorted['inferred_session_id'].loc[df.index]
-
-# Calculate session duration
-df['session_duration_seconds'] = df.groupby(['user_pseudo_id', 'inferred_session_id'])['event_datetime'].transform(
-    lambda x: (x.max() - x.min()).total_seconds()
-)
-
-# Session start and end times
-df['session_start_time'] = df.groupby(['user_pseudo_id', 'inferred_session_id'])['event_datetime'].transform('min')
-df['session_end_time'] = df.groupby(['user_pseudo_id', 'inferred_session_id'])['event_datetime'].transform('max')
-
-print(f"Session IDs assigned and durations calculated for {df['inferred_session_id'].nunique()} unique sessions.")
 
 
-# Infer and forward-fill the character name, current tier, and current question index within each session
-
-# Step 1: Sort chronologically within sessions
-df_sorted = df.sort_values(by=['user_pseudo_id', 'inferred_session_id', 'event_datetime'])
-
-# Step 2: Forward-fill the relevant columns per user-session group
-cols_to_fill = [
-    'event_params__character_name',
-    'event_params__current_tier',
-    'event_params__current_question_index'
-]
-
-df_sorted[cols_to_fill] = (
-    df_sorted
-    .groupby(['user_pseudo_id', 'inferred_session_id'])[cols_to_fill]
-    .ffill()
-)
-
-df.loc[df_sorted.index, cols_to_fill] = df_sorted[cols_to_fill]
-
-print(f"Character names, tiers, and question indices forward-filled for {df['inferred_session_id'].nunique()} unique sessions.")
 
 
+
+
+"""
+TODO mini_game_ri
+
+"""
 # Split 'event_params_mini_game_ri' maze_hand_* into columns
 # e.g 'maze_hand_WomanHandTwo_maze_level_3'
 
@@ -359,6 +378,12 @@ buff_type = parts[2].str.extract(r'(?P<BuffType>\w+)')
 df.loc[mask, 'earned_buff_type'] = buff_type['BuffType']
 
 print(f"Extracted earned buff data for {mask.sum()} rows.")
+
+
+"""
+END mini_game_ri
+
+"""
 
 # Split event_params__spent_to doll values into columns
 # e.g. 'erjohndoll'
@@ -458,6 +483,9 @@ df = df.drop(columns=columns_to_drop)
 
 print(f"Dropped {len(columns_to_drop)} columns: {columns_to_drop}.")
 
+# Rewrite the 'key' value in 'event_params__spent_to' as 'Key'
+df.loc[df['event_params__spent_to'] == 'key', 'event_params__spent_to'] = 'Key'
+
 
 # Apply value maps to the DataFrame
 print("Applying value maps to the DataFrame...")
@@ -482,45 +510,75 @@ user_metrics = df.groupby('user_pseudo_id').agg(
     total_events=('event_name', 'count')
 ).reset_index()
 
-# Compute user lifetime in days
-user_metrics['lifetime_days'] = np.ceil((user_metrics['last_seen'] - 
-                                         user_metrics['first_seen']).dt.total_seconds() / 86400
-).astype('Int64')  # nullable int type for BQ/LS compatibility
-
-# Churn flag based on 80th percentile of user lifetime in days
+# Reference date: typically the latest timestamp in your data
 reference_date = df['event_datetime'].max()
 
+# Lifetime: just for info
+user_metrics['lifetime_days'] = (user_metrics['last_seen'] - user_metrics['first_seen']).dt.days
 
-threshold = user_metrics['lifetime_days'].quantile(0.80)
-user_metrics['is_churned'] = user_metrics['lifetime_days'] > threshold
+# Days since last activity
+user_metrics['days_since_last_seen'] = (reference_date - user_metrics['last_seen']).dt.days
 
-
-# Retention buckets (for visualization or filtering in LS)
-user_metrics['retention_bucket'] = pd.cut(
-    user_metrics['lifetime_days'],
-    bins=[-1, 0, 1, 3, 7, 14, 30, 90, float('inf')],
-    labels=[
-            '0_0d',
-            '1_1d',
-            '2_1-3d',
-            '3_4-7d',
-            '4_8-14d',
-            '5_15-30d',
-            '6_31-90d',
-            '7_90+d'
-    ]
-)
+# Churn: hasn't been seen for 14+ days
+user_metrics['is_churned'] = user_metrics['days_since_last_seen'] > 14
 
 # Active/returning user flags
-user_metrics['is_retained_1d'] = user_metrics['lifetime_days'] >= 1
+user_metrics['is_retained_1d'] = user_metrics['lifetime_days'] >= 0
 user_metrics['is_retained_7d'] = user_metrics['lifetime_days'] >= 7
 user_metrics['is_retained_30d'] = user_metrics['lifetime_days'] >= 30
 
+# Calculate active days: number of unique days the user has been active
+days_active = df.groupby('user_pseudo_id')['event_datetime'].apply(
+    lambda x: x.dt.normalize().nunique()
+).reset_index(name='active_days')
+user_metrics = user_metrics.merge(days_active, on='user_pseudo_id', how='left')
+
+# Active user flags based on active days
+user_metrics['is_active_1d'] = user_metrics['active_days'] >= 2
+user_metrics['is_active_7d'] = user_metrics['active_days'] >= 7
+user_metrics['is_active_30d'] = user_metrics['active_days'] >= 30
+
+# Is active yesterday: if the user has been seen in the last 24 hours
+user_metrics['is_active_yesterday'] = user_metrics['days_since_last_seen'] <= 1
+
+# User status based on activity
+conditions = [
+    user_metrics['days_since_last_seen'] > 14,         # churned first
+    user_metrics['days_since_last_seen'] <= 7,         # then active
+    user_metrics['lifetime_days'] <= 1                 # then new
+]
+labels = ['Bırakmış', 'Aktif', 'Yeni']
+
+user_metrics['user_status'] = np.select(conditions, labels, default='dormant')
+
 print(f"User metrics calculated for {user_metrics.shape[0]} users.")
+
+
+# Convert boolean columns to integers (0/1)
+print("Converting boolean columns to integers...")
+
+df = convert_bool_to_int(df)
+user_metrics = convert_bool_to_int(user_metrics)
+
+print(f"Boolean columns converted. DataFrame now has {df.shape[1]} columns and user_metrics has {user_metrics.shape[1]} columns.")
+
+
+# Rename and select columns according to df_column_names_map
+print("Renaming and selecting columns according to df_column_names_map...")
 
 df = safe_select_and_rename(df, df_column_names_map)
 
 print(f"DataFrame columns renamed and selected according to the map. Now has {df.shape[1]} columns.")
+
+
+# Save the DataFrame to CSV files based on the splits defined in df_splits
+print("Saving DataFrame splits to CSV files...")
+for name, cols in df_splits.items():
+    df_subset = df[cols].copy()
+    if name in df_filters:
+        df_subset = df_subset[df_filters[name](df_subset)]
+    df_subset.to_csv(f'./data/{name}.csv', index=False)
+
 
 print("Data cleaning and transformation completed successfully.")
 print("Saving cleaned data to CSV files...")

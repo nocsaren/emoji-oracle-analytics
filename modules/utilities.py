@@ -143,3 +143,10 @@ def upload_named_dataframes_to_bq(dataframes, dataset_id, project_id, bq_client)
             print(f"Unexpected error uploading '{name}' to {table_id}: {e}")
             print(f"Exception type: {type(e)}")
             traceback.print_exc()
+
+
+def convert_bool_to_int(df):
+    bool_cols = df.select_dtypes(include=['bool']).columns
+    for col in bool_cols:
+        df[col] = df[col].astype(int)
+    return df
