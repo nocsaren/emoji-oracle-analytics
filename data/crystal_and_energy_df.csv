@@ -1,227 +1,255 @@
-user_pseudo_id,event_name,event_date,spent_in_crystal,question_address,inferred_session_id,where_currency_was_earned,how_currency_was_earned,ad_shown_in,currency_earned,currency_name,currency_spent,cumulative_question_index,where_currency_was_spent,current_tier,current_question_index
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-04 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,288,,,,,Energy,1.0,5.0,Crystal,1,5
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,The Rock - T: 1 - Q: 1,293,,,,,Energy,2.0,1.0,Crystal,1,1
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Almira Lotus - T: 1 - Q: 12,293,,,,,Energy,2.0,12.0,Crystal,1,12
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,Coffee,Mo - T: 3 - Q: 1,301,,,,,Energy,1.0,29.0,Crystal,3,1
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-04 00:00:00+00:00,Cauldron,Frenchie - T: 1 - Q: 1,289,,,,,Energy,1.0,1.0,Crystal,1,1
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Sinnct - T: 2 - Q: 12,302,,,,,Energy,2.0,28.0,Crystal,2,12
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-04 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,288,,,,,Energy,1.0,5.0,Crystal,1,5
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-04 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,288,,,,,Energy,2.0,29.0,Crystal,3,5
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Crystal Raw - T: 1 - Q: 9,291,,,,,Energy,2.0,9.0,Crystal,1,9
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Army - T: 1 - Q: 1,293,,,,,Energy,2.0,1.0,Crystal,1,1
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Little A - T: 1 - Q: 4,293,,,,,Energy,2.0,4.0,Crystal,1,4
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Sinnct - T: 1 - Q: 9,293,,,,,Energy,2.0,9.0,Crystal,1,9
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Crystal Raw - T: 1 - Q: 10,291,,,,,Energy,2.0,10.0,Crystal,1,10
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Sinnct - T: 1 - Q: 16,293,,,,,Energy,2.0,16.0,Crystal,1,16
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Crystal Raw - T: 2 - Q: 8,293,,,,,Energy,2.0,24.0,Crystal,2,8
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Mrs. Pearl - T: 1 - Q: 9,293,,,,,Energy,2.0,9.0,Crystal,1,9
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Little A - T: 1 - Q: 12,293,,,,,Energy,2.0,12.0,Crystal,1,12
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Army - T: 1 - Q: 12,293,,,,,Energy,2.0,12.0,Crystal,1,12
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Tracy - T: 1 - Q: 4,295,,,,,Energy,2.0,4.0,Crystal,1,4
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,Cauldron,,299,,,,,Energy,1.0,,Crystal,,
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,305,,,,,Energy,1.0,5.0,Crystal,1,5
-d35c6c27e327622b39553d4257f1b16d,Spent Virtual Currency,2025-04-06 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,278,,,,,Energy,1.0,5.0,Crystal,1,5
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,305,,,,,Energy,2.0,29.0,Crystal,3,5
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,AliCin,Father Gold - T: 1 - Q: 5,310,,,,,Energy,2.0,5.0,Crystal,1,5
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,305,,,,,Energy,1.0,5.0,Crystal,1,5
-d35c6c27e327622b39553d4257f1b16d,Spent Virtual Currency,2025-04-06 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,276,,,,,Energy,1.0,5.0,Crystal,1,5
-d35c6c27e327622b39553d4257f1b16d,Spent Virtual Currency,2025-04-06 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,278,,,,,Energy,2.0,29.0,Crystal,3,5
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,AliCin,Aisha - T: 1 - Q: 11,308,,,,,Energy,2.0,11.0,Crystal,1,11
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,AliCin,Aisha - T: 1 - Q: 9,308,,,,,Energy,2.0,9.0,Crystal,1,9
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,AliCin,Aisha - T: 1 - Q: 10,308,,,,,Energy,2.0,10.0,Crystal,1,10
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,AliCin,Why Margaret - T: 3 - Q: 12,309,,,,,Energy,2.0,40.0,Crystal,3,12
-278d01b19c1cc34cd5e6eda210c34619,Spent Virtual Currency,2025-04-07 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,131,,,,,Energy,1.0,5.0,Crystal,1,5
-278d01b19c1cc34cd5e6eda210c34619,Spent Virtual Currency,2025-04-07 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,131,,,,,Energy,1.0,5.0,Crystal,1,5
-88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-07 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,184,,,,,Energy,1.0,5.0,Crystal,1,5
-88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-07 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,184,,,,,Energy,2.0,29.0,Crystal,3,5
-ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-07 00:00:00+00:00,AliCin,ER John - T: 2 - Q: 1,311,,,,,Energy,2.0,17.0,Crystal,2,1
-88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-07 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,184,,,,,Energy,1.0,5.0,Crystal,1,5
-e3e8c556215b9f04ea3bee8b775ceea3,Spent Virtual Currency,2025-04-07 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,317,,,,,Energy,1.0,5.0,Crystal,1,5
-88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-08 00:00:00+00:00,Cauldron,Mi - T: 1 - Q: 13,189,,,,,Energy,1.0,13.0,Crystal,1,13
-e3e8c556215b9f04ea3bee8b775ceea3,Spent Virtual Currency,2025-04-08 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,318,,,,,Energy,1.0,5.0,Crystal,1,5
-fe4c3fd071ce61b30caeaa8b4844013e,Spent Virtual Currency,2025-04-08 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,328,,,,,Energy,1.0,5.0,Crystal,1,5
-fe4c3fd071ce61b30caeaa8b4844013e,Spent Virtual Currency,2025-04-08 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,328,,,,,Energy,2.0,29.0,Crystal,3,5
-88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-08 00:00:00+00:00,Cauldron,Why Margaret - T: 1 - Q: 1,191,,,,,Energy,1.0,1.0,Crystal,1,1
-88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-08 00:00:00+00:00,Coffee,Why Margaret - T: 1 - Q: 2,191,,,,,Energy,1.0,2.0,Crystal,1,2
-88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-08 00:00:00+00:00,AliCin,Sue Doluni - T: 1 - Q: 2,197,,,,,Energy,2.0,2.0,Crystal,1,2
-fe4c3fd071ce61b30caeaa8b4844013e,Spent Virtual Currency,2025-04-08 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,328,,,,,Energy,1.0,5.0,Crystal,1,5
-88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-08 00:00:00+00:00,Cauldron,Lady Dodo - T: 1 - Q: 4,189,,,,,Energy,1.0,4.0,Crystal,1,4
-88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-07 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,188,,,,,Energy,2.0,29.0,Crystal,3,5
-88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-07 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,188,,,,,Energy,1.0,5.0,Crystal,1,5
-88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-07 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,188,,,,,Energy,1.0,5.0,Crystal,1,5
-88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-08 00:00:00+00:00,AliCin,Mi - T: 3 - Q: 5,193,,,,,Energy,2.0,33.0,Crystal,3,5
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,166,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,6,,,,,Energy,1.0,5.0,Crystal,1,5
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,166,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-09 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,6,,,,,Energy,2.0,29.0,Crystal,3,5
-aca3f594697ac5d1c5f8d46d78017517,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,248,,,,,Energy,1.0,5.0,Crystal,1,5
-5ba344e61d1fdf9cc6fdff7e4372b7ff,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,163,,,,,Energy,1.0,5.0,Crystal,1,5
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-09 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,167,,,,,Energy,2.0,29.0,Crystal,3,5
-5ba344e61d1fdf9cc6fdff7e4372b7ff,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,163,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,6,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,9,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,9,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-09 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,9,,,,,Energy,2.0,29.0,Crystal,3,5
-aca3f594697ac5d1c5f8d46d78017517,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,248,,,,,Energy,1.0,5.0,Crystal,1,5
-b75fc3690c8b068c8f88ac22ff8b04fe,Spent Virtual Currency,2025-04-10 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,252,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-10 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,11,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-10 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,11,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-10 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,11,,,,,Energy,2.0,29.0,Crystal,3,5
-c97712e705967e08be33089a13d6e1dc,Spent Virtual Currency,2025-04-10 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,268,,,,,Energy,1.0,5.0,Crystal,1,5
-c75ffb3b6c128ba5f067822d4bd2a2ae,Spent Virtual Currency,2025-04-12 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,264,,,,,Energy,1.0,5.0,Crystal,1,5
-e42390a05aacb93b8359110752bf5894,Spent Virtual Currency,2025-04-13 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,321,,,,,Energy,2.0,29.0,Crystal,3,5
-e42390a05aacb93b8359110752bf5894,Spent Virtual Currency,2025-04-13 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,320,,,,,Energy,1.0,5.0,Crystal,1,5
-e42390a05aacb93b8359110752bf5894,Spent Virtual Currency,2025-04-13 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,320,,,,,Energy,1.0,5.0,Crystal,1,5
-aca3f594697ac5d1c5f8d46d78017517,Spent Virtual Currency,2025-04-13 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,249,,,,,Energy,2.0,29.0,Crystal,3,5
-2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-14 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,133,,,,,Energy,1.0,5.0,Crystal,1,5
-2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-14 00:00:00+00:00,Coffee,,135,,,,,Energy,1.0,,Crystal,,
-c06f68a18cf248b96c86eed14be50c3a,Spent Virtual Currency,2025-04-14 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,256,,,,,Energy,1.0,5.0,Crystal,1,5
-ce1a4e02e4f8de31648cc7c0ff82c787,Spent Virtual Currency,2025-04-14 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,274,,,,,Energy,1.0,5.0,Crystal,1,5
-ce1a4e02e4f8de31648cc7c0ff82c787,Spent Virtual Currency,2025-04-14 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,274,,,,,Energy,1.0,5.0,Crystal,1,5
-ce1a4e02e4f8de31648cc7c0ff82c787,Spent Virtual Currency,2025-04-14 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,274,,,,,Energy,2.0,29.0,Crystal,3,5
-2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-15 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,141,,,,,Energy,2.0,29.0,Crystal,3,5
-2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-15 00:00:00+00:00,Coffee,Mo - T: 2 - Q: 2,146,,,,,Energy,1.0,18.0,Crystal,2,2
-2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-17 00:00:00+00:00,Cauldron,Mustafa - T: 1 - Q: 2,147,,,,,Energy,1.0,2.0,Crystal,1,2
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-18 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,15,,,,,Energy,1.0,5.0,Crystal,1,5
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-18 00:00:00+00:00,Cauldron,D Lion - T: 1 - Q: 3,169,,,,,Energy,1.0,3.0,Crystal,1,3
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-18 00:00:00+00:00,Coffee,The Rock - T: 1 - Q: 2,169,,,,,Energy,1.0,2.0,Crystal,1,2
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-18 00:00:00+00:00,Cauldron,Army - T: 1 - Q: 11,169,,,,,Energy,1.0,11.0,Crystal,1,11
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-20 00:00:00+00:00,Coffee,Obvious Joe - T: 1 - Q: 6,170,,,,,Energy,1.0,6.0,Crystal,1,6
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-20 00:00:00+00:00,Cauldron,Obvious Joe - T: 1 - Q: 7,170,,,,,Energy,1.0,7.0,Crystal,1,7
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-20 00:00:00+00:00,Cauldron,Obvious Joe - T: 1 - Q: 8,170,,,,,Energy,1.0,8.0,Crystal,1,8
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-20 00:00:00+00:00,Coffee,Maydenis - T: 1 - Q: 6,170,,,,,Energy,1.0,6.0,Crystal,1,6
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-21 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,17,,,,,Energy,1.0,5.0,Crystal,1,5
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-23 00:00:00+00:00,Coffee,Sue Doluni - T: 1 - Q: 2,171,,,,,Energy,1.0,2.0,Crystal,1,2
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-23 00:00:00+00:00,Cauldron,Sue Doluni - T: 1 - Q: 2,171,,,,,Energy,1.0,2.0,Crystal,1,2
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-23 00:00:00+00:00,Cauldron,Lady Dodo - T: 1 - Q: 7,171,,,,,Energy,1.0,7.0,Crystal,1,7
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-23 00:00:00+00:00,Cauldron,Army - T: 1 - Q: 13,171,,,,,Energy,1.0,13.0,Crystal,1,13
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-23 00:00:00+00:00,AliCin,Army - T: 2 - Q: 1,171,,,,,Energy,2.0,17.0,Crystal,2,1
-2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-24 00:00:00+00:00,Cauldron,Mi - T: 2 - Q: 1,153,,,,,Energy,1.0,17.0,Crystal,2,1
-2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-24 00:00:00+00:00,Cauldron,Mi - T: 2 - Q: 3,153,,,,,Energy,1.0,19.0,Crystal,2,3
-2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-24 00:00:00+00:00,Cauldron,Mi - T: 2 - Q: 4,153,,,,,Energy,1.0,20.0,Crystal,2,4
-2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-24 00:00:00+00:00,Coffee,Mo - T: 2 - Q: 12,151,,,,,Energy,1.0,28.0,Crystal,2,12
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-25 00:00:00+00:00,Cauldron,Aisha - T: 1 - Q: 5,172,,,,,Energy,1.0,5.0,Crystal,1,5
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-25 00:00:00+00:00,Coffee,Aisha - T: 1 - Q: 6,172,,,,,Energy,1.0,6.0,Crystal,1,6
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-25 00:00:00+00:00,Cauldron,Big A - T: 1 - Q: 8,172,,,,,Energy,1.0,8.0,Crystal,1,8
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-27 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,19,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-27 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,19,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-27 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,19,,,,,Energy,2.0,29.0,Crystal,3,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-28 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,28,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-28 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,39,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-29 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,45,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-29 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,45,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-06 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,47,,,,,Energy,1.0,5.0,Crystal,1,5
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-05-06 00:00:00+00:00,Cauldron,The Rock - T: 1 - Q: 9,173,,,,,Energy,1.0,9.0,Crystal,1,9
-6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-05-06 00:00:00+00:00,Cauldron,Tracy - T: 1 - Q: 8,173,,,,,Energy,1.0,8.0,Crystal,1,8
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,51,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,51,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,51,,,,,Energy,2.0,29.0,Crystal,3,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Cauldron,Why Margaret - T: 1 - Q: 1,51,,,,,Energy,1.0,1.0,Crystal,1,1
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Coffee,Why Margaret - T: 1 - Q: 2,51,,,,,Energy,1.0,2.0,Crystal,1,2
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,Why Margaret - T: 1 - Q: 2,51,,,,,Energy,2.0,2.0,Crystal,1,2
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Cauldron,Mo - T: 1 - Q: 14,51,,,,,Energy,1.0,14.0,Crystal,1,14
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,Mo - T: 1 - Q: 16,51,,,,,Energy,2.0,16.0,Crystal,1,16
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Cauldron,Mo - T: 2 - Q: 2,51,,,,,Energy,1.0,18.0,Crystal,2,2
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,Mo - T: 2 - Q: 3,51,,,,,Energy,2.0,19.0,Crystal,2,3
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,Mo - T: 2 - Q: 4,51,,,,,Energy,2.0,20.0,Crystal,2,4
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Cauldron,C Jay - T: 1 - Q: 2,51,,,,,Energy,1.0,2.0,Crystal,1,2
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,C Jay - T: 1 - Q: 4,51,,,,,Energy,2.0,4.0,Crystal,1,4
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Coffee,C Jay - T: 1 - Q: 5,51,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,C Jay - T: 1 - Q: 8,51,,,,,Energy,2.0,8.0,Crystal,1,8
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,Mo - T: 2 - Q: 5,51,,,,,Energy,2.0,21.0,Crystal,2,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,Mo - T: 2 - Q: 6,51,,,,,Energy,2.0,22.0,Crystal,2,6
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-17 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,53,,,,,Energy,1.0,5.0,Crystal,1,5
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-20 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,59,,,,,Energy,1.0,13.0,Crystal,2,1
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-20 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,61,,,,,Energy,1.0,13.0,Crystal,2,1
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-20 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,61,,,,,Energy,1.0,14.0,Crystal,2,2
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-20 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,61,,,,,Energy,2.0,15.0,Crystal,2,3
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-20 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 7,61,,,,,Energy,1.0,7.0,Crystal,1,7
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-22 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,63,,,,,Energy,1.0,13.0,Crystal,2,1
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-22 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,65,,,,,Energy,1.0,14.0,Crystal,2,2
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-22 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,65,,,,,Energy,2.0,15.0,Crystal,2,3
-33da452e5da3e8f92d4d009dbb0434e0,Spent Virtual Currency,2025-05-22 00:00:00+00:00,Cauldron,Billy - T: 1 - Q: 3,157,,,,,Energy,1.0,3.0,Crystal,1,3
-33da452e5da3e8f92d4d009dbb0434e0,Spent Virtual Currency,2025-05-22 00:00:00+00:00,Cauldron,Sinnct - T: 1 - Q: 5,157,,,,,Energy,1.0,5.0,Crystal,1,5
-33da452e5da3e8f92d4d009dbb0434e0,Spent Virtual Currency,2025-05-22 00:00:00+00:00,Cauldron,Frenchie - T: 1 - Q: 7,157,,,,,Energy,1.0,7.0,Crystal,1,7
-33da452e5da3e8f92d4d009dbb0434e0,Spent Virtual Currency,2025-05-22 00:00:00+00:00,Cauldron,Frenchie - T: 1 - Q: 8,157,,,,,Energy,1.0,8.0,Crystal,1,8
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-28 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,67,,,,,Energy,1.0,13.0,Crystal,2,1
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-28 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,67,,,,,Energy,1.0,14.0,Crystal,2,2
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-28 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,67,,,,,Energy,2.0,15.0,Crystal,2,3
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-28 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,70,,,,,Energy,1.0,13.0,Crystal,2,1
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-28 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,70,,,,,Energy,1.0,14.0,Crystal,2,2
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-28 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,70,,,,,Energy,2.0,15.0,Crystal,2,3
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-29 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 13,73,,,,,Energy,1.0,13.0,Crystal,1,13
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-02 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 14,74,,,,,Energy,1.0,14.0,Crystal,1,14
-95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-04 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,207,,,,,Energy,1.0,13.0,Crystal,2,1
-95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-04 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,207,,,,,Energy,1.0,14.0,Crystal,2,2
-95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-04 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,207,,,,,Energy,2.0,15.0,Crystal,2,3
-95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-04 00:00:00+00:00,AliCin,T - T: 3 - Q: 1,208,,,,,Energy,2.0,25.0,Crystal,3,1
-a79d23b40c843fcef55e9a9013b90a35,Spent Virtual Currency,2025-06-04 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,246,,,,,Energy,1.0,13.0,Crystal,2,1
-a79d23b40c843fcef55e9a9013b90a35,Spent Virtual Currency,2025-06-04 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,246,,,,,Energy,1.0,14.0,Crystal,2,2
-95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,Mr. Yogurt - T: 1 - Q: 3,209,,,,,Energy,1.0,3.0,Crystal,1,3
-95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Coffee,Frenchie - T: 1 - Q: 7,210,,,,,Energy,1.0,7.0,Crystal,1,7
-95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,Frenchie - T: 1 - Q: 7,210,,,,,Energy,1.0,7.0,Crystal,1,7
-95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Coffee,Obvious Joe - T: 3 - Q: 4,212,,,,,Energy,1.0,32.0,Crystal,3,4
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,227,,,,,Energy,1.0,14.0,Crystal,2,2
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,227,,,,,Energy,2.0,15.0,Crystal,2,3
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 2 - Q: 4,227,,,,,Energy,1.0,16.0,Crystal,2,4
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 2 - Q: 8,227,,,,,Energy,1.0,20.0,Crystal,2,8
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 2 - Q: 8,227,,,,,Energy,1.0,20.0,Crystal,2,8
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 3 - Q: 1,227,,,,,Energy,1.0,25.0,Crystal,3,1
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 3 - Q: 1,227,,,,,Energy,1.0,25.0,Crystal,3,1
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 3 - Q: 3,227,,,,,Energy,1.0,27.0,Crystal,3,3
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 3 - Q: 3,227,,,,,Energy,1.0,27.0,Crystal,3,3
-95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-08 00:00:00+00:00,Coffee,Billy - T: 2 - Q: 7,215,,,,,Energy,1.0,23.0,Crystal,2,7
-95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-09 00:00:00+00:00,Cauldron,Billy - T: 2 - Q: 12,217,,,,,Energy,1.0,28.0,Crystal,2,12
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Mi - T: 1 - Q: 11,228,,,,,Energy,1.0,11.0,Crystal,1,11
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,228,,,,,Energy,2.0,29.0,Crystal,3,5
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Mo - T: 1 - Q: 15,229,,,,,Energy,1.0,15.0,Crystal,1,15
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Mo - T: 2 - Q: 1,229,,,,,Energy,1.0,17.0,Crystal,2,1
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Mo - T: 2 - Q: 1,229,,,,,Energy,1.0,17.0,Crystal,2,1
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Mo - T: 2 - Q: 3,229,,,,,Energy,1.0,19.0,Crystal,2,3
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Mo - T: 2 - Q: 8,229,,,,,Energy,1.0,24.0,Crystal,2,8
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Mi - T: 2 - Q: 8,229,,,,,Energy,1.0,24.0,Crystal,2,8
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Frenchie - T: 1 - Q: 6,230,,,,,Energy,1.0,6.0,Crystal,1,6
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Frenchie - T: 1 - Q: 7,230,,,,,Energy,1.0,7.0,Crystal,1,7
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Coffee,Billy - T: 1 - Q: 5,230,,,,,Energy,1.0,5.0,Crystal,1,5
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Billy - T: 1 - Q: 9,231,,,,,Energy,1.0,9.0,Crystal,1,9
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-12 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,79,,,,,Energy,1.0,13.0,Crystal,2,1
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-18 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,80,,,,,Energy,1.0,13.0,Crystal,2,1
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-18 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,80,,,,,Energy,1.0,14.0,Crystal,2,2
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-19 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,82,,,,,Energy,1.0,13.0,Crystal,2,1
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-19 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,82,,,,,Energy,1.0,14.0,Crystal,2,2
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-19 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,82,,,,,Energy,2.0,15.0,Crystal,2,3
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-19 00:00:00+00:00,Coffee,T - T: 2 - Q: 7,82,,,,,Energy,1.0,19.0,Crystal,2,7
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-20 00:00:00+00:00,Cauldron,Billy - T: 1 - Q: 12,232,,,,,Energy,1.0,12.0,Crystal,1,12
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-20 00:00:00+00:00,Cauldron,Obvious Joe - T: 1 - Q: 3,232,,,,,Energy,1.0,3.0,Crystal,1,3
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-20 00:00:00+00:00,Cauldron,Obvious Joe - T: 1 - Q: 4,232,,,,,Energy,1.0,4.0,Crystal,1,4
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-20 00:00:00+00:00,Cauldron,Billy - T: 2 - Q: 2,232,,,,,Energy,1.0,18.0,Crystal,2,2
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-20 00:00:00+00:00,Coffee,Mr. Yogurt - T: 1 - Q: 9,232,,,,,Energy,1.0,9.0,Crystal,1,9
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-20 00:00:00+00:00,Cauldron,Mr. Yogurt - T: 1 - Q: 10,232,,,,,Energy,1.0,10.0,Crystal,1,10
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-22 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,83,,,,,Energy,1.0,13.0,Crystal,2,1
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,86,,,,,Energy,1.0,14.0,Crystal,2,2
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Coffee,Mo - T: 2 - Q: 9,233,,,,,Energy,1.0,25.0,Crystal,2,9
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Cauldron,Mo - T: 2 - Q: 10,233,,,,,Energy,1.0,26.0,Crystal,2,10
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Cauldron,Mo - T: 3 - Q: 2,233,,,,,Energy,1.0,30.0,Crystal,3,2
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Coffee,Billy - T: 3 - Q: 9,237,,,,,Energy,1.0,37.0,Crystal,3,9
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Coffee,Billy - T: 3 - Q: 10,237,,,,,Energy,1.0,38.0,Crystal,3,10
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Coffee,C Jay - T: 2 - Q: 1,237,,,,,Energy,1.0,17.0,Crystal,2,1
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Coffee,C Jay - T: 2 - Q: 2,237,,,,,Energy,1.0,18.0,Crystal,2,2
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-25 00:00:00+00:00,Coffee,C Jay - T: 4 - Q: 1,239,,,,,Energy,1.0,41.0,Crystal,4,1
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-25 00:00:00+00:00,Cauldron,C Jay - T: 4 - Q: 2,239,,,,,Energy,1.0,42.0,Crystal,4,2
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-25 00:00:00+00:00,Cauldron,C Jay - T: 4 - Q: 4,239,,,,,Energy,1.0,44.0,Crystal,4,4
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-25 00:00:00+00:00,Cauldron,Obvious Joe - T: 1 - Q: 10,239,,,,,Energy,1.0,10.0,Crystal,1,10
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-30 00:00:00+00:00,Cauldron,C Jay - T: 4 - Q: 9,240,,,,,Energy,1.0,49.0,Crystal,4,9
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-30 00:00:00+00:00,Cauldron,Crystal Raw - T: 3 - Q: 4,240,,,,,Energy,1.0,32.0,Crystal,3,4
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-30 00:00:00+00:00,Cauldron,Crystal Raw - T: 3 - Q: 6,240,,,,,Energy,1.0,34.0,Crystal,3,6
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-30 00:00:00+00:00,Cauldron,Mr. Yogurt - T: 2 - Q: 3,240,,,,,Energy,1.0,19.0,Crystal,2,3
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-07-05 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,89,,,,,Energy,1.0,13.0,Crystal,2,1
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-07-05 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,89,,,,,Energy,1.0,14.0,Crystal,2,2
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-07-05 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,89,,,,,Energy,2.0,15.0,Crystal,2,3
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-07-18 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,110,,,,,Energy,1.0,14.0,Crystal,2,2
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-07-18 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,110,,,,,Energy,2.0,15.0,Crystal,2,3
-10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-07-18 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,109,,,,,Energy,1.0,13.0,Crystal,2,1
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-07-19 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,243,,,,,Energy,1.0,13.0,Crystal,2,1
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-07-19 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,243,,,,,Energy,1.0,14.0,Crystal,2,2
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-07-19 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,243,,,,,Energy,2.0,15.0,Crystal,2,3
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-07-19 00:00:00+00:00,Coffee,T - T: 2 - Q: 8,243,,,,,Energy,1.0,20.0,Crystal,2,8
-9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-07-19 00:00:00+00:00,Coffee,T - T: 2 - Q: 8,243,,,,,Energy,1.0,20.0,Crystal,2,8
+user_pseudo_id,event_name,event_date,spent_in_crystal,question_address,inferred_session_id,where_currency_was_earned,how_currency_was_earned,ad_shown_in,currency_earned,currency_name,currency_spent,cumulative_question_index,where_currency_was_spent,current_tier,current_question_index,app_version
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-04 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,351,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,The Rock - T: 1 - Q: 1,356,,,,,Energy,2.0,1.0,Crystal,1,1,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Almira Lotus - T: 1 - Q: 12,356,,,,,Energy,2.0,12.0,Crystal,1,12,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,Coffee,Mo - T: 3 - Q: 1,364,,,,,Energy,1.0,29.0,Crystal,3,1,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-04 00:00:00+00:00,Cauldron,Frenchie - T: 1 - Q: 1,352,,,,,Energy,1.0,1.0,Crystal,1,1,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Sinnct - T: 2 - Q: 12,365,,,,,Energy,2.0,28.0,Crystal,2,12,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-04 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,351,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-04 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,351,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Crystal Raw - T: 1 - Q: 9,354,,,,,Energy,2.0,9.0,Crystal,1,9,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Army - T: 1 - Q: 1,356,,,,,Energy,2.0,1.0,Crystal,1,1,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Little A - T: 1 - Q: 4,356,,,,,Energy,2.0,4.0,Crystal,1,4,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Sinnct - T: 1 - Q: 9,356,,,,,Energy,2.0,9.0,Crystal,1,9,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Crystal Raw - T: 1 - Q: 10,354,,,,,Energy,2.0,10.0,Crystal,1,10,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Sinnct - T: 1 - Q: 16,356,,,,,Energy,2.0,16.0,Crystal,1,16,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Crystal Raw - T: 2 - Q: 8,356,,,,,Energy,2.0,24.0,Crystal,2,8,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Mrs. Pearl - T: 1 - Q: 9,356,,,,,Energy,2.0,9.0,Crystal,1,9,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Little A - T: 1 - Q: 12,356,,,,,Energy,2.0,12.0,Crystal,1,12,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Army - T: 1 - Q: 12,356,,,,,Energy,2.0,12.0,Crystal,1,12,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,AliCin,Tracy - T: 1 - Q: 4,358,,,,,Energy,2.0,4.0,Crystal,1,4,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-05 00:00:00+00:00,Cauldron,,362,,,,,Energy,1.0,,Crystal,,,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,368,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+d35c6c27e327622b39553d4257f1b16d,Spent Virtual Currency,2025-04-06 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,341,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,368,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,AliCin,Father Gold - T: 1 - Q: 5,373,,,,,Energy,2.0,5.0,Crystal,1,5,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,368,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+d35c6c27e327622b39553d4257f1b16d,Spent Virtual Currency,2025-04-06 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,339,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+d35c6c27e327622b39553d4257f1b16d,Spent Virtual Currency,2025-04-06 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,341,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,AliCin,Aisha - T: 1 - Q: 11,371,,,,,Energy,2.0,11.0,Crystal,1,11,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,AliCin,Aisha - T: 1 - Q: 9,371,,,,,Energy,2.0,9.0,Crystal,1,9,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,AliCin,Aisha - T: 1 - Q: 10,371,,,,,Energy,2.0,10.0,Crystal,1,10,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-06 00:00:00+00:00,AliCin,Why Margaret - T: 3 - Q: 12,372,,,,,Energy,2.0,40.0,Crystal,3,12,0.1.0
+278d01b19c1cc34cd5e6eda210c34619,Spent Virtual Currency,2025-04-07 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,169,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+278d01b19c1cc34cd5e6eda210c34619,Spent Virtual Currency,2025-04-07 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,169,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-07 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,240,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-07 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,240,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+ddf2acb862daf1f5e1e9dff579ec87d7,Spent Virtual Currency,2025-04-07 00:00:00+00:00,AliCin,ER John - T: 2 - Q: 1,374,,,,,Energy,2.0,17.0,Crystal,2,1,0.1.0
+88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-07 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,240,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+e3e8c556215b9f04ea3bee8b775ceea3,Spent Virtual Currency,2025-04-07 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,380,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-08 00:00:00+00:00,Cauldron,Mi - T: 1 - Q: 13,245,,,,,Energy,1.0,13.0,Crystal,1,13,0.1.0
+e3e8c556215b9f04ea3bee8b775ceea3,Spent Virtual Currency,2025-04-08 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,381,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+fe4c3fd071ce61b30caeaa8b4844013e,Spent Virtual Currency,2025-04-08 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,391,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+fe4c3fd071ce61b30caeaa8b4844013e,Spent Virtual Currency,2025-04-08 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,391,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-08 00:00:00+00:00,Cauldron,Why Margaret - T: 1 - Q: 1,247,,,,,Energy,1.0,1.0,Crystal,1,1,0.1.0
+88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-08 00:00:00+00:00,Coffee,Why Margaret - T: 1 - Q: 2,247,,,,,Energy,1.0,2.0,Crystal,1,2,0.1.0
+88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-08 00:00:00+00:00,AliCin,Sue Doluni - T: 1 - Q: 2,253,,,,,Energy,2.0,2.0,Crystal,1,2,0.1.0
+fe4c3fd071ce61b30caeaa8b4844013e,Spent Virtual Currency,2025-04-08 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,391,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-08 00:00:00+00:00,Cauldron,Lady Dodo - T: 1 - Q: 4,245,,,,,Energy,1.0,4.0,Crystal,1,4,0.1.0
+88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-07 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,244,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-07 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,244,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-07 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,244,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+88fb7dc197cf3898687fada0732f68fb,Spent Virtual Currency,2025-04-08 00:00:00+00:00,AliCin,Mi - T: 3 - Q: 5,249,,,,,Energy,2.0,33.0,Crystal,3,5,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,222,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,8,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,222,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-09 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,8,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+aca3f594697ac5d1c5f8d46d78017517,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,307,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+5ba344e61d1fdf9cc6fdff7e4372b7ff,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,216,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-09 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,223,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+5ba344e61d1fdf9cc6fdff7e4372b7ff,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,216,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,8,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,11,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,11,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-09 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,11,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+aca3f594697ac5d1c5f8d46d78017517,Spent Virtual Currency,2025-04-09 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,307,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+b75fc3690c8b068c8f88ac22ff8b04fe,Spent Virtual Currency,2025-04-10 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,311,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-10 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,13,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-10 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,13,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-10 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,13,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+c97712e705967e08be33089a13d6e1dc,Spent Virtual Currency,2025-04-10 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,330,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+c75ffb3b6c128ba5f067822d4bd2a2ae,Spent Virtual Currency,2025-04-12 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,325,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+e42390a05aacb93b8359110752bf5894,Spent Virtual Currency,2025-04-13 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,384,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+e42390a05aacb93b8359110752bf5894,Spent Virtual Currency,2025-04-13 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,383,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+e42390a05aacb93b8359110752bf5894,Spent Virtual Currency,2025-04-13 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,383,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+aca3f594697ac5d1c5f8d46d78017517,Spent Virtual Currency,2025-04-13 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,308,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-14 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,171,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-14 00:00:00+00:00,Coffee,,173,,,,,Energy,1.0,,Crystal,,,0.1.0
+c06f68a18cf248b96c86eed14be50c3a,Spent Virtual Currency,2025-04-14 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,316,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+ce1a4e02e4f8de31648cc7c0ff82c787,Spent Virtual Currency,2025-04-14 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,337,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+ce1a4e02e4f8de31648cc7c0ff82c787,Spent Virtual Currency,2025-04-14 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,337,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+ce1a4e02e4f8de31648cc7c0ff82c787,Spent Virtual Currency,2025-04-14 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,337,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-15 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,179,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-15 00:00:00+00:00,Coffee,Mo - T: 2 - Q: 2,184,,,,,Energy,1.0,18.0,Crystal,2,2,0.1.0
+2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-17 00:00:00+00:00,Cauldron,Mustafa - T: 1 - Q: 2,185,,,,,Energy,1.0,2.0,Crystal,1,2,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-18 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,17,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-18 00:00:00+00:00,Cauldron,D Lion - T: 1 - Q: 3,225,,,,,Energy,1.0,3.0,Crystal,1,3,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-18 00:00:00+00:00,Coffee,The Rock - T: 1 - Q: 2,225,,,,,Energy,1.0,2.0,Crystal,1,2,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-18 00:00:00+00:00,Cauldron,Army - T: 1 - Q: 11,225,,,,,Energy,1.0,11.0,Crystal,1,11,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-20 00:00:00+00:00,Coffee,Obvious Joe - T: 1 - Q: 6,226,,,,,Energy,1.0,6.0,Crystal,1,6,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-20 00:00:00+00:00,Cauldron,Obvious Joe - T: 1 - Q: 7,226,,,,,Energy,1.0,7.0,Crystal,1,7,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-20 00:00:00+00:00,Cauldron,Obvious Joe - T: 1 - Q: 8,226,,,,,Energy,1.0,8.0,Crystal,1,8,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-20 00:00:00+00:00,Coffee,Maydenis - T: 1 - Q: 6,226,,,,,Energy,1.0,6.0,Crystal,1,6,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-21 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,19,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-23 00:00:00+00:00,Coffee,Sue Doluni - T: 1 - Q: 2,227,,,,,Energy,1.0,2.0,Crystal,1,2,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-23 00:00:00+00:00,Cauldron,Sue Doluni - T: 1 - Q: 2,227,,,,,Energy,1.0,2.0,Crystal,1,2,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-23 00:00:00+00:00,Cauldron,Lady Dodo - T: 1 - Q: 7,227,,,,,Energy,1.0,7.0,Crystal,1,7,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-23 00:00:00+00:00,Cauldron,Army - T: 1 - Q: 13,227,,,,,Energy,1.0,13.0,Crystal,1,13,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-23 00:00:00+00:00,AliCin,Army - T: 2 - Q: 1,227,,,,,Energy,2.0,17.0,Crystal,2,1,0.1.0
+2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-24 00:00:00+00:00,Cauldron,Mi - T: 2 - Q: 1,191,,,,,Energy,1.0,17.0,Crystal,2,1,0.1.0
+2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-24 00:00:00+00:00,Cauldron,Mi - T: 2 - Q: 3,191,,,,,Energy,1.0,19.0,Crystal,2,3,0.1.0
+2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-24 00:00:00+00:00,Cauldron,Mi - T: 2 - Q: 4,191,,,,,Energy,1.0,20.0,Crystal,2,4,0.1.0
+2de8d6e101f9890cc33c15c639a03fe4,Spent Virtual Currency,2025-04-24 00:00:00+00:00,Coffee,Mo - T: 2 - Q: 12,189,,,,,Energy,1.0,28.0,Crystal,2,12,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-25 00:00:00+00:00,Cauldron,Aisha - T: 1 - Q: 5,228,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-25 00:00:00+00:00,Coffee,Aisha - T: 1 - Q: 6,228,,,,,Energy,1.0,6.0,Crystal,1,6,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-04-25 00:00:00+00:00,Cauldron,Big A - T: 1 - Q: 8,228,,,,,Energy,1.0,8.0,Crystal,1,8,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-27 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,21,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-27 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,21,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-27 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,21,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-28 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,30,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-28 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,41,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-29 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,47,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-04-29 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,47,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-06 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,49,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-05-06 00:00:00+00:00,Cauldron,The Rock - T: 1 - Q: 9,229,,,,,Energy,1.0,9.0,Crystal,1,9,0.1.0
+6bef18e3d26a07b8a20c26ff7eb26d82,Spent Virtual Currency,2025-05-06 00:00:00+00:00,Cauldron,Tracy - T: 1 - Q: 8,229,,,,,Energy,1.0,8.0,Crystal,1,8,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,53,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 5,53,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,53,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Cauldron,Why Margaret - T: 1 - Q: 1,53,,,,,Energy,1.0,1.0,Crystal,1,1,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Coffee,Why Margaret - T: 1 - Q: 2,53,,,,,Energy,1.0,2.0,Crystal,1,2,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,Why Margaret - T: 1 - Q: 2,53,,,,,Energy,2.0,2.0,Crystal,1,2,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Cauldron,Mo - T: 1 - Q: 14,53,,,,,Energy,1.0,14.0,Crystal,1,14,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,Mo - T: 1 - Q: 16,53,,,,,Energy,2.0,16.0,Crystal,1,16,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Cauldron,Mo - T: 2 - Q: 2,53,,,,,Energy,1.0,18.0,Crystal,2,2,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,Mo - T: 2 - Q: 3,53,,,,,Energy,2.0,19.0,Crystal,2,3,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,Mo - T: 2 - Q: 4,53,,,,,Energy,2.0,20.0,Crystal,2,4,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Cauldron,C Jay - T: 1 - Q: 2,53,,,,,Energy,1.0,2.0,Crystal,1,2,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,C Jay - T: 1 - Q: 4,53,,,,,Energy,2.0,4.0,Crystal,1,4,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,Coffee,C Jay - T: 1 - Q: 5,53,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,C Jay - T: 1 - Q: 8,53,,,,,Energy,2.0,8.0,Crystal,1,8,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,Mo - T: 2 - Q: 5,53,,,,,Energy,2.0,21.0,Crystal,2,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-12 00:00:00+00:00,AliCin,Mo - T: 2 - Q: 6,53,,,,,Energy,2.0,22.0,Crystal,2,6,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-17 00:00:00+00:00,Cauldron,T - T: 1 - Q: 5,55,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-20 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,61,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-20 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,63,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-20 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,63,,,,,Energy,1.0,14.0,Crystal,2,2,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-20 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,63,,,,,Energy,2.0,15.0,Crystal,2,3,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-20 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 7,63,,,,,Energy,1.0,7.0,Crystal,1,7,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-22 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,65,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-22 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,67,,,,,Energy,1.0,14.0,Crystal,2,2,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-22 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,67,,,,,Energy,2.0,15.0,Crystal,2,3,0.1.0
+33da452e5da3e8f92d4d009dbb0434e0,Spent Virtual Currency,2025-05-22 00:00:00+00:00,Cauldron,Billy - T: 1 - Q: 3,196,,,,,Energy,1.0,3.0,Crystal,1,3,0.1.0
+33da452e5da3e8f92d4d009dbb0434e0,Spent Virtual Currency,2025-05-22 00:00:00+00:00,Cauldron,Sinnct - T: 1 - Q: 5,196,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+33da452e5da3e8f92d4d009dbb0434e0,Spent Virtual Currency,2025-05-22 00:00:00+00:00,Cauldron,Frenchie - T: 1 - Q: 7,196,,,,,Energy,1.0,7.0,Crystal,1,7,0.1.0
+33da452e5da3e8f92d4d009dbb0434e0,Spent Virtual Currency,2025-05-22 00:00:00+00:00,Cauldron,Frenchie - T: 1 - Q: 8,196,,,,,Energy,1.0,8.0,Crystal,1,8,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-28 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,69,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-28 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,69,,,,,Energy,1.0,14.0,Crystal,2,2,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-28 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,69,,,,,Energy,2.0,15.0,Crystal,2,3,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-28 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,72,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-28 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,72,,,,,Energy,1.0,14.0,Crystal,2,2,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-28 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,72,,,,,Energy,2.0,15.0,Crystal,2,3,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-05-29 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 13,75,,,,,Energy,1.0,13.0,Crystal,1,13,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-02 00:00:00+00:00,Coffee,Mi - T: 1 - Q: 14,76,,,,,Energy,1.0,14.0,Crystal,1,14,0.1.0
+95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-04 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,263,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.0
+95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-04 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,263,,,,,Energy,1.0,14.0,Crystal,2,2,0.1.0
+95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-04 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,263,,,,,Energy,2.0,15.0,Crystal,2,3,0.1.0
+95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-04 00:00:00+00:00,AliCin,T - T: 3 - Q: 1,264,,,,,Energy,2.0,25.0,Crystal,3,1,0.1.0
+a79d23b40c843fcef55e9a9013b90a35,Spent Virtual Currency,2025-06-04 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,305,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.0
+a79d23b40c843fcef55e9a9013b90a35,Spent Virtual Currency,2025-06-04 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,305,,,,,Energy,1.0,14.0,Crystal,2,2,0.1.0
+95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,Mr. Yogurt - T: 1 - Q: 3,265,,,,,Energy,1.0,3.0,Crystal,1,3,0.1.0
+95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Coffee,Frenchie - T: 1 - Q: 7,266,,,,,Energy,1.0,7.0,Crystal,1,7,0.1.0
+95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,Frenchie - T: 1 - Q: 7,266,,,,,Energy,1.0,7.0,Crystal,1,7,0.1.0
+95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Coffee,Obvious Joe - T: 3 - Q: 4,268,,,,,Energy,1.0,32.0,Crystal,3,4,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,283,,,,,Energy,1.0,14.0,Crystal,2,2,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,283,,,,,Energy,2.0,15.0,Crystal,2,3,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 2 - Q: 4,283,,,,,Energy,1.0,16.0,Crystal,2,4,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 2 - Q: 8,283,,,,,Energy,1.0,20.0,Crystal,2,8,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 2 - Q: 8,283,,,,,Energy,1.0,20.0,Crystal,2,8,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 3 - Q: 1,283,,,,,Energy,1.0,25.0,Crystal,3,1,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 3 - Q: 1,283,,,,,Energy,1.0,25.0,Crystal,3,1,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 3 - Q: 3,283,,,,,Energy,1.0,27.0,Crystal,3,3,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-07 00:00:00+00:00,Cauldron,T - T: 3 - Q: 3,283,,,,,Energy,1.0,27.0,Crystal,3,3,0.1.0
+95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-08 00:00:00+00:00,Coffee,Billy - T: 2 - Q: 7,271,,,,,Energy,1.0,23.0,Crystal,2,7,0.1.0
+95ee0e4967bf8b345a11f5d80d87632a,Spent Virtual Currency,2025-06-09 00:00:00+00:00,Cauldron,Billy - T: 2 - Q: 12,273,,,,,Energy,1.0,28.0,Crystal,2,12,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Mi - T: 1 - Q: 11,284,,,,,Energy,1.0,11.0,Crystal,1,11,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,284,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Mo - T: 1 - Q: 15,285,,,,,Energy,1.0,15.0,Crystal,1,15,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Mo - T: 2 - Q: 1,285,,,,,Energy,1.0,17.0,Crystal,2,1,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Mo - T: 2 - Q: 1,285,,,,,Energy,1.0,17.0,Crystal,2,1,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Mo - T: 2 - Q: 3,285,,,,,Energy,1.0,19.0,Crystal,2,3,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Mo - T: 2 - Q: 8,285,,,,,Energy,1.0,24.0,Crystal,2,8,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Mi - T: 2 - Q: 8,285,,,,,Energy,1.0,24.0,Crystal,2,8,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Frenchie - T: 1 - Q: 6,286,,,,,Energy,1.0,6.0,Crystal,1,6,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Frenchie - T: 1 - Q: 7,286,,,,,Energy,1.0,7.0,Crystal,1,7,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Coffee,Billy - T: 1 - Q: 5,286,,,,,Energy,1.0,5.0,Crystal,1,5,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-10 00:00:00+00:00,Cauldron,Billy - T: 1 - Q: 9,287,,,,,Energy,1.0,9.0,Crystal,1,9,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-12 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,81,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-18 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,82,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-18 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,82,,,,,Energy,1.0,14.0,Crystal,2,2,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-19 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,84,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-19 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,84,,,,,Energy,1.0,14.0,Crystal,2,2,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-19 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,84,,,,,Energy,2.0,15.0,Crystal,2,3,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-19 00:00:00+00:00,Coffee,T - T: 2 - Q: 7,84,,,,,Energy,1.0,19.0,Crystal,2,7,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-20 00:00:00+00:00,Cauldron,Billy - T: 1 - Q: 12,288,,,,,Energy,1.0,12.0,Crystal,1,12,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-20 00:00:00+00:00,Cauldron,Obvious Joe - T: 1 - Q: 3,288,,,,,Energy,1.0,3.0,Crystal,1,3,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-20 00:00:00+00:00,Cauldron,Obvious Joe - T: 1 - Q: 4,288,,,,,Energy,1.0,4.0,Crystal,1,4,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-20 00:00:00+00:00,Cauldron,Billy - T: 2 - Q: 2,288,,,,,Energy,1.0,18.0,Crystal,2,2,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-20 00:00:00+00:00,Coffee,Mr. Yogurt - T: 1 - Q: 9,288,,,,,Energy,1.0,9.0,Crystal,1,9,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-20 00:00:00+00:00,Cauldron,Mr. Yogurt - T: 1 - Q: 10,288,,,,,Energy,1.0,10.0,Crystal,1,10,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-22 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,85,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,88,,,,,Energy,1.0,14.0,Crystal,2,2,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Coffee,Mo - T: 2 - Q: 9,289,,,,,Energy,1.0,25.0,Crystal,2,9,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Cauldron,Mo - T: 2 - Q: 10,289,,,,,Energy,1.0,26.0,Crystal,2,10,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Cauldron,Mo - T: 3 - Q: 2,289,,,,,Energy,1.0,30.0,Crystal,3,2,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Coffee,Billy - T: 3 - Q: 9,293,,,,,Energy,1.0,37.0,Crystal,3,9,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Coffee,Billy - T: 3 - Q: 10,293,,,,,Energy,1.0,38.0,Crystal,3,10,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Coffee,C Jay - T: 2 - Q: 1,293,,,,,Energy,1.0,17.0,Crystal,2,1,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-24 00:00:00+00:00,Coffee,C Jay - T: 2 - Q: 2,293,,,,,Energy,1.0,18.0,Crystal,2,2,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-25 00:00:00+00:00,Coffee,C Jay - T: 4 - Q: 1,295,,,,,Energy,1.0,41.0,Crystal,4,1,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-25 00:00:00+00:00,Cauldron,C Jay - T: 4 - Q: 2,295,,,,,Energy,1.0,42.0,Crystal,4,2,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-25 00:00:00+00:00,Cauldron,C Jay - T: 4 - Q: 4,295,,,,,Energy,1.0,44.0,Crystal,4,4,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-25 00:00:00+00:00,Cauldron,Obvious Joe - T: 1 - Q: 10,295,,,,,Energy,1.0,10.0,Crystal,1,10,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-30 00:00:00+00:00,Cauldron,C Jay - T: 4 - Q: 9,296,,,,,Energy,1.0,49.0,Crystal,4,9,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-30 00:00:00+00:00,Cauldron,Crystal Raw - T: 3 - Q: 4,296,,,,,Energy,1.0,32.0,Crystal,3,4,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-30 00:00:00+00:00,Cauldron,Crystal Raw - T: 3 - Q: 6,296,,,,,Energy,1.0,34.0,Crystal,3,6,0.1.0
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-06-30 00:00:00+00:00,Cauldron,Mr. Yogurt - T: 2 - Q: 3,296,,,,,Energy,1.0,19.0,Crystal,2,3,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-07-05 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,91,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-07-05 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,91,,,,,Energy,1.0,14.0,Crystal,2,2,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-07-05 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,91,,,,,Energy,2.0,15.0,Crystal,2,3,0.1.0
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-07-18 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,112,,,,,Energy,1.0,14.0,Crystal,2,2,0.1.1
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-07-18 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,112,,,,,Energy,2.0,15.0,Crystal,2,3,0.1.1
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-07-18 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,111,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.1
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-07-19 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,299,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.2
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-07-19 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,299,,,,,Energy,1.0,14.0,Crystal,2,2,0.1.2
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-07-19 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,299,,,,,Energy,2.0,15.0,Crystal,2,3,0.1.2
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-07-19 00:00:00+00:00,Coffee,T - T: 2 - Q: 8,299,,,,,Energy,1.0,20.0,Crystal,2,8,0.1.2
+9ebba72a8b854826a91973f63bc39231,Spent Virtual Currency,2025-07-19 00:00:00+00:00,Coffee,T - T: 2 - Q: 8,299,,,,,Energy,1.0,20.0,Crystal,2,8,0.1.2
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-07-21 00:00:00+00:00,AliCin,Almira Lotus - T: 3 - Q: 2,133,,,,,Energy,2.0,30.0,Crystal,3,2,0.1.2
+10b094caaf62a0dfbe832e4c8f016af9,Spent Virtual Currency,2025-07-22 00:00:00+00:00,Coffee,Little A - T: 1 - Q: 7,151,,,,,Energy,1.0,7.0,Crystal,1,7,0.1.2
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,Coffee,T - T: 2 - Q: 1,3,,,,,Energy,1.0,13.0,Crystal,2,1,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,Cauldron,T - T: 2 - Q: 2,3,,,,,Energy,1.0,14.0,Crystal,2,2,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 2 - Q: 3,3,,,,,Energy,2.0,15.0,Crystal,2,3,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 2 - Q: 4,3,,,,,Energy,2.0,16.0,Crystal,2,4,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,Cauldron,Mi - T: 1 - Q: 7,3,,,,,Energy,1.0,7.0,Crystal,1,7,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,Mi - T: 1 - Q: 8,3,,,,,Energy,2.0,8.0,Crystal,1,8,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 2 - Q: 8,3,,,,,Energy,2.0,20.0,Crystal,2,8,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,Mo - T: 1 - Q: 7,3,,,,,Energy,2.0,7.0,Crystal,1,7,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,Mo - T: 1 - Q: 8,3,,,,,Energy,2.0,8.0,Crystal,1,8,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 2 - Q: 11,3,,,,,Energy,2.0,23.0,Crystal,2,11,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 3 - Q: 1,3,,,,,Energy,2.0,25.0,Crystal,3,1,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 3 - Q: 3,3,,,,,Energy,2.0,27.0,Crystal,3,3,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 3 - Q: 4,3,,,,,Energy,2.0,28.0,Crystal,3,4,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 3 - Q: 5,3,,,,,Energy,2.0,29.0,Crystal,3,5,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 3 - Q: 6,3,,,,,Energy,2.0,30.0,Crystal,3,6,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 3 - Q: 7,3,,,,,Energy,2.0,31.0,Crystal,3,7,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,Mo - T: 1 - Q: 9,3,,,,,Energy,2.0,9.0,Crystal,1,9,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,Mo - T: 1 - Q: 10,3,,,,,Energy,2.0,10.0,Crystal,1,10,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,Mo - T: 1 - Q: 11,3,,,,,Energy,2.0,11.0,Crystal,1,11,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,Mo - T: 1 - Q: 12,3,,,,,Energy,2.0,12.0,Crystal,1,12,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 3 - Q: 9,3,,,,,Energy,2.0,33.0,Crystal,3,9,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 3 - Q: 10,3,,,,,Energy,2.0,34.0,Crystal,3,10,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 3 - Q: 11,3,,,,,Energy,2.0,35.0,Crystal,3,11,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 3 - Q: 12,3,,,,,Energy,2.0,36.0,Crystal,3,12,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 4 - Q: 1,3,,,,,Energy,2.0,37.0,Crystal,4,1,0.1.3
+0b299e34fbfae1199dbeaeff1da579a6,Spent Virtual Currency,2025-08-01 00:00:00+00:00,AliCin,T - T: 4 - Q: 6,3,,,,,Energy,2.0,42.0,Crystal,4,6,0.1.3

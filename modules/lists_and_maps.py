@@ -392,21 +392,49 @@ df_splits = {
                      'ad_unit_id',
                      'menu_name',
                      'country',
+                     'app_version'
     ],
-    'players_df' : [ # most of the values of metrics table are from user_metrics.csv df. 
+    'players_df' :[
+                    # Original dataframe columns
+                    'event_name', 
                     'user_pseudo_id',
-                    'event_name',
-                    'event_date',
+                    'event_date',  
+                    'inferred_session_id',
                     'country',
-                    'user_first_open_date',
-    ],
+                    'app_version',
+
+                    # Aggregated user metrics
+                    'first_seen',              # user's earliest event datetime
+                    'last_seen',               # user's latest event datetime
+                    'total_sessions',          # count of unique sessions per user
+                    'total_events',            # total event count per user
+
+                    # Calculated durations and dates
+                    'lifetime_days',           # days between first_seen and last_seen
+                    'days_since_last_seen',    # days since user's last activity
+
+                    # Boolean flags (churn/retention/activity)
+                    'is_churned',              # churned if no activity in 14+ days
+                    'is_retained_1d',          # retained at least 0 days (exists)
+                    'is_retained_7d',          # retained 7 or more days
+                    'is_retained_30d',         # retained 30 or more days
+                    'active_days',             # number of unique active days (normalized)
+                    'is_active_1d',            # active 2+ unique days
+                    'is_active_7d',            # active 7+ unique days
+                    'is_active_30d',           # active 30+ unique days
+                    'is_active_yesterday',     # active within last 24 hours
+
+                    # Categorical status label
+                    'user_status'              # status label based on activity ("Bırakmış", "Aktif", "Yeni", "dormant")
+                    ],
     'character_df' : ['user_pseudo_id',
                       'event_date',
                       'event_name',
                       'current_tier',
                       'character_name',
-                      'cumulative_question_index',                      
-    ],
+                      'cumulative_question_index',
+                      'app_version'
+                      ],
     'questions_df' : ['user_pseudo_id', 
                       'event_date',
                       'event_name',
@@ -416,6 +444,7 @@ df_splits = {
                       'current_tier',
                       'current_question_index',
                       'cumulative_question_index',
+                      'app_version'
     ],
     'mini_games_df' : ['user_pseudo_id',
                        'event_date',
@@ -423,6 +452,7 @@ df_splits = {
                        'mini_game_name',
                        'event_name',
                        'time_spent_on_activity_seconds',
+                       'app_version'
     ],
     'crystal_and_energy_df' : ['user_pseudo_id',
                                'event_name',
@@ -440,6 +470,7 @@ df_splits = {
                                'where_currency_was_spent',
                                'current_tier',
                                'current_question_index',
+                               'app_version'
 
     ],
     'shop_and_gold_df' : ['user_pseudo_id',
@@ -460,7 +491,8 @@ df_splits = {
                           'character_name',
                           'current_tier',
                           'current_question_index', 
-                          'spent_on'                       
+                          'spent_on',
+                          'app_version'                    
     ],
     'ads_df' : ['user_pseudo_id', 
                 'event_name', 
@@ -475,6 +507,7 @@ df_splits = {
                 'conversion_event', 
                 'question_address',
                 'cumulative_question_index',
+                'app_version'
 
     ], 
     'technical_df' : ['user_pseudo_id',

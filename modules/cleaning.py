@@ -29,25 +29,25 @@ def apply_value_maps(df, map_of_maps, keep_unmapped=True):
     return df_copy
 
 
-def safe_select_and_rename(df: pd.DataFrame, rename_dict: dict) -> pd.DataFrame:
+def safe_rename(df: pd.DataFrame, rename_dict: dict) -> pd.DataFrame:
     """
-    Selects and renames columns in a DataFrame based on a rename dictionary.
+    Renames columns in a DataFrame based on a rename dictionary.
     
-    - Continues even if some columns are missing.
-    - Prints a message for each missing column.
-    
+    - Keeps all original columns.
+    - Only renames those that exist in the DataFrame.
+    - Prints a warning for each missing column in rename_dict.
+
     Parameters:
         df (pd.DataFrame): The input DataFrame.
         rename_dict (dict): Dictionary of {original_column: new_name}.
-    
+
     Returns:
-        pd.DataFrame: A new DataFrame with selected and renamed columns.
+        pd.DataFrame: DataFrame with renamed columns.
     """
-    existing_cols = []
-    for col in rename_dict:
-        if col in df.columns:
-            existing_cols.append(col)
-        else:
-            print(f"[Warning] Column not found: '{col}'")
-    
-    return df[existing_cols].rename(columns=rename_dict)
+    existing_keys = df.columns.intersection(rename_dict.keys())
+    missing_keys = set(rename_dict.keys()) - set(existing_keys)
+
+    for col in missing_keys:
+        print(f"[Warning] Column to rename not found: '{col}'")
+
+    return df.rename(columns={k: rename_dict[k] for k in existing_keys})
