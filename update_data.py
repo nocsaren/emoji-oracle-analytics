@@ -57,11 +57,11 @@ from modules.lists_and_maps import (
 print("Imports completed successfully.")
 # %%
 # --- Path Setup ---
-SERVICE_ACCOUNT_KEY = './keys/key.json'
-DATA_PATH = './data/data.json'
-PROJECT_ID = "emojioracle-342f1"
-DATASET_ID = "analytics_481352676"
-BACKUP_PATH = './backup/'
+SERVICE_ACCOUNT_KEY = './keys/key2.json'
+DATA_PATH = './data/data2.json'
+PROJECT_ID = "emoji-oracle-74368"
+DATASET_ID = "analytics_501671751"
+BACKUP_PATH = './backup2/'
 # Ensure service account key exists
 if not os.path.exists(SERVICE_ACCOUNT_KEY):
     print(f"Service account key not found at {SERVICE_ACCOUNT_KEY}. Please check the path, or download a new json key file.")
@@ -525,7 +525,7 @@ if not kpis_df.empty:
         index=False
     )
 print("Cleaned data saved to CSV files successfully.")
-
+raw_data.to_json('./data/raw_data.json', orient='records', lines=False)
 # %%
 """
 

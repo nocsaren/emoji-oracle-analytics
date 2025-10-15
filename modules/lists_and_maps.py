@@ -86,11 +86,11 @@ df_column_names_map = {
     'privacy_info__ads_storage': 'consent_ads_storage',
 
     # 📈 Ads & Monetization
-    'event_params__ad_platform': 'ad_platform',
+#    'event_params__ad_platform': 'ad_platform',
     'event_params__ad_shown_where': 'ad_shown_in',
     'event_params__ad_unit_id': 'ad_unit_id',
     'event_params__ad_network': 'ad_network',
-    'event_params__ad_format': 'ad_format',
+#    'event_params__ad_format': 'ad_format',
     'event_params__firebase_conversion': 'conversion_event',
 
     # 🛠️ Debug / Quality
@@ -462,7 +462,7 @@ df_splits = {
                                'inferred_session_id',
                                'where_currency_was_earned',
                                'how_currency_was_earned',
-                               'ad_shown_in',
+ #                              'ad_shown_in',
                                'currency_earned',
                                'currency_name',
                                'currency_spent',
@@ -499,11 +499,11 @@ df_splits = {
                 'event_date',
                 'event_datetime',
                 'inferred_session_id',
-                'ad_platform', 
-                'ad_shown_in', 
+#                'ad_platform', 
+#                'ad_shown_in', 
                 'ad_unit_id', 
                 'ad_network', 
-                'ad_format', 
+#                'ad_format', 
                 'conversion_event', 
                 'question_address',
                 'cumulative_question_index',
