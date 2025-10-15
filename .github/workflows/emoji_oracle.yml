@@ -24,7 +24,7 @@ jobs:
     - name: Run ETL script
       env:
         BQ_SERVICE_ACCOUNT: ${{ secrets.BQ_SERVICE_ACCOUNT }}
-      run: python etl.py
+      run: python emoji_oracle.py
 
     - name: Commit and push changes
       run: |
