@@ -14,9 +14,10 @@ client = bigquery.Client(credentials=credentials)
 
 # Paths
 LOG_PATH = "logs/downloaded_tables.txt"
-DATA_DIR = "data_new"
+DATA_DIR = "data"
 REPORT_PATH = "report/index.html"
 DATASET = "emoji-oracle-74368.analytics_501671751"
+VERSION = "1.0.0"
 
 # --- Ensure directories exist
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -35,6 +36,7 @@ query = f"""
 SELECT table_id
 FROM `{DATASET}.__TABLES__`
 WHERE table_id LIKE 'events_%'
+AND app_info.version >= '{VERSION}'
 """
 tables = [row.table_id for row in client.query(query)]
 
