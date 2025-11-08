@@ -1,4 +1,8 @@
 import pandas as pd
+import numpy as np
+from config.logging import get_logger
+
+logger = get_logger(__name__)
 
 def transform_datetime_fields(df: pd.DataFrame, context=None) -> pd.DataFrame:
     """Clean and transform timestamp and date/time-related columns."""
@@ -33,7 +37,7 @@ def transform_datetime_fields(df: pd.DataFrame, context=None) -> pd.DataFrame:
     df['event_server_delay_seconds'] = df['event_server_timestamp_offset'] / 1000
     df['event_params__time_spent_seconds'] = df.get('event_params__time_spent')
 
-    print("[INFO]    Date/time cleanup and transformation complete.")
+    logger.info("Date/time cleanup and transformation complete.")
     return df
 
 
@@ -82,28 +86,44 @@ def add_time_based_features(df: pd.DataFrame, context=None) -> pd.DataFrame:
     # Convert weekday to string for consistency
     df['ts_weekday'] = df['ts_weekday'].astype(str)
 
-    print("[INFO]    Time-based features added successfully.")
+    logger.info("Time-based features added successfully.")
     return df
 
 
 def add_durations(df: pd.DataFrame, context=None) -> pd.DataFrame:
+    
+    # Ensure event_datetime is in datetime format
+    df['event_datetime'] = pd.to_datetime(df['event_datetime'])
 
-    # Calculate session duration
-    df['session_duration_seconds'] = df.groupby(['user_pseudo_id', 'event_params__ga_session_id'])['event_datetime'].transform(
-        lambda x: (x.max() - x.min()).total_seconds()
-    ).round(3)
+    # Firebase assigns these events at the last session's end, hence the messy logic
+    exclude_session_end_events = ['app_remove', 'app_update', 'app_clear_data']
+
+    # Calculate session duration (ignoring session-end events)
+    df['session_duration_seconds'] = (
+        df.groupby(['user_pseudo_id', 'event_params__ga_session_id'])
+        .apply(
+            lambda g: (
+                g.loc[~g['event_name'].isin(exclude_session_end_events), 'event_datetime'].max()
+                - g.loc[g['event_name'] == 'session_start', 'event_datetime'].min()
+            ).total_seconds()
+            if not g.loc[g['event_name'] == 'session_start'].empty else np.nan
+        )
+        .reindex(df.set_index(['user_pseudo_id', 'event_params__ga_session_id']).index)
+        .round(3)
+        .values
+    )
     df['session_duration_minutes'] = (df['session_duration_seconds'] / 60).round(2)
     df['session_duration_hours'] = (df['session_duration_seconds'] / 3600).round(3)
     # Session start and end times
     df['session_start_time'] = df.groupby(['user_pseudo_id', 'event_params__ga_session_id'])['event_datetime'].transform('min')
     df['session_end_time'] = df.groupby(['user_pseudo_id', 'event_params__ga_session_id'])['event_datetime'].transform('max')
-    print(f"[INFO]    Session IDs assigned and durations calculated for {df['event_params__ga_session_id'].nunique()} unique sessions.")
+    logger.info(f"Session IDs assigned and durations calculated for {df['event_params__ga_session_id'].nunique()} unique sessions.")
 
     # Calculate event duration within sessions
     df = df.sort_values(by=['user_pseudo_id', 'event_params__ga_session_id', 'event_datetime'])
     df['event_duration_seconds'] = df.groupby(['user_pseudo_id', 'event_params__ga_session_id'])['event_datetime'].shift(-1) - df['event_datetime']
     df['event_duration_seconds'] = df['event_duration_seconds'].dt.total_seconds().fillna(0).round(3)
-    print("[INFO]    Event durations within sessions calculated successfully.")
+    logger.info("Event durations within sessions calculated successfully.")
     return df
 
 

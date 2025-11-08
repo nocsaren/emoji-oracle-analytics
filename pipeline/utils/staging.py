@@ -1,3 +1,10 @@
+import pandas as pd
+from config.logging import get_logger
+
+logger = get_logger(__name__)
+
+
+
 PIPELINE_STAGES = [
     ("pull_from_bq", "Pull data from BigQuery"),
     ("flatten_dataframe", "Flatten dataframe"),
@@ -16,10 +23,7 @@ PIPELINE_STAGES = [
     ("currency_define_consumable", "Define consumable currency")
 ]
 
-
-import logging
-
-def run_pipeline(df=None, context=None):
+def run_pipeline(df: pd.DataFrame, context: dict) -> pd.DataFrame:
     from pipeline.utils.lists_and_maps import map_of_maps
     from pipeline.utils.pull_functions import pull_from_bq
     from pipeline.utils.flattening_functions import flatten_dataframe
@@ -41,12 +45,13 @@ def run_pipeline(df=None, context=None):
         currency_define_consumable,
         currency_define_board,
         currency_define_keys,
-        apply_value_maps,
-        question_addressable_index
+        question_addressable_index,
+        question_answer_wrong_zeros
     )
     from pipeline.utils.cleaning_functions import (
         question_index_cleanup,
-        dots_to_underscores)
+        dots_to_underscores,
+        apply_value_maps)
 
 
     # Put the stage functions in a list in the right order
@@ -69,16 +74,17 @@ def run_pipeline(df=None, context=None):
         currency_define_board,
         currency_define_keys,
         apply_value_maps,
-        question_addressable_index
+        question_addressable_index,
+        question_answer_wrong_zeros
     ]
 
     for stage in stages:
         stage_name = stage.__name__
-        print(f"[INFO]    Running {stage_name}...")
+        logger.info(f"Running {stage_name}...")
 
         # Each stage accepts df and context
         df = stage(df=df, context=context)
 
-        print(f"[OK]      {stage_name} done.")
+        logger.info(f"{stage_name} done.")
 
     return df

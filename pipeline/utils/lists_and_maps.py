@@ -205,7 +205,8 @@ event_name_map = {'ad_clicked': 'Ad Clicked',
                   'earn_virtual_currency': 'Earned Virtual Currency',
                   'spend_virtual_currency': 'Spent Virtual Currency',
                   'mini_game_failed': 'Mini-game Failed',
-                  'app_exception': 'App Exception'
+                  'app_exception': 'App Exception',
+                  'app_update': 'App Updated',
                     }
 
 
@@ -235,7 +236,10 @@ event_params__menu_name_map = {'Scroll Menu' : 'Scroll Menu',
                                'scroll_menu' : 'Scroll Menu',
                                     }
 
-
+event_params__spent_to_map = {'cauldron_item' : 'Cauldron',
+                              'aliginn_item' : 'AliCin',
+                              'coffee_item' : 'Coffee'
+                              }
  
 event_params__character_name_map = { 'aturtle': 'A Turtle',
                                      'littlea': 'Little A',
@@ -321,13 +325,6 @@ event_params__ad_shown_where_map = { 'crystal_character_ad': 'Crystal Character'
 }
 
 
-
-spent_in_crystal_map = {'cauldron' : 'Cauldron',
-                        'aliginn' : 'AliCin',
-                        'coffee' : 'Coffee'
-}
-
-
 shop_consumable_item_map = {'potion': 'Potion',
                             'incense': 'Incense',
                             'amulet': 'Amulet',
@@ -366,7 +363,7 @@ map_of_maps = {
     'event_params__where_its_spent': event_params__where_its_spent_map,
     'event_params__ad_shown_where': event_params__ad_shown_where_map,
     'doll_name' : event_params__character_name_map,
-    'spent_in_crystal': spent_in_crystal_map,
+    'event_params__spent_to': event_params__spent_to_map,
     'shop_consumable_item': shop_consumable_item_map,
     'shop_permanent_item': shop_permanent_item_map,
     'ts_weekday': ts_weekday_map,

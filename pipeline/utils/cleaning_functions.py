@@ -1,4 +1,8 @@
 import pandas as pd
+from config.logging import get_logger
+from pipeline.utils.lists_and_maps import map_of_maps
+
+logger = get_logger(__name__)
 
 def question_index_cleanup(df: pd.DataFrame, context=None) -> pd.DataFrame:
     """
@@ -28,14 +32,41 @@ def question_index_cleanup(df: pd.DataFrame, context=None) -> pd.DataFrame:
     # Hiccups
     problems_mask = notna_mask & ~df['event_params__current_tier'].isin([1, 2, 3, 4])
     if df[problems_mask].shape[0] > 0:
-        print("[FAIL]        Something wrong in:")
-        print(df.loc[problems_mask, ['event_params__character_name', 'event_params__current_tier', 'event_params__current_qi']])
-    print(f"[INFO]    Question index cleaned up for {df['event_params__current_question_index'].notna().sum()} rows.")
+        logger.warning(f"Something wrong in: {df.loc[problems_mask, ['event_params__character_name', 'event_params__current_tier', 'event_params__current_qi']]}")
+    logger.info(f"Question index cleaned up for {df['event_params__current_question_index'].notna().sum()} rows.")
     return df
 
 def dots_to_underscores(df: pd.DataFrame, context=None) -> pd.DataFrame:
 
     df.columns = df.columns.str.replace('.', '__') 
-    print(f"[INFO]    Column names updated to use '__' instead of '.' successfully.")
+    logger.info("Column names updated to use '__' instead of '.' successfully.")
     
     return df
+
+def apply_value_maps(df: pd.DataFrame, 
+                     context=None, 
+                     map_of_maps=map_of_maps, 
+                     keep_unmapped=True) -> pd.DataFrame:
+    """
+    Applies value mapping dictionaries to specified DataFrame columns.
+
+    Parameters:
+        df (pd.DataFrame): The DataFrame to modify.
+        map_of_maps (dict): A dictionary of column names to value-mapping dictionaries.
+        keep_unmapped (bool): If True, keeps original values when no match is found.
+
+    Returns:
+        pd.DataFrame: A new DataFrame with mapped values.
+    """
+    df_copy = df.copy()
+    
+    for col, value_map in map_of_maps.items():
+        if col in df_copy.columns:
+            if keep_unmapped:
+                df_copy[col] = df_copy[col].map(value_map).fillna(df_copy[col])
+            else:
+                df_copy[col] = df_copy[col].map(value_map)
+        else:
+            logger.warning(f"'{col}' not found in DataFrame.")
+    
+    return df_copy

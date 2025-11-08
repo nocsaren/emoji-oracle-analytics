@@ -7,7 +7,9 @@ import pyarrow as pa
 import os
 import json
 
+from config.logging import get_logger
 
+logger = get_logger(__name__)
 
 def pull_from_bq(df, context):
     client = context["client"]
@@ -34,11 +36,11 @@ def pull_from_bq(df, context):
     new_tables = [t for t in tables if t not in downloaded]
 
     if not new_tables:
-        print("[INFO]    No new tables to process.")
+        logger.info("No new tables to process.")
 #        exit(0)
 
     for table_name in new_tables:
-        print(f"[INFO]    Processing {table_name}...")
+        logger.info(f"Processing {table_name}...")
 
         df = client.query(f"SELECT * FROM `{dataset}.{table_name}`").to_dataframe()
 
@@ -49,12 +51,12 @@ def pull_from_bq(df, context):
         path = os.path.join(data_dir, f"{table_name}.parquet")
         table = pa.Table.from_pandas(df)
         pq.write_table(table, path)
-        print(f"[INFO]    Fetched {table.shape[1]} rows from {table_name}")
+        logger.info(f"Fetched {table.shape[1]} rows from {table_name}")
         # --- Update log
         with open(log_path, "a") as f:
             f.write(table_name + "\n")
     # --- Combine all Parquets for report
-    print("[INFO]    Merging data...")
+    logger.info(f"Merging data...")
     dfs = [pd.read_parquet(os.path.join(data_dir, f)) for f in os.listdir(data_dir) if f.endswith(".parquet")]
     all_data = pd.concat(dfs, ignore_index=True)
 
@@ -62,7 +64,7 @@ def pull_from_bq(df, context):
 
     sample = all_data["event_params"].iloc[0]
     if not isinstance(sample, (list, dict, type(None))):
-        print(f"[WARNING] Warning: event_params type={type(sample)} — normalization may have failed")
+        logger.warning(f"event_params type={type(sample)} — normalization may have failed")
     return all_data
 
 

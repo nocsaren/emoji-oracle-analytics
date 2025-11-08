@@ -1,35 +1,46 @@
-print("[INFO]    Initializing pipeline...")
+from config import settings
+from config.logging import get_logger
+
 from google.cloud import bigquery
 from google.oauth2 import service_account
 from datetime import date
 
 import os
 import json
+import pandas as pd
 
 from pipeline.utils.main_functions import ensure_directories
 from pipeline.utils.staging import (run_pipeline, PIPELINE_STAGES)
-from pipeline.utils.reporting import generate_report
-from config import settings
 
-print("[INFO]    Module imports successful.")
+from pipeline.utils.split_functions import df_by_sessions
+
+from analtytics.calculate_kpis import calculate_kpis
+
+from report.reporting_functions import generate_report
+
+
+logger = get_logger(__name__)
+
+logger.info('Starting pipeline...')
 
 # --- Ensure directories exist
-print("[INFO]    Validating folder structure...")
+logger.info("Validating folder structure...")
 
 dirs = ["data", "logs", "report"]
 
 ensure_directories(directories=dirs)
 
 # Set Paths
-print("[INFO]    Setting configuration parameters...")
+logger.info("Setting configuration parameters...")
 LOG_PATH = "./logs/downloaded_tables.log"
 DATA_DIR = "./data"
 REPORT_PATH = "./docs/index.html"
 
 DATASET = "emoji-oracle-74368.analytics_501671751"
 VERSION = "1.0.0"
+START_DATE = date(2025, 1, 1)
 
-print("[INFO]    Initializing BigQuery client...")
+logger.info("Initializing BigQuery client...")
 
 # for local dev, use key file
 
@@ -42,9 +53,14 @@ credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
 # credentials = service_account.Credentials.from_service_account_info(creds_dict)
 
 
-print("[INFO]    BigQuery client initialized.")
+logger.info("BigQuery client initialized.")
 
-print("[INFO]    Starting data pull...")
+
+df = pd.DataFrame()
+df_sessions = pd.DataFrame()
+
+
+logger.info("Starting data pull...")
 if __name__ == "__main__":
     client = bigquery.Client(credentials=credentials)
 
@@ -55,7 +71,22 @@ if __name__ == "__main__":
         "dataset": settings.DATASET
     }
 
-    df = run_pipeline(df=None, context=context)
+    # pull data and run through pipeline
+    df = run_pipeline(df=df, context=context)
+    logger.info("Data pipeline executed successfully.")
+    
+
+    logger.info("Generating dataframes...")
+    df_sessions = df_by_sessions(df=df)
+    logger.info("Dataframes generated successfully.")
+
+    logger.info("Calculating KPIs...")
+
+    kpis = calculate_kpis(df=df, session=df_sessions)
+    print (kpis)
+    df.to_csv(os.path.join(DATA_DIR, f"processed_data.csv"), index=False)
+    df_sessions.to_csv(os.path.join(DATA_DIR, f"session_data.csv"), index=False)
+    logger.info("Data pipeline complete. Processed data saved.")
     generate_report(df, output_path=REPORT_PATH)
 
 

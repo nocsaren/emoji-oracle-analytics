@@ -1,5 +1,8 @@
 import pandas as pd
 import json
+from config.logging import get_logger
+
+logger = get_logger(__name__)
 
 def flatten_dataframe(df, context=None):
     """
@@ -39,7 +42,7 @@ def flatten_extract_params(params_list):
                 result[key] = val
         return result
     except Exception as e:
-        print(f"[FAIL]        Error flattening params: {e}")
+        logger.error(f"Error flattening params: {e}")
         return {}
 
 
@@ -72,7 +75,7 @@ def flatten_nested_column(row, col_name, flat, default_keys=None):
             else:
                 flat.update({f'{col_name}': None})  # Add the key with None if no default keys
     except Exception as e:
-        print(f"[FAIL]        Error flattening column {col_name}: {e}")
+        logger.error(f"Error flattening column {col_name}: {e}")
         if default_keys is not None:
             flat.update({f'{col_name}.{k}': None for k in default_keys})
         else:

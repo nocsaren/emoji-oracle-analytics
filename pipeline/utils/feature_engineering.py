@@ -1,5 +1,8 @@
 import pandas as pd
-from pipeline.utils.lists_and_maps import map_of_maps
+
+from config.logging import get_logger
+
+logger = get_logger(__name__)
 
 def forward_fill_progress(df: pd.DataFrame, context=None) -> pd.DataFrame:
 
@@ -18,7 +21,7 @@ def forward_fill_progress(df: pd.DataFrame, context=None) -> pd.DataFrame:
         .ffill()
     )
     df.loc[df_sorted.index, cols_to_fill] = df_sorted[cols_to_fill]
-    print(f"[INFO]    Character names, tiers, and question indices forward-filled for {df['event_params__ga_session_id'].nunique()} unique sessions.")
+    logger.info(f"Character names, tiers, and question indices forward-filled for {df['event_params__ga_session_id'].nunique()} unique sessions.")
     return df
 
 
@@ -37,7 +40,7 @@ def question_cumulative_qi(df: pd.DataFrame, context=None) -> pd.DataFrame:
     df.loc[(df['event_params__current_tier'] == 4) & (df['event_params__character_name'] != 't'), 'cumulative_question_index'] += 40
     # NaNs
     df.loc[df['event_params__current_tier'].isna(), 'cumulative_question_index'] = pd.NA
-    print(f"[INFO]    Cumulative question index calculated for {df['cumulative_question_index'].notna().sum()} rows.")
+    logger.info(f"Cumulative question index calculated for {df['cumulative_question_index'].notna().sum()} rows.")
     return df
 
 def mini_game_features(df: pd.DataFrame, context=None) -> pd.DataFrame:
@@ -57,7 +60,7 @@ def mini_game_features(df: pd.DataFrame, context=None) -> pd.DataFrame:
     df.loc[mask, 'maze_gender'] = gender_hand['Gender']
     df.loc[mask, 'maze_hand'] = gender_hand['Hand']
     df.loc[mask, 'maze_level'] = levels
-    print(f"[INFO]    Extracted maze hand data for {mask.sum()} rows.")
+    logger.info(f"Extracted maze hand data for {mask.sum()} rows.")
     return df
 
 def mini_game_reward_split(df: pd.DataFrame, context=None) -> pd.DataFrame:
@@ -78,7 +81,7 @@ def mini_game_reward_split(df: pd.DataFrame, context=None) -> pd.DataFrame:
     df.loc[mask, 'buff_type'] = buff_type['BuffType']
     df.loc[mask, 'buff_gift'] = buff_gift['BuffGift'].str.lower() == 'true'
     df.loc[mask, 'buff_gold'] = buff_gold['BuffGold'].str.lower() == 'true'
-    print(f"[INFO]    Extracted buff data for {mask.sum()} rows.")
+    logger.info(f"Extracted buff data for {mask.sum()} rows.")
     return df
 
 def mini_game_buffs(df: pd.DataFrame, context=None) -> pd.DataFrame:
@@ -94,7 +97,7 @@ def mini_game_buffs(df: pd.DataFrame, context=None) -> pd.DataFrame:
     buff_type = parts[2].str.extract(r'(?P<BuffType>\w+)')
     # Create new columns with extracted data
     df.loc[mask, 'earned_buff_type'] = buff_type['BuffType']
-    print(f"[INFO]    Extracted earned buff data for {mask.sum()} rows.")
+    logger.info(f"Extracted earned buff data for {mask.sum()} rows.")
 
     return df
 
@@ -111,7 +114,7 @@ def mini_game_dolls(df: pd.DataFrame, context=None) -> pd.DataFrame:
     df.loc[mask, 'doll_name'] = parts[0].str.strip()  # Get the name before 'doll'
     # Rewrite the 'event_params__spent_to' column to just the doll name
     df.loc[mask, col] = 'Doll'
-    print(f"[INFO]    Extracted doll data for {mask.sum()} rows.")
+    logger.info(f"Extracted doll data for {mask.sum()} rows.")
     return df
 
 def currency_define_permanent(df: pd.DataFrame, context=None) -> pd.DataFrame:
@@ -125,7 +128,7 @@ def currency_define_permanent(df: pd.DataFrame, context=None) -> pd.DataFrame:
     df.loc[mask, 'shop_permanent_item'] = df.loc[mask, col].str.extract(r'(dreamcatcher|catcollar|library1|library2|bugspray|schedule|crystal|horseshoe)')[0]
     # Rewrite the 'event_params__spent_to' column to just the item name
     df.loc[mask, col] = 'Permanent Item'
-    print(f"[INFO]    Extracted permanent shop item data for {mask.sum()} rows.")
+    logger.info(f"Extracted permanent shop item data for {mask.sum()} rows.")
     return df
 
 def currency_define_consumable(df: pd.DataFrame, context=None) -> pd.DataFrame:
@@ -139,7 +142,7 @@ def currency_define_consumable(df: pd.DataFrame, context=None) -> pd.DataFrame:
     df.loc[mask, 'shop_consumable_item'] = df.loc[mask, col].str.extract(r'(potion|ıncense|amulet|incense)')[0]
     # Rewrite the 'event_params__spent_to' column to just the item name
     df.loc[mask, col] = 'Consumable Item'
-    print(f"[INFO]    Extracted consumable shop item data for {mask.sum()} rows.")
+    logger.info(f"Extracted consumable shop item data for {mask.sum()} rows.")
     return df
 
 
@@ -152,44 +155,23 @@ def currency_define_board(df: pd.DataFrame, context=None) -> pd.DataFrame:
     df.loc[mask, 'board_item'] = df.loc[mask, col]
     # Rewrite the 'event_params__spent_to' column to just the item name
     df.loc[mask, col] = 'Board Item'
-    print(f"[INFO]    Extracted board item data for {mask.sum()} rows.")
+    logger.info(f"Extracted board item data for {mask.sum()} rows.")
     return df
 
 def currency_define_keys(df: pd.DataFrame, context=None) -> pd.DataFrame:
     df.loc[df['event_params__spent_to'] == 'key', 'event_params__spent_to'] = 'Key'
-    print(f"[INFO]    Defined keys in spent_to for {df['event_params__spent_to'].eq('Key').sum()} rows.")
+    logger.info(f"Defined keys in spent_to for {df['event_params__spent_to'].eq('Key').sum()} rows.")
     return df
 
-def apply_value_maps(df: pd.DataFrame, 
-                     context=None, 
-                     map_of_maps=map_of_maps, 
-                     keep_unmapped=True) -> pd.DataFrame:
-    """
-    Applies value mapping dictionaries to specified DataFrame columns.
 
-    Parameters:
-        df (pd.DataFrame): The DataFrame to modify.
-        map_of_maps (dict): A dictionary of column names to value-mapping dictionaries.
-        keep_unmapped (bool): If True, keeps original values when no match is found.
-
-    Returns:
-        pd.DataFrame: A new DataFrame with mapped values.
-    """
-    df_copy = df.copy()
-    
-    for col, value_map in map_of_maps.items():
-        if col in df_copy.columns:
-            if keep_unmapped:
-                df_copy[col] = df_copy[col].map(value_map).fillna(df_copy[col])
-            else:
-                df_copy[col] = df_copy[col].map(value_map)
-        else:
-            print(f"[WARNING] Column '{col}' not found in DataFrame.")
-    
-    return df_copy
 
 def question_addressable_index(df: pd.DataFrame, context=None) -> pd.DataFrame:
     df['question_address'] = df['event_params__character_name'] + ' - T: ' + df['event_params__current_tier'].astype(str) + ' - Q: ' + df['event_params__current_question_index'].astype(str)
-    print(f"[INFO]    Question address created for {df['question_address'].notna().sum()} rows.")
+    logger.info(f"Question address created for {df['question_address'].notna().sum()} rows.")
     return df
 
+def question_answer_wrong_zeros(df: pd.DataFrame, context=None) -> pd.DataFrame:
+    mask = (df['event_name'] == 'Question Completed') & (df['event_params__answered_wrong'].isna())
+    df.loc[mask, 'event_params__answered_wrong'] = 0
+    logger.info("Filled NaN values in 'event_params__answered_wrong' with 0 for 'Question Completed' events.")
+    return df
