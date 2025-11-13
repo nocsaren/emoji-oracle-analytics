@@ -24,6 +24,7 @@ PIPELINE_STAGES = [
 ]
 
 def run_pipeline(df: pd.DataFrame, context: dict) -> pd.DataFrame:
+    from pipeline.utils.main_functions import filter_events_by_date
     from pipeline.utils.lists_and_maps import map_of_maps
     from pipeline.utils.pull_functions import pull_from_bq
     from pipeline.utils.flattening_functions import flatten_dataframe
@@ -57,6 +58,7 @@ def run_pipeline(df: pd.DataFrame, context: dict) -> pd.DataFrame:
     # Put the stage functions in a list in the right order
     stages = [
         pull_from_bq,
+        filter_events_by_date,
         flatten_dataframe,
         dots_to_underscores,
         transform_datetime_fields,

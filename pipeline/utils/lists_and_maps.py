@@ -207,6 +207,9 @@ event_name_map = {'ad_clicked': 'Ad Clicked',
                   'mini_game_failed': 'Mini-game Failed',
                   'app_exception': 'App Exception',
                   'app_update': 'App Updated',
+                  'ad_loaded': 'Ad Loaded',
+                  'ad_load_failed': 'Ad Load Failed',
+                  'game_ended': 'Game Ended'
                     }
 
 

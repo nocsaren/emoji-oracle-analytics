@@ -55,7 +55,7 @@
 <table>
   <thead>
     <tr>
-      <th colspan="2"><p>01.10.2025 - 10.11.2025 <br>40 days</p></th>
+      <th colspan="2"><p>{{ kpis['From']}} - {{ kpis['To']}} <br>{{ kpis['Total Days']}} days</p></th>
     </tr>
   </thead>
   <tbody>
@@ -71,19 +71,19 @@
         </ul>
       </td>
       <td class="kpi-values">
-        <p>'Total Users'<br> 57</p>
-        <p>''Users per Day'<br> 1.84 </p>
-        <p>Sessions per User<br> 2.46%</p>    
-<p>Average Session Duration<br> 6.97%</p>    
-<p>Total Ads Viewed<br> 0%</p>    
-<p>1-Day Retention<br> 8.77%</p>     
-<p>7-Day Retention<br> 1.75%</p>
-<p>30-Day Retention<br> 1.75%</p>
+        <p>'Total Users'<br> {{ kpis['Total Users']}}</p>
+        <p>''Users per Day'<br> {{ kpis['Users per Day']}} </p>
+        <p>Sessions per User<br> {{ kpis['Sessions per User']}}%</p>    
+<p>Average Session Duration<br> {{ kpis['Average Session Duration']}}%</p>    
+<p>Total Ads Viewed<br> {{ kpis['Total Ads Viewed']}}%</p>    
+<p>1-Day Retention<br> {{ kpis['1-Day Retention %']}}%</p>     
+<p>7-Day Retention<br> {{ kpis['7-Day Retention %']}}%</p>
+<p>30-Day Retention<br> {{ kpis['30-Day Retention %']}}%</p>
 
       </td>
       <td class="kpi-values">
-        <p>Total Sessions <br> 140</p>
-        <p>Sessions per Day<br> 4.52 </p>
+        <p>Total Sessions <br> {{ kpis['Total Sessions']}}</p>
+        <p>Sessions per Day<br> {{ kpis['Sessions per Day']}} </p>
   </td>
     </tr>
   </tbody>

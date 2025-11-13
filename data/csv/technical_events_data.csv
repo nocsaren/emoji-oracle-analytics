@@ -1,0 +1,5 @@
+user_pseudo_id,event_params__ga_session_id,event_date,event_name,prev_event_name
+744a37f98b8975b7993e38979ae329da,1759340923.0,2025-10-01 00:00:00+00:00,Ad Load Failed,Screen Viewed
+744a37f98b8975b7993e38979ae329da,1759340923.0,2025-10-01 00:00:00+00:00,Ad Load Failed,Ad Load Failed
+77afb33ef9f65f4388fff9503bc9ce3b,1761476351.0,2025-10-26 00:00:00+00:00,App Exception,Session Started
+7e3e8845717541cffef64f3be557962a,1759922143.0,2025-10-08 00:00:00+00:00,App Exception,Session Started

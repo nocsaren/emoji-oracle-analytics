@@ -4,22 +4,34 @@ import plotly.express as px
 import os
 import numpy as np
 
-def generate_report(df: pd.DataFrame, output_path: str):
+def generate_report(df, dict, kpis, context):
 
-    # --- 2. Generate text summaries ---
-    overview_text = f"The dataset contains {len(df):,} rows and {len(df.columns)} columns."
-    stats_text = df.describe().to_html(classes='dataframe', border=0)
+    # --- 1. Dataframes ---
+    output_path = context["report_path"]
+    df_by_ads = dict['by_ads']
+    df_by_sessions = dict['by_sessions']
+    df_by_users = dict['by_users']
+    df_by_questions = dict['by_questions']
+    df_by_date = dict['by_date']
+    df_technical_events = dict['technical_events']
 
-    # --- 3. Render with Jinja2 ---
-    env = Environment(loader=FileSystemLoader('.'))
-    template = env.get_template("report_template.html")
+    # --- 2. Calculated content ---
+
+
+
+
+    # --- 4. Visualizations ---
+
+    # --- 5. Render with Jinja2 ---
+    env = Environment(loader=FileSystemLoader('templates'))
+    template = env.get_template("main_template.html")
 
     html_content = template.render(
-        overview_text=overview_text,
-        stats_text=stats_text
-    )
-
-    # --- 4. Write HTML file ---
+        kpis=kpis,
+        )
+    
+    
+    # --- 6. Write HTML file ---
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html_content)

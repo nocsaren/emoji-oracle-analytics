@@ -1,0 +1,58 @@
+user_pseudo_id,first_event_date,total_sessions,total_characters_opened,country,install_source,operating_system,operating_system_version,is_limited_ad_tracking,device_language,version,total_ads_watched,total_questions_answered,game_ended,last_event_date
+089d61ab6a396a6f815f3446467f1f89,2025-10-23 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-sg,1.0.1,0,0,0,2025-10-23 00:00:00+00:00
+0dba2f4100e8fd62a8b2e3441feb16b1,2025-10-26 00:00:00+00:00,1,1,United States,com.android.vending,Android,Android 16,No,en-us,1.0.0,0,1,0,2025-10-26 00:00:00+00:00
+0f8f649263450c258692b2c77bc0fb0d,2025-10-14 00:00:00+00:00,1,0,Türkiye,com.android.vending,Android,Android 14,Yes,en-gb,0.2.6,0,0,0,2025-10-14 00:00:00+00:00
+14dc8a61fa5b0fafaef6e79df39870f4,2025-10-10 00:00:00+00:00,1,0,Türkiye,com.android.vending,Android,Android 15,No,tr-tr,0.2.6,0,0,0,
+1d7b2a6a724ea974d860ef237e32d05b,2025-10-03 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-sg,0.2.7,0,0,0,2025-10-03 00:00:00+00:00
+2c47397152df7cf520f26b3e2bd289d9,2025-10-01 00:00:00+00:00,7,12,Türkiye,com.android.vending,Android,Android 15,No,tr-tr,0.2.6,0,126,0,2025-10-11 00:00:00+00:00
+2dc21fa81083c4e3b5928c4d08f1c2e9,2025-10-03 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-gb,0.2.8,0,0,0,2025-10-03 00:00:00+00:00
+31f710c31752b802fb0c1d623cb1bf01,2025-10-02 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-us,0.2.5,0,0,0,2025-10-02 00:00:00+00:00
+32165a083e8495f681d51b4bbf854830,2025-10-08 00:00:00+00:00,1,0,United States,com.android.vending,Android,Android 14,No,en-us,0.3,0,0,0,2025-10-08 00:00:00+00:00
+3843fa71e5bff06b409142e83c9de0ee,2025-10-06 00:00:00+00:00,1,0,United States,manual_install,Android,Android 12,No,en-us,0.3.1,0,0,0,2025-10-06 00:00:00+00:00
+4250f5e67e5f7632fd166b4f27b4656d,2025-10-04 00:00:00+00:00,1,0,United States,manual_install,Android,Android 12,No,en-us,0.2.7,0,0,0,2025-10-04 00:00:00+00:00
+429f72cdaf51cb448d7473b41c13d686,2025-10-03 00:00:00+00:00,18,8,Türkiye,com.android.vending,Android,Android 14,No,tr-tr,1.0.0,0,20,0,2025-11-02 00:00:00+00:00
+4cc78993f8236585546a9f6aeffa0d13,2025-10-01 00:00:00+00:00,5,4,Türkiye,com.android.vending,Android,Android 14,No,tr-tr,0.2.6,0,15,0,2025-10-02 00:00:00+00:00
+4f2fe705f62542943d31cdfdc7f3f94b,2025-10-08 00:00:00+00:00,1,0,Türkiye,com.android.vending,Android,Android 11,No,tr-tr,0.2.4,0,0,0,
+5448559ae43135df0a1f2e23ebe82661,2025-10-01 00:00:00+00:00,1,3,Germany,com.android.vending,Android,Android 13,No,en-us,0.2.4,0,13,0,2025-10-01 00:00:00+00:00
+5808eba5573a31adfeef14546dab6f7f,2025-10-23 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-gb,1.0.1,0,0,0,2025-10-23 00:00:00+00:00
+5c606290df712d5c938765f3cee0c933,2025-10-05 00:00:00+00:00,1,0,United States,manual_install,Android,Android 12,No,en-us,0.2.9,0,0,0,2025-10-05 00:00:00+00:00
+5ef05565690be111dac24b2105f31f98,2025-10-12 00:00:00+00:00,1,0,United States,com.android.vending,Android,Android 14,No,en-us,0.3,0,0,0,2025-10-12 00:00:00+00:00
+5f429deef0aa256255e9b387e5175622,2025-10-02 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-ng,0.2.6,0,0,0,2025-10-02 00:00:00+00:00
+5f84f13d37dad04639af109c15e21f17,2025-10-02 00:00:00+00:00,3,1,Türkiye,com.android.vending,Android,Android 15,No,tr-tr,0.2.6,0,3,0,2025-10-17 00:00:00+00:00
+6613930f93128de16f91926f67247467,2025-10-03 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-ie,0.2.7,0,0,0,2025-10-03 00:00:00+00:00
+68e2ebf425942efc04266ecc244860e8,2025-10-08 00:00:00+00:00,1,0,United States,com.android.vending,Android,Android 14,No,en-us,0.3.1,0,0,0,2025-10-08 00:00:00+00:00
+6b53ae22a4afd334328c3909a1e4f997,2025-10-07 00:00:00+00:00,1,0,United States,manual_install,Android,Android 12,No,en-us,1.0.0,0,0,0,2025-10-07 00:00:00+00:00
+6b7bfe13725352467ae11e02235f3a6c,2025-10-01 00:00:00+00:00,3,1,Türkiye,com.android.vending,Android,Android 14,No,en-us,0.2.5,0,5,0,2025-10-02 00:00:00+00:00
+6bbcfc7b531f446501491776fb9b39f3,2025-10-25 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-nz,1.0.1,0,0,0,2025-10-25 00:00:00+00:00
+6e4f632b8ff65452b5b431366cb5137d,2025-10-01 00:00:00+00:00,2,5,Türkiye,com.android.vending,Android,Android 12,No,en-gb,0.2.4,0,21,0,2025-10-01 00:00:00+00:00
+6eed6d79262f8bd08feae0eb64ed4490,2025-10-02 00:00:00+00:00,2,2,Türkiye,com.android.vending,Android,Android 11,No,en-us,0.2.9,0,0,0,2025-10-04 00:00:00+00:00
+70214e7173aa6b6cc92cdeb183974d9e,2025-10-30 00:00:00+00:00,1,1,United States,com.android.vending,Android,Android 15,No,en-us,1.0.0,0,0,0,2025-10-30 00:00:00+00:00
+744a37f98b8975b7993e38979ae329da,2025-10-01 00:00:00+00:00,32,9,Iraq,com.android.vending,Android,Android 15,No,tr-tr,0.2.6,0,123,0,2025-11-10 00:00:00+00:00
+77afb33ef9f65f4388fff9503bc9ce3b,2025-10-26 00:00:00+00:00,4,0,,com.android.vending,Android,Android 11,No,en-us,1.0.1,0,0,0,2025-10-26 00:00:00+00:00
+786eeea289b8fd55cf95a8d33873b1d0,2025-10-05 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-au,0.3,0,0,0,2025-10-05 00:00:00+00:00
+7caa2ad0e644262778f1dab62c132548,2025-10-07 00:00:00+00:00,1,2,Türkiye,com.android.vending,Android,Android 12,No,en-us,0.2.6,0,4,0,2025-10-07 00:00:00+00:00
+7d5ffc687896e25173c80039f05de91c,2025-10-02 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-nz,0.2.6,0,0,0,2025-10-02 00:00:00+00:00
+7e3e8845717541cffef64f3be557962a,2025-10-08 00:00:00+00:00,4,0,,com.android.vending,Android,Android 11,No,en-za,0.2.7,0,0,0,2025-10-08 00:00:00+00:00
+823633d925e6b92a4da9de5ee9787a51,2025-10-01 00:00:00+00:00,2,1,Türkiye,com.android.vending,Android,Android 13,No,en-tr,0.2.6,0,4,0,2025-10-02 00:00:00+00:00
+828a649bf5255393e4f3301394a53dbb,2025-10-05 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-us,0.3.1,0,0,0,2025-10-05 00:00:00+00:00
+836ede1633e139fb111a845cb05630cc,2025-10-04 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-au,0.2.9,0,0,0,2025-10-04 00:00:00+00:00
+8c227cb3270dec78c9d6468373ebc4b0,2025-10-06 00:00:00+00:00,1,0,United States,manual_install,Android,Android 12,No,en-us,1.0.0,0,0,0,2025-10-06 00:00:00+00:00
+8ee8bfac73a2c15d3a3fac1a16712c8d,2025-10-24 00:00:00+00:00,1,0,United States,manual_install,Android,Android 12,No,en-us,1.0.1,0,0,0,2025-10-24 00:00:00+00:00
+94a94f37d9e22274206e837bd34a7dac,2025-10-10 00:00:00+00:00,1,0,United States,com.android.vending,Android,Android 14,No,en-us,1.0.0,0,0,0,2025-10-10 00:00:00+00:00
+a36af074f597e45e31395c55942fc7a9,2025-10-05 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-ng,0.3,0,0,0,2025-10-05 00:00:00+00:00
+a6879275ae7dfa645668ae91cc691fd1,2025-10-03 00:00:00+00:00,1,0,United States,manual_install,Android,Android 12,No,en-us,0.2.5,0,0,0,2025-10-03 00:00:00+00:00
+a8e9aa3492e6a8e39382c4af63a2966a,2025-10-12 00:00:00+00:00,2,2,Türkiye,com.android.vending,Android,Android 15,No,tr-tr,0.2.6,0,6,0,2025-10-26 00:00:00+00:00
+ac4c5900b9314b89a164f28cc12ad503,2025-10-02 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-ph,0.2.5,0,0,0,2025-10-02 00:00:00+00:00
+ad82750cb2e104672a54016fb32a52c8,2025-10-02 00:00:00+00:00,10,4,Türkiye,com.android.vending,Android,Android 11,No,en-us,0.2.8,0,5,0,2025-10-04 00:00:00+00:00
+b08685c22f130609a2746d640c611986,2025-10-24 00:00:00+00:00,1,0,United States,manual_install,Android,Android 12,No,en-us,1.0.1,0,0,0,2025-10-24 00:00:00+00:00
+bbeb3a97e751dc17c7288f7f90a93a94,2025-10-06 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-ie,1.0.0,0,0,0,2025-10-06 00:00:00+00:00
+bc28b26f710672932b008ec2c23414ea,2025-10-05 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-ng,0.3.1,0,0,0,2025-10-05 00:00:00+00:00
+bfcf8f239feccc7631f7b66a9c97d056,2025-10-03 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-sg,0.2.8,0,0,0,2025-10-03 00:00:00+00:00
+c2ef210e72cecaef885ef839516fa9e8,2025-10-03 00:00:00+00:00,1,0,United States,manual_install,Android,Android 12,No,en-us,0.2.6,0,0,0,2025-10-03 00:00:00+00:00
+c5db7e1c135baa3ea93382b366bb3c4c,2025-10-06 00:00:00+00:00,1,0,United States,manual_install,Android,Android 12,No,en-us,0.3,0,0,0,2025-10-06 00:00:00+00:00
+d1b0777b5a396663f63441e58af9e3c0,2025-10-29 00:00:00+00:00,1,0,Türkiye,com.android.vending,Android,Android 13,No,tr-tr,0.2.6,0,0,0,2025-10-29 00:00:00+00:00
+d3f1e94d8efc246ec3debbd37134e976,2025-10-04 00:00:00+00:00,1,0,United States,manual_install,Android,Android 12,No,en-us,0.2.8,0,0,0,2025-10-04 00:00:00+00:00
+e287be92f4411260e96d044c3f02a38b,2025-10-27 00:00:00+00:00,1,1,United States,com.android.vending,Android,Android 16,No,en-us,1.0.0,0,0,0,2025-10-27 00:00:00+00:00
+e6b7338f440a427107cdcf28fe55fb62,2025-10-01 00:00:00+00:00,2,2,Türkiye,com.android.vending,Android,Android 13,No,tr-tr,0.2.4,0,5,0,2025-10-03 00:00:00+00:00
+e98d6712c157ba814e5b0e2c515f9331,2025-10-04 00:00:00+00:00,2,1,Türkiye,com.google.android.packageinstaller,Android,Android 11,No,en-us,0.2.8,0,0,0,2025-10-04 00:00:00+00:00
+f3cc7032f3c688cb76daae0c02827094,2025-10-06 00:00:00+00:00,1,0,,com.android.vending,Android,Android 11,No,en-au,1.0.0,0,0,0,2025-10-06 00:00:00+00:00
