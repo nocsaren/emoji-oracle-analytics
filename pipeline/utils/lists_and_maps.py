@@ -209,7 +209,13 @@ event_name_map = {'ad_clicked': 'Ad Clicked',
                   'app_update': 'App Updated',
                   'ad_loaded': 'Ad Loaded',
                   'ad_load_failed': 'Ad Load Failed',
-                  'game_ended': 'Game Ended'
+                  'game_ended': 'Game Ended',
+                  'start_currencies': 'Starting Currencies',
+                  'video_watched': 'Video Watched',
+                  'ad_rewarded': 'Ad Rewarded',
+                  'ad_displayed': 'Ad Displayed',
+                  'ad_closed': 'Ad Closed',
+                  'firebase_campaign': 'Firebase Campaign',
                     }
 
 

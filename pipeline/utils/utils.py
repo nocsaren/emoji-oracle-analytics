@@ -10,7 +10,20 @@ def summarize_gold(g):
     4. gold_delta: Net change in gold (gained - spent)
     '''
 
-    gold_starting = g.loc[g['event_name'] == 'start_currencies', 'event_params__gold'].sum()
+    gold_starting = 0
+
+    try:
+        if (
+            isinstance(g, pd.DataFrame)
+            and 'event_name' in g.columns
+            and 'event_params__gold' in g.columns
+        ):
+            subset = g.loc[g['event_name'] == 'start_currencies', 'event_params__gold']
+            # Handle non-numeric values safely
+            gold_starting = pd.to_numeric(subset, errors='coerce').sum()
+    except Exception:
+        gold_starting = 0
+
     gold_gained = g.loc[
         (g['event_name'] == 'Earned Virtual Currency') &
         (g['event_params__currency_name'] == 'Gold'),

@@ -1,90 +1,52 @@
-<style>
-  /* Table styling */
-  table {
-    width: 100%;
-    border-collapse: collapse; /* removes double borders */
-    font-family: Arial, sans-serif;
-  }
+{% extends "base.html" %}
 
-  /* Header row */
-  th {
-    background-color: #f2f2f2;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    padding: 10px;
-    color: #333;
-  }
+{% block content %}
 
-  /* menu column */
-  td.menu {
-    width: 20%;
-    text-align: center;
-    vertical-align: top;
-    background-color: #fafafa;
-    padding: 8px;
-    border-right: 1px solid #ccc; /* optional separator */
-  }
 
-  /* Values column */
-  td.kpi-values {
-    width: 80%;
-    text-align: left;
-    vertical-align: top;
-    padding: 8px;
-  }
+<div>
+    <table class ="kpi-table">
 
-  /* menu list styling */
-  ul.menu-items {
-    list-style: none; /* remove bullets */
-    padding: 0;
-    margin: 0;
-  }
+	<tbody>
+		<tr>
+			<td>Total Users<br /> {{ kpis['Total Users']}}</td>
+			<td>Users per Day<br /> {{ kpis['Users per Day']}}</td>
+			<td>Average Session Duration<br /> {{ kpis['Average Session Duration']}} mins</td>
+			
 
-  ul.menu-items li {
-    margin-bottom: 5px; /* space between items */
-  }
-
-  /* KPI value paragraph styling */
-  td.kpi-values p {
-    margin: 4px 0; /* small spacing */
-    color: #555; /* placeholder color */
-  }
-</style>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="2"><p>{{ kpis['From']}} - {{ kpis['To']}} <br>{{ kpis['Total Days']}} days</p></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="menu">
-        <ul class="menu-items">
-          <li>Sessions</li>
-          <li>Users</li>
-          <li>Questions</li>
-          <li>Days</li>
-          <li>Ads</li>
-          <li>Technical</li>
-        </ul>
-      </td>
-      <td class="kpi-values">
-        <p>'Total Users'<br> {{ kpis['Total Users']}}</p>
-        <p>''Users per Day'<br> {{ kpis['Users per Day']}} </p>
-        <p>Sessions per User<br> {{ kpis['Sessions per User']}}%</p>    
-<p>Average Session Duration<br> {{ kpis['Average Session Duration']}}%</p>    
-<p>Total Ads Viewed<br> {{ kpis['Total Ads Viewed']}}%</p>    
-<p>1-Day Retention<br> {{ kpis['1-Day Retention %']}}%</p>     
-<p>7-Day Retention<br> {{ kpis['7-Day Retention %']}}%</p>
-<p>30-Day Retention<br> {{ kpis['30-Day Retention %']}}%</p>
-
-      </td>
-      <td class="kpi-values">
-        <p>Total Sessions <br> {{ kpis['Total Sessions']}}</p>
-        <p>Sessions per Day<br> {{ kpis['Sessions per Day']}} </p>
-  </td>
-    </tr>
-  </tbody>
+			
+		</tr>
+		<tr>
+			<td>Total Sessions <br /> {{ kpis['Total Sessions']}}</td>
+			<td>Sessions per Day<br /> {{ kpis['Sessions per Day']}}</td>
+			<td>Sessions per User<br /> {{ kpis['Sessions per User']}}</td>
+			
+		</tr>
+		<tr>
+			<td>1-Day Retention<br /> {{ kpis['1-Day Retention %']}}%</td>
+			<td>7-Day Retention<br /> {{ kpis['7-Day Retention %']}}%</td>
+			<td>30-Day Retention<br /> {{ kpis['30-Day Retention %']}}%</td>
+		</tr>
+		<tr>
+			
+			
+      <td>App Exceptions<br /> {{ kpis['App Exceptions']}}%</td>
+	  <td>App Exceptions per Session<br /> {{ kpis['App Exceptions per Session']}}</td>
+	  <td>Ads per Session<br /> {{ kpis['Ads per Session']}}</td>
+		</tr>
+		<tr>
+			
+		</tr>
+		<tr>
+			<td>Total Ads Viewed<br /> {{ kpis['Total Ads Viewed']}}</td>
+			<td>Ads per User<br /> {{ kpis['Ads per User']}}</td>
+			<td>Ads per User per Day<br /> {{ kpis['Ads per User per Day']}}</td>
+		</tr>
+		<tr>
+			<td>Tutorial Completion %<br /> {{ kpis['Tutorial Completion %']}}%</td>
+			<td><br /></td>
+			<td><br /></td>
+		</tr>
+	</tbody>
 </table>
+</div>
+{% endblock %}

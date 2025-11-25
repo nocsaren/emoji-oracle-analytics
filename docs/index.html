@@ -1,90 +1,84 @@
-<style>
-  /* Table styling */
-  table {
-    width: 100%;
-    border-collapse: collapse; /* removes double borders */
-    font-family: Arial, sans-serif;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Main</title>
 
-  /* Header row */
-  th {
-    background-color: #f2f2f2;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    padding: 10px;
-    color: #333;
-  }
 
-  /* menu column */
-  td.menu {
-    width: 20%;
-    text-align: center;
-    vertical-align: top;
-    background-color: #fafafa;
-    padding: 8px;
-    border-right: 1px solid #ccc; /* optional separator */
-  }
+    <link rel="stylesheet" href="../config/style.css" />
 
-  /* Values column */
-  td.kpi-values {
-    width: 80%;
-    text-align: left;
-    vertical-align: top;
-    padding: 8px;
-  }
 
-  /* menu list styling */
-  ul.menu-items {
-    list-style: none; /* remove bullets */
-    padding: 0;
-    margin: 0;
-  }
 
-  ul.menu-items li {
-    margin-bottom: 5px; /* space between items */
-  }
+</head>
+<body>
 
-  /* KPI value paragraph styling */
-  td.kpi-values p {
-    margin: 4px 0; /* small spacing */
-    color: #555; /* placeholder color */
-  }
-</style>
+<div class="container">
+    <nav class="sidebar">
+        <a href="index.html">Main</a>
+        <a href="users.html">Users</a>
+        <a href="sessions.html">Sessions</a>
+        <a href="questions.html">Questions</a>
+        <a href="ads.html">Ads</a>
+        <a href="technical.html">Technical</a>
+    </nav>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="2"><p>01.10.2025 - 10.11.2025 <br>40 days</p></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="menu">
-        <ul class="menu-items">
-          <li>Sessions</li>
-          <li>Users</li>
-          <li>Questions</li>
-          <li>Days</li>
-          <li>Ads</li>
-          <li>Technical</li>
-        </ul>
-      </td>
-      <td class="kpi-values">
-        <p>'Total Users'<br> 57</p>
-        <p>''Users per Day'<br> 1.84 </p>
-        <p>Sessions per User<br> 2.46%</p>    
-<p>Average Session Duration<br> 6.97%</p>    
-<p>Total Ads Viewed<br> 0%</p>    
-<p>1-Day Retention<br> 8.77%</p>     
-<p>7-Day Retention<br> 1.75%</p>
-<p>30-Day Retention<br> 1.75%</p>
+    <main class="content">
+        <div class="kpi-header">
+            20.11.2025 - 24.11.2025 <br> 4 days
+        </div>
 
-      </td>
-      <td class="kpi-values">
-        <p>Total Sessions <br> 140</p>
-        <p>Sessions per Day<br> 4.52 </p>
-  </td>
-    </tr>
-  </tbody>
+        
+
+
+<div>
+    <table class ="kpi-table">
+
+	<tbody>
+		<tr>
+			<td>Total Users<br /> 6</td>
+			<td>Users per Day<br /> 1.2</td>
+			<td>Average Session Duration<br /> 22.75 mins</td>
+			
+
+			
+		</tr>
+		<tr>
+			<td>Total Sessions <br /> 17</td>
+			<td>Sessions per Day<br /> 3.4</td>
+			<td>Sessions per User<br /> 2.83</td>
+			
+		</tr>
+		<tr>
+			<td>1-Day Retention<br /> 50.0%</td>
+			<td>7-Day Retention<br /> 0.0%</td>
+			<td>30-Day Retention<br /> 0.0%</td>
+		</tr>
+		<tr>
+			
+			
+      <td>App Exceptions<br /> 0%</td>
+	  <td>App Exceptions per Session<br /> 0.0</td>
+	  <td>Ads per Session<br /> 1.65</td>
+		</tr>
+		<tr>
+			
+		</tr>
+		<tr>
+			<td>Total Ads Viewed<br /> 28</td>
+			<td>Ads per User<br /> 4.67</td>
+			<td>Ads per User per Day<br /> 0.93</td>
+		</tr>
+		<tr>
+			<td>Tutorial Completion %<br /> 0.0%</td>
+			<td><br /></td>
+			<td><br /></td>
+		</tr>
+	</tbody>
 </table>
+</div>
+
+    </main>
+</div>
+
+</body>
+</html>

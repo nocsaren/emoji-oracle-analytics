@@ -16,6 +16,7 @@ def transform_datetime_fields(df: pd.DataFrame, context=None) -> pd.DataFrame:
         'event_previous_datetime': ('event_previous_timestamp', 'us'),
         'event_first_touch_datetime': ('user_first_touch_timestamp', 'us'),
         'user__first_open_datetime': ('user__first_open_time', 'ms'),
+        
     }
     
     for new_col, (src_col, unit) in time_fields.items():

@@ -1,5 +1,8 @@
 
 /keys
+/docs
+/logs
+/data
 
 .ipynb_checkpoints
 **/.ipynb_checkpoints
@@ -18,3 +21,4 @@ __pycache__
 Thumbs.db
 
 .~lock.*
+

@@ -13,9 +13,9 @@ from pipeline.utils.main_functions import ensure_directories
 from pipeline.utils.staging import (run_pipeline, PIPELINE_STAGES)
 from pipeline.utils.dataframes import create_dataframes
 
-from analtytics.calculate_kpis import calculate_kpis
+from pipeline.utils.calculate_kpis import calculate_kpis
 
-from report.reporting import generate_report
+from pipeline.utils.reporting import generate_report
 
 
 logger = get_logger(__name__)
@@ -25,31 +25,32 @@ logger.info('Starting pipeline...')
 # --- Ensure directories exist
 logger.info("Validating folder structure...")
 
-dirs = ["data", "logs", "report"]
+folders_to_create = []
 
-ensure_directories(directories=dirs)
-
-# Set Paths
-logger.info("Setting configuration parameters...")
-LOG_PATH = "./logs/downloaded_tables.log"
-DATA_DIR = "./data"
-CSV_DIR = "./data/csv"
-REPORT_PATH = "./docs/index.html"
-
-DATASET = "emoji-oracle-74368.analytics_501671751"
-
+for name in dir(settings):
+    if name.isupper():
+        value = getattr(settings, name)
+        if isinstance(value, str) and (value.startswith("./") or value.startswith("/")):
+            # If value ends with a known file extension, take dirname; else, take the path itself
+            if os.path.splitext(value)[1]:  # has extension → file path
+                folders_to_create.append(os.path.dirname(value))
+            else:  # likely already a folder
+                folders_to_create.append(value)
+    
+ensure_directories(folders_to_create)
 
 logger.info("Initializing BigQuery client...")
 
 # for local dev, use key file
+# NEEDS A PROPER key.json FILE FROM A GOOGLE SERVICE ACCOUNT
 
-KEY_PATH = "./keys/key.json"
-credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
+# KEY_PATH = "./keys/key.json"
+# credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
 
 # for GitHub Actions
 
-# creds_dict = json.loads(os.environ["BQ_SERVICE_ACCOUNT"])
-# credentials = service_account.Credentials.from_service_account_info(creds_dict)
+creds_dict = json.loads(os.environ["BQ_SERVICE_ACCOUNT"])
+credentials = service_account.Credentials.from_service_account_info(creds_dict)
 
 
 logger.info("BigQuery client initialized.")
@@ -72,6 +73,7 @@ if __name__ == "__main__":
         'start_date': settings.START_DATE,
         'report_path': settings.REPORT_PATH
     }
+    
 
     # pull data and run through pipeline
     df = run_pipeline(df=df, context=context)
@@ -85,14 +87,11 @@ if __name__ == "__main__":
     logger.info("Calculating KPIs...")
 
     kpis = calculate_kpis(df=df, dict=dfs)
-    df.to_csv(os.path.join(settings.CSV_DIR, f"processed_data.csv"), index=False)
+    
+    df.to_csv(os.path.join(settings.CSV_DIR, "processed_data.csv"), index=False)
 
     for name, dataframe in dfs.items():
         dataframe.to_csv(os.path.join(settings.CSV_DIR, f"{name}_data.csv"), index=False)
     
     logger.info("Data pipeline complete. Processed data saved.")
-    generate_report(df=df, dict = dfs, kpis = kpis, context = context)
-
-
-
-
+    generate_report(df=df, dfs_dict = dfs, kpis = kpis, context = context)
