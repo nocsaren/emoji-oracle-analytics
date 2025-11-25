@@ -6,11 +6,13 @@ from pathlib import Path
 logger = get_logger(__name__)
 
 def ensure_directories(directories):
-    """Ensure that the specified directories exist."""
+    """
+    Ensure that the specified directories exist.
+    Paths are resolved relative to the current working directory (repo root).
+    """
     try:
         for d in directories:
-            # Make path absolute relative to repo root
-            path = Path(d).resolve()  
+            path = Path(d).resolve()
             path.mkdir(parents=True, exist_ok=True)
             logger.info(f"Directory exists or created: {path}")
         logger.info("All folder structures validated.")
