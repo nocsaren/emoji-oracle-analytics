@@ -5,6 +5,7 @@ from google.cloud import bigquery
 from google.oauth2 import service_account
 from datetime import date
 
+import argparse
 import os
 import json
 import pandas as pd
@@ -22,6 +23,7 @@ logger = get_logger(__name__)
 
 logger.info('Starting pipeline...')
 
+
 # --- Ensure directories exist
 logger.info("Validating folder structure...")
 
@@ -38,6 +40,14 @@ for name in dir(settings):
                 folders_to_create.append(value)
     
 ensure_directories(folders_to_create)
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--data_dir", help="Override data directory")
+    parser.add_argument("--log_path", help="Override log path")
+    parser.add_argument("--csv_dir", help="Override CSV directory")
+    parser.add_argument("--report_path", help="Override report path")
+    return parser.parse_args()
 
 logger.info("Initializing BigQuery client...")
 
@@ -62,6 +72,15 @@ df_sessions = pd.DataFrame()
 
 logger.info("Starting data pull...")
 if __name__ == "__main__":
+
+    args = parse_args()
+
+    # Override settings if CLI args are provided
+    data_dir = args.data_dir if args.data_dir else settings.DATA_DIR
+    log_path = args.log_path if args.log_path else settings.LOG_PATH
+    csv_dir = args.csv_dir if args.csv_dir else settings.CSV_DIR
+    report_path = args.report_path if args.report_path else settings.REPORT_PATH
+    
     client = bigquery.Client(credentials=credentials)
 
     context = {
