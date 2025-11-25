@@ -1,7 +1,10 @@
 from datetime import date
 
-LOG_PATH = "./logs/downloaded_tables.log"
-DATA_DIR = "./data/parquet"
+DATA_DIR = "parquet-store"
+LOG_PATH = "parquet-store/log.txt"
+
+# LOG_PATH = "./logs/downloaded_tables.log"
+# DATA_DIR = "./data/parquet"
 CSV_DIR = "./data/csv"
 REPORT_PATH = "./docs"
 
