@@ -1,41 +1,88 @@
 name: Run ETL
+
 on:
   schedule:
-    - cron: "0 0 * * *"   # at 00:00 UTC every day
-    - cron: "0 12 * * *"   # runs daily at 12:00 UTC
-  workflow_dispatch:      # allow manual runs
+    - cron: "0 6 * * *"    # at 00:00 UTC every day
+    - cron: "0 10 * * *"   # at 10:00 UTC every day
+    - cron: "0 12 * * *"   # at 12:00 UTC every day
+    - cron: "0 0 * * *"    # at 00:00 UTC every day
+  workflow_dispatch:        # allow manual runs
 
 permissions:
-    contents: write
+  contents: write
 
 jobs:
   run-etl:
     runs-on: ubuntu-latest
 
     steps:
+    # ----------------------------------------------------------
+    # 1. Checkout repo
+    # ----------------------------------------------------------
     - name: Checkout repo
       uses: actions/checkout@v4
 
+    # ----------------------------------------------------------
+    # 2. Set up Python
+    # ----------------------------------------------------------
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: "3.11"
 
+    # ----------------------------------------------------------
+    # 3. Install dependencies
+    # ----------------------------------------------------------
     - name: Install dependencies
       run: pip install -r requirements.txt
 
+    # ----------------------------------------------------------
+    # 4. Download previous parquet-store artifact (persistent data)
+    # ----------------------------------------------------------
+    - name: Download parquet artifact
+      id: parquet_download
+      uses: actions/download-artifact@v3
+      with:
+        name: parquet-store
+        path: parquet-store
+      continue-on-error: true   # first run: artifact may not exist
+
+    - name: Ensure parquet-store directory exists
+      run: mkdir -p parquet-store
+
+    # ----------------------------------------------------------
+    # 5. Run ETL script, pointing it to parquet-store
+    # ----------------------------------------------------------
     - name: Run ETL script
       env:
         BQ_SERVICE_ACCOUNT: ${{ secrets.BQ_SERVICE_ACCOUNT }}
-      run: python main.py
+      run: |
+        python main.py \
+          --data_dir "parquet-store" \
+          --log_path "parquet-store/downloaded.log"
 
+    # ----------------------------------------------------------
+    # 6. Upload updated parquet-store (persist for next run)
+    # ----------------------------------------------------------
+    - name: Upload updated parquet-store
+      uses: actions/upload-artifact@v3
+      with:
+        name: parquet-store
+        path: parquet-store
+        retention-days: 30    # adjust to your needs
+
+    # ----------------------------------------------------------
+    # 7. Commit and push updates (docs, reports, etc)
+    # ----------------------------------------------------------
     - name: Commit and push changes
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.email "actions@github.com"
         git config --global user.name "github-actions"
-        git add data logs docs
+
+        git add docs
+
         if git diff --cached --quiet; then
           echo "No changes to commit"
         else

@@ -1,5 +1,7 @@
 
 /keys
+/data
+/logs
 
 .ipynb_checkpoints
 **/.ipynb_checkpoints

@@ -88,10 +88,10 @@ if __name__ == "__main__":
 
     kpis = calculate_kpis(df=df, dict=dfs)
     
-    df.to_csv(os.path.join(settings.CSV_DIR, "processed_data.csv"), index=False)
+    # df.to_csv(os.path.join(settings.CSV_DIR, "processed_data.csv"), index=False)
 
-    for name, dataframe in dfs.items():
-        dataframe.to_csv(os.path.join(settings.CSV_DIR, f"{name}_data.csv"), index=False)
+    # for name, dataframe in dfs.items():
+    #    dataframe.to_csv(os.path.join(settings.CSV_DIR, f"{name}_data.csv"), index=False)
     
     logger.info("Data pipeline complete. Processed data saved.")
     generate_report(df=df, dfs_dict = dfs, kpis = kpis, context = context)

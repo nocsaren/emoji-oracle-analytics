@@ -1,7 +1,0 @@
-event_datetime,event_name,user_pseudo_id,event_params__ga_session_id,app_info__version,device__mobile_marketing_name,device__operating_system_version,prev_event_name,prev_event_menu,event_params__ad_network,event_params__ad_instance,event_params__ad_id,event_params__ad_error_code,event_server_delay_seconds
-2025-11-21 22:51:20.948106+00:00,Ad Load Failed,12cede3a87a9176da35a6422624e59e3,1763764282.0,1.0.3,Galaxy S24+,Android 15,Menu Opened,Crystal Energy Menu,,,04fa1e3b-346c-4fba-82c7-72f81533acd5,509.0,828.542
-2025-11-21 22:51:26.670107+00:00,Ad Load Failed,12cede3a87a9176da35a6422624e59e3,1763764282.0,1.0.3,Galaxy S24+,Android 15,Ad Load Failed,,,,04fa1e3b-346c-4fba-82c7-72f81533acd5,509.0,828.542
-2025-11-21 22:51:37.116108+00:00,Ad Load Failed,12cede3a87a9176da35a6422624e59e3,1763764282.0,1.0.3,Galaxy S24+,Android 15,Ad Load Failed,,,,04fa1e3b-346c-4fba-82c7-72f81533acd5,509.0,828.542
-2025-11-21 22:52:25.567006+00:00,Ad Load Failed,12cede3a87a9176da35a6422624e59e3,1763764282.0,1.0.3,Galaxy S24+,Android 15,Menu Opened,Crystal Energy Menu,,,9e381e27-fd1b-4c58-bbcf-6af30d46eb64,509.0,828.543
-2025-11-22 07:54:14.519002+00:00,Ad Load Failed,80389e3f153d6b576fcfa52b4ce5c0f3,1763797836.0,1.0.3,Galaxy A12,Android 12,Menu Opened,Wheel of Fortune,,,4f09033a-bee7-4851-9d02-9b62c43338ce,627.0,546.643
-2025-11-22 07:54:20.336003+00:00,Ad Load Failed,80389e3f153d6b576fcfa52b4ce5c0f3,1763797836.0,1.0.3,Galaxy A12,Android 12,Ad Load Failed,,,,4f09033a-bee7-4851-9d02-9b62c43338ce,627.0,546.643
