@@ -3,3 +3,4 @@ pandas
 pyarrow
 db-dtypes
 jinja2
+plotly
