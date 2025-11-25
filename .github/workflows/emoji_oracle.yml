@@ -5,6 +5,9 @@ on:
     - cron: "0 12 * * *"   # runs daily at 12:00 UTC
   workflow_dispatch:      # allow manual runs
 
+permissions:
+    contents: write
+
 jobs:
   run-etl:
     runs-on: ubuntu-latest
