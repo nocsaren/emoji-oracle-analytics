@@ -44,7 +44,6 @@ def pull_from_bq(df, context):
 
     if not new_tables:
         logger.info("No new tables to process.")
-        return pd.DataFrame()  # exit early
 
     for table_name in new_tables:
         logger.info(f"Processing {table_name}...")
@@ -76,6 +75,7 @@ def pull_from_bq(df, context):
             for f in os.listdir(data_dir)
             if f.endswith(".parquet")
         ]
+        
         if not parquet_files:
             logger.warning(f"No parquet files found in {data_dir}.")
             all_data = pd.DataFrame()
