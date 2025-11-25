@@ -56,8 +56,8 @@ jobs:
     - name: Run ETL script
       env:
         BQ_SERVICE_ACCOUNT: ${{ secrets.BQ_SERVICE_ACCOUNT }}
-      run: python main.py --data_dir=parquet-store --log_path=parquet-store/log.txt
-
+      run: |
+        python main.py 
     # ----------------------------------------------------------
     # 6. Upload updated parquet-store (persist for next run)
     # ----------------------------------------------------------
