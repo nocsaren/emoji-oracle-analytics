@@ -41,7 +41,7 @@ jobs:
     # ----------------------------------------------------------
     - name: Download parquet artifact
       id: parquet_download
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: parquet-store
         path: parquet-store
@@ -65,7 +65,7 @@ jobs:
     # 6. Upload updated parquet-store (persist for next run)
     # ----------------------------------------------------------
     - name: Upload updated parquet-store
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: parquet-store
         path: parquet-store
