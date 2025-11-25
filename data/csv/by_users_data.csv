@@ -1,0 +1,7 @@
+user_pseudo_id,first_event_date,total_sessions,total_characters_opened,total_playtime_minutes,country,install_source,operating_system,operating_system_version,is_limited_ad_tracking,device_language,version,total_ads_watched,total_questions_answered,game_ended,tutorial_completed,second_session,last_event_date,last_event_name,Wheel_Impression,Wheel_Skips,Wheel_Spins,passed_10_min
+12cede3a87a9176da35a6422624e59e3,2025-11-21 00:00:00+00:00,1,3,2491.97,Netherlands,com.android.vending,Android,Android 15,No,en-us,1.0.3,0,18,0,0,0,2025-11-21 00:00:00+00:00,Question Started,0,0,0,1
+3b9eb2785211bf0ca58edfa8d4d6c3bb,2025-11-21 00:00:00+00:00,6,8,18675.22,Türkiye,com.android.vending,Android,Android 15,No,tr-tr,1.0.3,8,161,0,0,1,2025-11-24 00:00:00+00:00,Question Completed,6,6,0,1
+744a37f98b8975b7993e38979ae329da,2025-11-20 00:00:00+00:00,4,0,0.0,Iraq,com.android.vending,Android,Android 15,No,tr-tr,0.2.6,0,0,0,0,1,2025-11-24 00:00:00+00:00,Session Started,0,0,0,0
+80389e3f153d6b576fcfa52b4ce5c0f3,2025-11-20 00:00:00+00:00,7,11,46148.5,Türkiye,com.android.vending,Android,Android 12,No,tr-tr,1.0.3,8,148,0,0,1,2025-11-22 00:00:00+00:00,Menu Closed,3,0,3,1
+bddaaf4bc00908408330e6cd9787e970,2025-11-24 00:00:00+00:00,1,0,4.05,Türkiye,com.android.vending,Android,Android 13,No,tr-tr,1.0.3,0,0,0,0,0,2025-11-24 00:00:00+00:00,Session Started,0,0,0,0
+eb85bad30f0a9d92203ecd76a88b4aa7,2025-11-21 00:00:00+00:00,5,7,42503.32,Türkiye,com.android.vending,Android,Android 14,No,tr-tr,1.0.3,12,80,0,4,1,2025-11-23 00:00:00+00:00,Session Started,1,0,1,1
