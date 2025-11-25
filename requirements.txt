@@ -4,3 +4,4 @@ pyarrow
 db-dtypes
 jinja2
 plotly
+pathlib

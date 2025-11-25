@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from config.logging import get_logger
+from pathlib import Path
 
 logger = get_logger(__name__)
 
@@ -8,13 +9,15 @@ def ensure_directories(directories):
     """Ensure that the specified directories exist."""
     try:
         for d in directories:
-            path = os.path.abspath(os.path.expanduser(d))
-            os.makedirs(path, exist_ok=True)
+            # Make path absolute relative to repo root
+            path = Path(d).resolve()  
+            path.mkdir(parents=True, exist_ok=True)
             logger.info(f"Directory exists or created: {path}")
         logger.info("All folder structures validated.")
     except Exception as e:
         logger.error(f"Error creating directories: {e}")
         exit(1)
+
 
 def filter_events_by_date(df, context):
     """Filter events in the DataFrame to only include those on or after start_date (UTC)."""

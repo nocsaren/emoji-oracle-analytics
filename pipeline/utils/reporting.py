@@ -20,7 +20,11 @@ from pipeline.utils.plotting.plot_functions import (create_wrong_answers_heatmap
 
 
 def generate_report(df, dfs_dict, kpis, context):
-    output_path = context["report_path"]
+    
+    output_path = Path(context["report_path"]).resolve()
+    output_path.mkdir(parents=True, exist_ok=True)  # just in case
+
+
     df_by_ads = dfs_dict['by_ads']
     df_by_sessions = dfs_dict['by_sessions']
     df_by_users = dfs_dict['by_users']
