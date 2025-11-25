@@ -2,7 +2,8 @@ name: Run ETL
 
 on:
   schedule:
-    - cron: "0 5 * * *"   # runs daily at 05:00 UTC
+    - cron: "0 0 * * *"   # at 00:00 UTC every day
+    - cron: "0 12 * * *"   # runs daily at 12:00 UTC
   workflow_dispatch:      # allow manual runs
 
 jobs:
@@ -24,7 +25,7 @@ jobs:
     - name: Run ETL script
       env:
         BQ_SERVICE_ACCOUNT: ${{ secrets.BQ_SERVICE_ACCOUNT }}
-      run: python emoji_oracle.py
+      run: python main.py
 
     - name: Commit and push changes
       run: |
