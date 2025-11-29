@@ -240,6 +240,7 @@ def df_by_users(df: pd.DataFrame) -> pd.DataFrame:
             )
 
         # --- Count event-based actions per user ---
+        # Precompute tutorial_completed safely
         if 'event_params__tutorial_video' in df.columns:
             tutorial_completed = (df['event_params__tutorial_video'] == 'tutorial_video').astype(int)
         else:
@@ -265,7 +266,6 @@ def df_by_users(df: pd.DataFrame) -> pd.DataFrame:
 
         counts_df['second_session'] = (counts_df['session_started'] > 1).astype(int)
         counts_df = counts_df.drop(columns='session_started')
-
 
         # --- Last event per user ---
         last_event = (
