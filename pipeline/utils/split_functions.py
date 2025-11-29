@@ -240,6 +240,11 @@ def df_by_users(df: pd.DataFrame) -> pd.DataFrame:
             )
 
         # --- Count event-based actions per user ---
+        if 'event_params__tutorial_video' in df.columns:
+            tutorial_completed = (df['event_params__tutorial_video'] == 'tutorial_video').astype(int)
+        else:
+            tutorial_completed = pd.Series(0, index=df.index)
+
         counts_df = (
             pd.concat(
                 [
@@ -248,11 +253,7 @@ def df_by_users(df: pd.DataFrame) -> pd.DataFrame:
                         'total_ads_watched': (df['event_name'] == 'Ad Rewarded').astype(int),
                         'total_questions_answered': (df['event_name'] == 'Question Completed').astype(int),
                         'game_ended': (df['event_name'] == 'Game Ended').astype(int),
-                        'tutorial_completed': (
-                            (df['event_params__tutorial_video'] == 'tutorial_video').astype(int)
-                            if 'event_params__tutorial_video' in df.columns
-                            else pd.Series(0, index=df.index)
-                        ),
+                        'tutorial_completed': tutorial_completed,
                         'session_started': (df['event_name'] == 'Session Started').astype(int),
                     }, index=df.index),
                 ],
@@ -260,9 +261,11 @@ def df_by_users(df: pd.DataFrame) -> pd.DataFrame:
             )
             .groupby(user_groups, as_index=False)
             .sum(numeric_only=True)
-)
+        )
+
         counts_df['second_session'] = (counts_df['session_started'] > 1).astype(int)
         counts_df = counts_df.drop(columns='session_started')
+
 
         # --- Last event per user ---
         last_event = (
