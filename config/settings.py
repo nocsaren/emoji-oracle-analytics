@@ -11,7 +11,7 @@ REPORT_PATH = "./docs"
 
 DATASET = "emoji-oracle-74368.analytics_501671751"
 
-START_DATE = date(2025, 11, 20)
+START_DATE = date(2025, 11, 27)
 
 
 
