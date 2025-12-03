@@ -202,10 +202,6 @@ def df_by_users(df: pd.DataFrame) -> pd.DataFrame:
         ]
         df_no_end = df[~df['event_name'].isin(exclude_last_events)]
 
-        # --- Precompute masks for event counts ---
-        is_ad = df['event_name'] == 'Ad Impression'
-        is_question = df['event_name'] == 'Question Completed'
-
         # --- Base user-level aggregations ---
         df['session_duration_minutes'] = df['session_duration_seconds'] / 60
 
@@ -246,26 +242,22 @@ def df_by_users(df: pd.DataFrame) -> pd.DataFrame:
         else:
             tutorial_completed = pd.Series(0, index=df.index)
 
-        counts_df = (
-            pd.concat(
-                [
-                    df[user_groups],
-                    pd.DataFrame({
-                        'total_ads_watched': (df['event_name'] == 'Ad Rewarded').astype(int),
-                        'total_questions_answered': (df['event_name'] == 'Question Completed').astype(int),
-                        'game_ended': (df['event_name'] == 'Game Ended').astype(int),
-                        'tutorial_completed': tutorial_completed,
-                        'session_started': (df['event_name'] == 'Session Started').astype(int),
-                    }, index=df.index),
-                ],
-                axis=1
-            )
-            .groupby(user_groups, as_index=False)
-            .sum(numeric_only=True)
+        event_level = (
+            df[['user_pseudo_id', 'event_name', 'event_date']]
+            .drop_duplicates()
         )
 
-        counts_df['second_session'] = (counts_df['session_started'] > 1).astype(int)
-        counts_df = counts_df.drop(columns='session_started')
+        counts_df = (
+            event_level.assign(
+                total_ads_watched        = (event_level.event_name == 'Ad Rewarded').astype(int),
+                total_questions_answered = (event_level.event_name == 'Question Completed').astype(int),
+                game_ended               = (event_level.event_name == 'Game Ended').astype(int),
+                tutorial_completed       = (df.get('event_params__tutorial_video') == 'tutorial_video').astype(int),
+                session_started          = (event_level.event_name == 'Session Started').astype(int),
+            )
+            .groupby('user_pseudo_id', as_index=False)
+            .sum()
+        )
 
         # --- Last event per user ---
         last_event = (
