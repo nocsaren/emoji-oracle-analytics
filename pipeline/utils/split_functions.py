@@ -5,7 +5,7 @@ from config.logging import get_logger
 
 logger = get_logger(__name__)
 
-def df_by_sessions(df: pd.DataFrame) -> pd.DataFrame:
+def create_df_by_sessions(df: pd.DataFrame) -> pd.DataFrame:
     try:
         session_groups = ['event_params__ga_session_id', 'user_pseudo_id']
 
@@ -181,7 +181,7 @@ def df_by_sessions(df: pd.DataFrame) -> pd.DataFrame:
 
 
 
-def df_by_users(df: pd.DataFrame) -> pd.DataFrame:
+def create_df_by_users(df: pd.DataFrame) -> pd.DataFrame:
     try:
         user_groups = ['user_pseudo_id']
 
@@ -190,9 +190,9 @@ def df_by_users(df: pd.DataFrame) -> pd.DataFrame:
             'event_name', 'session_duration_seconds', 'event_date',
             'event_params__ga_session_id', 'event_params__character_name'
         ]
-        if not all(col in df.columns for col in required_cols + user_groups):
-            logger.warning("Missing required columns for df_by_users.")
-            return pd.DataFrame()
+        missing = [c for c in required_cols if c not in df.columns]
+        for c in missing:
+            df[c] = None
 
         # Events to exclude from last_event_date computation
         exclude_last_events = [
@@ -202,8 +202,22 @@ def df_by_users(df: pd.DataFrame) -> pd.DataFrame:
         ]
         df_no_end = df[~df['event_name'].isin(exclude_last_events)]
 
-        # --- Base user-level aggregations ---
+        # --- ensure session_duration_minutes exists ---
+        # --- ensure session_duration_minutes exists ---
         df['session_duration_minutes'] = df['session_duration_seconds'] / 60
+
+        # --- sum per unique session per user ---
+        df_sessions = (
+            df[['user_pseudo_id', 'event_params__ga_session_id', 'session_duration_minutes']]
+            .drop_duplicates(subset=['user_pseudo_id', 'event_params__ga_session_id'])
+        )
+
+        user_playtime = (
+            df_sessions.groupby('user_pseudo_id', as_index=False)
+                    .agg(total_playtime_minutes=('session_duration_minutes', 'sum'))
+        )
+
+        user_playtime['total_playtime_minutes'] = user_playtime['total_playtime_minutes'].round(2)
 
         user_df = (
             df.groupby(user_groups, as_index=False)
@@ -211,7 +225,6 @@ def df_by_users(df: pd.DataFrame) -> pd.DataFrame:
                 first_event_date=('event_date', 'min'),
                 total_sessions=('event_params__ga_session_id', 'nunique'),
                 total_characters_opened=('event_params__character_name', 'nunique'),
-                total_playtime_minutes=('session_duration_minutes', 'sum'),
                 country=('geo__country', 'first') if 'geo__country' in df.columns else ('event_name', 'first'),
                 install_source=('app_info__install_source', 'first') if 'app_info__install_source' in df.columns else ('event_name', 'first'),
                 operating_system=('device__operating_system', 'first') if 'device__operating_system' in df.columns else ('event_name', 'first'),
@@ -221,7 +234,9 @@ def df_by_users(df: pd.DataFrame) -> pd.DataFrame:
                 version=('app_info__version', 'last') if 'app_info__version' in df.columns else ('event_name', 'last'),
             )
         )
-        user_df['total_playtime_minutes'] = user_df['total_playtime_minutes'].round(2)
+
+        # --- then merge into your user_df ---
+        user_df = user_df.merge(user_playtime, on='user_pseudo_id', how='left')
 
         # --- Wheel metrics ---
         wheel = pd.DataFrame(columns=user_groups)
@@ -236,29 +251,24 @@ def df_by_users(df: pd.DataFrame) -> pd.DataFrame:
             )
 
         # --- Count event-based actions per user ---
-        # Precompute tutorial_completed safely
-        if 'event_params__tutorial_video' in df.columns:
-            tutorial_completed = (df['event_params__tutorial_video'] == 'tutorial_video').astype(int)
-        else:
-            tutorial_completed = pd.Series(0, index=df.index)
 
         event_level = (
-            df[['user_pseudo_id', 'event_name', 'event_date']]
+            df[['user_pseudo_id', 'event_name', 'event_timestamp']]
             .drop_duplicates()
         )
-
+        
         counts_df = (
             event_level.assign(
                 total_ads_watched        = (event_level.event_name == 'Ad Rewarded').astype(int),
                 total_questions_answered = (event_level.event_name == 'Question Completed').astype(int),
                 game_ended               = (event_level.event_name == 'Game Ended').astype(int),
-                tutorial_completed       = (df.get('event_params__tutorial_video') == 'tutorial_video').astype(int),
+                tutorial_completed       = (event_level.event_params__tutorial_video == 'tutorial_video').astype(int)
+                    if 'event_params__tutorial_video' in event_level.columns else 0,
                 session_started          = (event_level.event_name == 'Session Started').astype(int),
             )
             .groupby('user_pseudo_id', as_index=False)
-            .sum()
-        )
-
+            .sum(numeric_only=True)
+)
         # --- Last event per user ---
         last_event = (
             df_no_end
@@ -295,7 +305,7 @@ def df_by_users(df: pd.DataFrame) -> pd.DataFrame:
         return pd.DataFrame()
 
 
-def df_by_questions(df: pd.DataFrame) -> pd.DataFrame:
+def create_df_by_questions(df: pd.DataFrame) -> pd.DataFrame:
     try:
         question_groups = [
             'question_address',
@@ -381,7 +391,7 @@ def df_by_questions(df: pd.DataFrame) -> pd.DataFrame:
         return pd.DataFrame()
 
 
-def df_by_date(df: pd.DataFrame) -> pd.DataFrame:
+def create_df_by_date(df: pd.DataFrame) -> pd.DataFrame:
     try:
         # --- Ensure required columns exist ---
         required_cols = [
@@ -462,7 +472,7 @@ def df_by_date(df: pd.DataFrame) -> pd.DataFrame:
         logger.error(f"Error in df_by_date: {e}", exc_info=True)
         return pd.DataFrame()
 
-def df_technical_events(df: pd.DataFrame) -> pd.DataFrame:
+def create_df_technical_events(df: pd.DataFrame) -> pd.DataFrame:
     try:
         # --- Ensure required columns exist ---
         required_cols = [
@@ -525,7 +535,7 @@ def df_technical_events(df: pd.DataFrame) -> pd.DataFrame:
         return pd.DataFrame()
 
 
-def df_by_ads(df: pd.DataFrame) -> pd.DataFrame:
+def create_df_by_ads(df: pd.DataFrame) -> pd.DataFrame:
     try:
         # --- Ensure required columns exist ---
         if 'event_name' not in df.columns:
