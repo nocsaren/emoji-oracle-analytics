@@ -45,13 +45,12 @@ logger.info("Initializing BigQuery client...")
 # for local dev, use key file
 # NEEDS A PROPER key.json FILE FROM A GOOGLE SERVICE ACCOUNT
 
-# KEY_PATH = "./keys/key.json"
-# credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
+KEY_PATH = "./keys/key.json"
+credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
 
 # for GitHub Actions
-
-creds_dict = json.loads(os.environ["BQ_SERVICE_ACCOUNT"])
-credentials = service_account.Credentials.from_service_account_info(creds_dict)
+#creds_dict = json.loads(os.environ["BQ_SERVICE_ACCOUNT"])
+#credentials = service_account.Credentials.from_service_account_info(creds_dict)
 
 
 logger.info("BigQuery client initialized.")
@@ -96,7 +95,7 @@ if __name__ == "__main__":
 
     sliced_data.to_csv(os.path.join(settings.CSV_DIR, "sliced_data.csv"), index=False)
 
-
+    df.to_csv(os.path.join(settings.CSV_DIR, "processed_data.csv"), index=False)
 
     # for name, dataframe in dfs.items():
     #    dataframe.to_csv(os.path.join(settings.CSV_DIR, f"{name}_data.csv"), index=False)

@@ -183,128 +183,121 @@ def create_df_by_sessions(df: pd.DataFrame) -> pd.DataFrame:
 
 def create_df_by_users(df: pd.DataFrame) -> pd.DataFrame:
     try:
-        user_groups = ['user_pseudo_id']
+        user_key = "user_pseudo_id"
 
-        # --- Ensure required columns exist ---
-        required_cols = [
-            'event_name', 'session_duration_seconds', 'event_date',
-            'event_params__ga_session_id', 'event_params__character_name'
+        # --- Ensure required columns ---
+        required = [
+            "event_name", "event_date", "session_duration_seconds",
+            "event_params__ga_session_id", "event_params__character_name"
         ]
-        missing = [c for c in required_cols if c not in df.columns]
-        for c in missing:
-            df[c] = None
+        for c in required:
+            if c not in df.columns:
+                df[c] = None
 
-        # Events to exclude from last_event_date computation
-        exclude_last_events = [
-            'App Removed', 'App Data Cleared', 'App Updated',
-            'User Engagement', 'Screen Viewed', 'Firebase Campaign',
-            'Starting Currencies'
-        ]
-        df_no_end = df[~df['event_name'].isin(exclude_last_events)]
+        # Unified session duration
+        df["session_duration_minutes"] = df["session_duration_seconds"] / 60
 
-        # --- ensure session_duration_minutes exists ---
-        # --- ensure session_duration_minutes exists ---
-        df['session_duration_minutes'] = df['session_duration_seconds'] / 60
+        # --- Base per-user fields (unique-based metrics) ---
+        user_df = (
+            df.groupby(user_key, as_index=False)
+              .agg(
+                  first_event_date=("event_date", "min"),
+                  total_sessions=("event_params__ga_session_id", "nunique"),
+                  total_characters_opened=("event_params__character_name", "nunique"),
+                  country=("geo__country", "first") if "geo__country" in df.columns else ("event_name", "first"),
+                  install_source=("app_info__install_source", "first") if "app_info__install_source" in df.columns else ("event_name", "first"),
+                  operating_system=("device__operating_system", "first") if "device__operating_system" in df.columns else ("event_name", "first"),
+                  operating_system_version=("device__operating_system_version", "first") if "device__operating_system_version" in df.columns else ("event_name", "first"),
+                  is_limited_ad_tracking=("device__is_limited_ad_tracking", "first") if "device__is_limited_ad_tracking" in df.columns else ("event_name", "first"),
+                  device_language=("device__language", "first") if "device__language" in df.columns else ("event_name", "first"),
+                  version=("app_info__version", "last") if "app_info__version" in df.columns else ("event_name", "last"),
+              )
+        )
 
-        # --- sum per unique session per user ---
+        # --- Correct total playtime (one entry per session) ---
         df_sessions = (
-            df[['user_pseudo_id', 'event_params__ga_session_id', 'session_duration_minutes']]
-            .drop_duplicates(subset=['user_pseudo_id', 'event_params__ga_session_id'])
+            df[["user_pseudo_id", "event_params__ga_session_id", "session_duration_minutes"]]
+            .drop_duplicates(subset=["user_pseudo_id", "event_params__ga_session_id"])
         )
 
         user_playtime = (
-            df_sessions.groupby('user_pseudo_id', as_index=False)
-                    .agg(total_playtime_minutes=('session_duration_minutes', 'sum'))
+            df_sessions.groupby(user_key, as_index=False)
+                       .agg(total_playtime_minutes=("session_duration_minutes", "sum"))
         )
 
-        user_playtime['total_playtime_minutes'] = user_playtime['total_playtime_minutes'].round(2)
+        user_df = user_df.merge(user_playtime, on=user_key, how="left")
 
-        user_df = (
-            df.groupby(user_groups, as_index=False)
-            .agg(
-                first_event_date=('event_date', 'min'),
-                total_sessions=('event_params__ga_session_id', 'nunique'),
-                total_characters_opened=('event_params__character_name', 'nunique'),
-                country=('geo__country', 'first') if 'geo__country' in df.columns else ('event_name', 'first'),
-                install_source=('app_info__install_source', 'first') if 'app_info__install_source' in df.columns else ('event_name', 'first'),
-                operating_system=('device__operating_system', 'first') if 'device__operating_system' in df.columns else ('event_name', 'first'),
-                operating_system_version=('device__operating_system_version', 'first') if 'device__operating_system_version' in df.columns else ('event_name', 'first'),
-                is_limited_ad_tracking=('device__is_limited_ad_tracking', 'first') if 'device__is_limited_ad_tracking' in df.columns else ('event_name', 'first'),
-                device_language=('device__language', 'first') if 'device__language' in df.columns else ('event_name', 'first'),
-                version=('app_info__version', 'last') if 'app_info__version' in df.columns else ('event_name', 'last'),
-            )
-        )
-
-        # --- then merge into your user_df ---
-        user_df = user_df.merge(user_playtime, on='user_pseudo_id', how='left')
-
-        # --- Wheel metrics ---
-        wheel = pd.DataFrame(columns=user_groups)
-        if 'event_params__mini_game_ri' in df.columns:
-            wheel = (
-                df.groupby(user_groups, as_index=False)['event_params__mini_game_ri']
-                  .agg(
-                      Wheel_Impression=lambda x: (x == 'Daily Spin').sum(),
-                      Wheel_Skips=lambda x: (x == 'spin_skipped').sum(),
-                  )
-                  .assign(Wheel_Spins=lambda d: d['Wheel_Impression'] - d['Wheel_Skips'])
+        # --- Per-user event counts (robust) ---
+        def count_events(event):
+            return (
+                df[df["event_name"] == event]
+                .groupby(user_key)
+                .size()
+                .rename(event)
             )
 
-        # --- Count event-based actions per user ---
+        counts = pd.DataFrame({user_key: user_df[user_key]})
 
-        event_level = (
-            df[['user_pseudo_id', 'event_name', 'event_timestamp']]
-            .drop_duplicates()
-        )
-        
-        counts_df = (
-            event_level.assign(
-                total_ads_watched        = (event_level.event_name == 'Ad Rewarded').astype(int),
-                total_questions_answered = (event_level.event_name == 'Question Completed').astype(int),
-                game_ended               = (event_level.event_name == 'Game Ended').astype(int),
-                tutorial_completed       = (event_level.event_params__tutorial_video == 'tutorial_video').astype(int)
-                    if 'event_params__tutorial_video' in event_level.columns else 0,
-                app_removed              = (event_level.event_name == 'App Removed').astype(int),
-                session_started          = (event_level.event_name == 'Session Started').astype(int),
+        # Add each event safely
+        counts = counts.merge(count_events("Ad Rewarded"), on=user_key, how="left")
+        counts = counts.merge(count_events("Question Completed"), on=user_key, how="left")
+        counts = counts.merge(count_events("Game Ended"), on=user_key, how="left")
+        counts = counts.merge(count_events("App Removed"), on=user_key, how="left")
+        counts = counts.merge(count_events("Session Started"), on=user_key, how="left")
+
+        # Tutorial detection (robust)
+        if "event_params__tutorial_video" in df.columns:
+            tutorials = (
+                df[df["event_params__tutorial_video"] == "tutorial_video"]
+                .groupby(user_key)
+                .size()
+                .rename("tutorial_completed")
             )
-            .groupby('user_pseudo_id', as_index=False)
-            .sum(numeric_only=True)
-)
-        # --- Last event per user ---
+        else:
+            tutorials = pd.Series(0, index=user_df[user_key], name="tutorial_completed")
+
+        counts = counts.merge(tutorials, on=user_key, how="left")
+
+        # Replace NaN from users with no events
+        count_cols = [c for c in counts.columns if c != user_key]
+        counts[count_cols] = counts[count_cols].fillna(0).astype(int)
+
+        # --- Last event (excluding system noise) ---
+        exclude_last = [
+            "App Removed", "App Data Cleared", "App Updated",
+            "User Engagement", "Screen Viewed", "Firebase Campaign",
+            "Starting Currencies"
+        ]
+
+        df_no_end = df[~df["event_name"].isin(exclude_last)]
+
         last_event = (
-            df_no_end
-            .sort_values(['event_date'])
-            .drop_duplicates(subset=user_groups, keep='last')
-            [[*user_groups, 'event_date', 'event_name']]
-            .rename(columns={'event_date': 'last_event_date',
-                             'event_name': 'last_event_name'})
+            df_no_end.sort_values("event_date")
+                     .drop_duplicates(subset=[user_key], keep="last")
+                     [[user_key, "event_date", "event_name"]]
+                     .rename(columns={
+                         "event_date": "last_event_date",
+                         "event_name": "last_event_name"
+                     })
         )
 
-        # --- Merge everything ---
+        # Final merge
         user_df = (
             user_df
-            .merge(counts_df, on=user_groups, how='left')
-            .merge(last_event, on=user_groups, how='left')
-            .merge(wheel, on=user_groups, how='left')
-            .fillna({
-                'total_ads_watched': 0,
-                'total_questions_answered': 0,
-                'game_ended': 0,
-            })
+            .merge(counts, on=user_key, how="left")
+            .merge(last_event, on=user_key, how="left")
         )
 
-        user_df['passed_10_min'] = (user_df['total_playtime_minutes'] >= 10).astype(int)
+        # Derived KPI
+        user_df["passed_10_min"] = (
+            user_df["total_playtime_minutes"] >= 10
+        ).astype(int)
 
-        logger.info(
-            f"User-level dataframe created with {user_df.shape[0]} records and "
-            f"{user_df.shape[1]} columns."
-        )
         return user_df
 
     except Exception as e:
         logger.error(f"Error in df_by_users: {e}", exc_info=True)
         return pd.DataFrame()
-
 
 def create_df_by_questions(df: pd.DataFrame) -> pd.DataFrame:
     try:
