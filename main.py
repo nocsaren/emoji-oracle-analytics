@@ -45,13 +45,13 @@ logger.info("Initializing BigQuery client...")
 # for local dev, use key file
 # NEEDS A PROPER key.json FILE FROM A GOOGLE SERVICE ACCOUNT
 
-KEY_PATH = "./keys/key.json"
-credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
+# KEY_PATH = "./keys/key.json"
+# credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
 
 # for GitHub Actions
 
-# creds_dict = json.loads(os.environ["BQ_SERVICE_ACCOUNT"])
-# credentials = service_account.Credentials.from_service_account_info(creds_dict)
+creds_dict = json.loads(os.environ["BQ_SERVICE_ACCOUNT"])
+credentials = service_account.Credentials.from_service_account_info(creds_dict)
 
 
 logger.info("BigQuery client initialized.")
@@ -74,7 +74,8 @@ if __name__ == "__main__":
         'csv_dir': settings.CSV_DIR,
         "dataset": settings.DATASET,
         'start_date': settings.START_DATE,
-        'report_path': settings.REPORT_PATH
+        'report_path': settings.REPORT_PATH,
+        'country': settings.COUNTRY
     }
     
 

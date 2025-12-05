@@ -38,3 +38,14 @@ def filter_events_by_date(df, context):
         f"Filtered events from {len(df)} to {len(filtered_df)} based on start date {start_dt}."
     )
     return filtered_df
+
+def filter_events_by_country(df, context):
+    """Filter events in the DataFrame to only include those on or after start_date (UTC)."""
+    # Convert date to pandas Timestamp (assumed UTC)
+    country = context['country']
+    filtered_df = df[df['geo__country'].isin(country)]
+
+    logger.info(
+        f"Filtered events from {len(df)} to {len(filtered_df)} based on countries: {country}."
+    )
+    return filtered_df

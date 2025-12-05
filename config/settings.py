@@ -13,6 +13,6 @@ DATASET = "emoji-oracle-74368.analytics_501671751"
 
 START_DATE = date(2025, 11, 27)
 
-
+COUNTRY= ['United States'] # SHOULD ALWAYS BE A LIST, I.E. []
 
 
