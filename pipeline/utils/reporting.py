@@ -18,7 +18,8 @@ from pipeline.utils.plotting.plot_functions import (create_wrong_answers_heatmap
                                              create_ads_per_day_chart,
                                              create_user_last_event_chart,
                                              create_session_last_event_chart,
-                                             create_new_users_per_day_chart
+                                             create_new_users_per_day_chart,
+                                             create_cum_install_uninstall_chart
                                              )
 
 
@@ -52,6 +53,7 @@ def generate_report(df, dfs_dict, kpis, context):
     user_last_event_chart = create_user_last_event_chart(df_by_users)
     session_last_event_chart = create_session_last_event_chart(df_by_sessions)
     new_users_per_day_chart = create_new_users_per_day_chart(df_by_date)
+    cum_install_uninstall_chart = create_cum_install_uninstall_chart(df)
 
     # --- Jinja2 setup ---
     from jinja2 import Environment, FileSystemLoader
@@ -73,12 +75,14 @@ def generate_report(df, dfs_dict, kpis, context):
                 users_chart=users_per_day_chart,
                 new_users_per_day_chart=new_users_per_day_chart,
                 user_last_event_chart=user_last_event_chart,
+                cum_install_uninstall_chart = cum_install_uninstall_chart,
                 new_users=(
                     df_by_users.sort_values("first_event_date", ascending=False)
                                .head(100)
                                .to_dict(orient="records")
                 ),
                 users_cols=list(df_by_users.columns),
+                
                 kpis=kpis
             )
         ),

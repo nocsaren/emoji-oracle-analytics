@@ -264,6 +264,7 @@ def create_df_by_users(df: pd.DataFrame) -> pd.DataFrame:
                 game_ended               = (event_level.event_name == 'Game Ended').astype(int),
                 tutorial_completed       = (event_level.event_params__tutorial_video == 'tutorial_video').astype(int)
                     if 'event_params__tutorial_video' in event_level.columns else 0,
+                app_removed              = (event_level.event_name == 'App Removed').astype(int),
                 session_started          = (event_level.event_name == 'Session Started').astype(int),
             )
             .groupby('user_pseudo_id', as_index=False)

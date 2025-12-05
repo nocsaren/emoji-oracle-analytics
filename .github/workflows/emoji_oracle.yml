@@ -2,10 +2,10 @@ name: Run ETL
 
 on:
   schedule:
-    - cron: "0 6 * * *"    # at 00:00 UTC every day
-    - cron: "0 10 * * *"   # at 10:00 UTC every day
-    - cron: "0 12 * * *"   # at 12:00 UTC every day
-    - cron: "0 0 * * *"    # at 00:00 UTC every day
+    - cron: "0 6 * * *"    # at 9:00 IST every day
+    - cron: "0 10 * * *"   # at 13:00 IST every day
+    - cron: "0 12 * * *"   # at 15:00 IST every day
+    - cron: "0 0 * * *"    # at 3:00 IST every day
   workflow_dispatch:        # allow manual runs
 
 permissions:

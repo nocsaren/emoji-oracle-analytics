@@ -5,7 +5,6 @@ from google.cloud import bigquery
 from google.oauth2 import service_account
 from datetime import date
 
-import argparse
 import os
 import json
 import pandas as pd
@@ -41,26 +40,18 @@ for name in dir(settings):
     
 ensure_directories(folders_to_create)
 
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--data_dir", help="Override data directory")
-    parser.add_argument("--log_path", help="Override log path")
-    parser.add_argument("--csv_dir", help="Override CSV directory")
-    parser.add_argument("--report_path", help="Override report path")
-    return parser.parse_args()
-
 logger.info("Initializing BigQuery client...")
 
 # for local dev, use key file
 # NEEDS A PROPER key.json FILE FROM A GOOGLE SERVICE ACCOUNT
 
-# KEY_PATH = "./keys/key.json"
-# credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
+KEY_PATH = "./keys/key.json"
+credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
 
 # for GitHub Actions
 
-creds_dict = json.loads(os.environ["BQ_SERVICE_ACCOUNT"])
-credentials = service_account.Credentials.from_service_account_info(creds_dict)
+# creds_dict = json.loads(os.environ["BQ_SERVICE_ACCOUNT"])
+# credentials = service_account.Credentials.from_service_account_info(creds_dict)
 
 
 logger.info("BigQuery client initialized.")
@@ -73,14 +64,7 @@ df_sessions = pd.DataFrame()
 logger.info("Starting data pull...")
 if __name__ == "__main__":
 
-    args = parse_args()
-
-    # Override settings if CLI args are provided
-    data_dir = args.data_dir if args.data_dir else settings.DATA_DIR
-    log_path = args.log_path if args.log_path else settings.LOG_PATH
-    csv_dir = args.csv_dir if args.csv_dir else settings.CSV_DIR
-    report_path = args.report_path if args.report_path else settings.REPORT_PATH
-    
+ 
     client = bigquery.Client(credentials=credentials)
 
     context = {
@@ -107,7 +91,11 @@ if __name__ == "__main__":
 
     kpis = calculate_kpis(df=df, dict=dfs)
     
-    # df.to_csv(os.path.join(settings.CSV_DIR, "processed_data.csv"), index=False)
+    sliced_data = df[df['user_pseudo_id'] == 'a6bdeeb9060751b4b3a2c29d71b5e049'].copy()
+
+    sliced_data.to_csv(os.path.join(settings.CSV_DIR, "sliced_data.csv"), index=False)
+
+
 
     # for name, dataframe in dfs.items():
     #    dataframe.to_csv(os.path.join(settings.CSV_DIR, f"{name}_data.csv"), index=False)

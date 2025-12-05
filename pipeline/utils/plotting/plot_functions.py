@@ -99,8 +99,6 @@ def create_wrong_answers_heatmap(df: pd.DataFrame):
     return fig.to_html(full_html=False, include_plotlyjs='cdn')
 
 
-
-
 def create_users_per_day_chart(df: pd.DataFrame):
     """
     Create a line chart showing the number of unique users per day.
@@ -148,6 +146,54 @@ def create_cumulative_users_chart(df: pd.DataFrame):
     )
 
     return fig.to_html(full_html=False, include_plotlyjs='cdn')
+
+
+def create_cum_install_uninstall_chart(df: pd.DataFrame):
+
+    # 1. Create install flag — unique users per day
+    df['install_flag'] = df.groupby('user_pseudo_id')['event_date'].transform('min') == df['event_date']
+    df['install_flag'] = df['install_flag'].astype(int)
+
+    # 2. Uninstall flag
+    df['uninstall_flag'] = (df['event_name'] == 'App Removed').astype(int)
+
+    # 3. Aggregate per day
+    daily = df.groupby('event_date').agg(
+        installs=('install_flag', 'sum'),
+        uninstalls=('uninstall_flag', 'sum')
+    ).sort_index()
+
+    # 4. Compute cumulative
+    daily['cum_installs'] = daily['installs'].cumsum()
+    daily['cum_uninstalls'] = daily['uninstalls'].cumsum()
+
+    # 5. Plot
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatter(
+        x=daily.index,
+        y=daily['cum_installs'],
+        mode='lines',
+        name='Cumulative Installs',
+        fill='tozeroy'
+    ))
+
+    fig.add_trace(go.Scatter(
+        x=daily.index,
+        y=daily['cum_uninstalls'],
+        mode='lines',
+        name='Cumulative Uninstalls'
+    ))
+
+    fig.update_layout(
+        title='Cumulative Installs and Uninstalls',
+        xaxis_title='Date',
+        yaxis_title='Count',
+    )
+
+    return fig.to_html(full_html=False, include_plotlyjs='cdn')
+
+
 
 def create_sessions_per_day_chart(df: pd.DataFrame): 
     """
