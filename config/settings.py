@@ -1,7 +1,7 @@
 from datetime import date
 
-DATA_DIR = "parquet-store"
-LOG_PATH = "parquet-store/log.txt"
+DATA_DIR = "./parquet-store"
+LOG_PATH = "./parquet-store/log.txt"
 
 # LOG_PATH = "./logs/downloaded_tables.log"
 # DATA_DIR = "./data/parquet"

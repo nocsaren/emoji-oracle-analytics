@@ -42,16 +42,23 @@ ensure_directories(folders_to_create)
 
 logger.info("Initializing BigQuery client...")
 
-# for local dev, use key file
-# NEEDS A PROPER key.json FILE FROM A GOOGLE SERVICE ACCOUNT
 
-KEY_PATH = "./keys/key.json"
-credentials = service_account.Credentials.from_service_account_file(KEY_PATH)
 
-# for GitHub Actions
-#creds_dict = json.loads(os.environ["BQ_SERVICE_ACCOUNT"])
-#credentials = service_account.Credentials.from_service_account_info(creds_dict)
+def load_credentials():
+    # GitHub Actions way
+    creds_env = os.environ.get("BQ_SERVICE_ACCOUNT")
+    if creds_env:
+        creds_dict = json.loads(creds_env)
+        return service_account.Credentials.from_service_account_info(creds_dict)
 
+    # Local Dev way
+    key_path = "./keys/key.json"
+    if os.path.exists(key_path):
+        return service_account.Credentials.from_service_account_file(key_path)
+
+    raise RuntimeError("No Google service account credentials found.")
+
+credentials = load_credentials()
 
 logger.info("BigQuery client initialized.")
 
