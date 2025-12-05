@@ -43,7 +43,7 @@ main.content {
     padding: 20px;
 
     /* This is the element that should scroll vertically */
-    overflow-y: auto;
+    overflow-y: scroll;
     overflow-x: hidden;
 }
 
