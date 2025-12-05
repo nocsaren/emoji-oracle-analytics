@@ -151,8 +151,7 @@ def create_cumulative_users_chart(df: pd.DataFrame):
 def create_cum_install_uninstall_chart(df: pd.DataFrame):
 
     # 1. Create install flag — unique users per day
-    df['install_flag'] = df.groupby('user_pseudo_id')['event_date'].transform('min') == df['event_date']
-    df['install_flag'] = df['install_flag'].astype(int)
+    df['install_flag'] = (df['event_name'] == 'First Open').astype(int)
 
     # 2. Uninstall flag
     df['uninstall_flag'] = (df['event_name'] == 'App Removed').astype(int)
