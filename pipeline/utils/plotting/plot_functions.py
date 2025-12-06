@@ -181,7 +181,8 @@ def create_cum_install_uninstall_chart(df: pd.DataFrame):
         x=daily.index,
         y=daily['cum_uninstalls'],
         mode='lines',
-        name='Cumulative Uninstalls'
+        name='Cumulative Uninstalls',
+        fill='tozeroy'
     ))
 
     fig.update_layout(
@@ -236,6 +237,28 @@ def create_session_duration_histogram(df: pd.DataFrame):
     )
 
     return fig.to_html(full_html=False, include_plotlyjs='cdn')
+
+def create_total_playtime_histogram(df: pd.DataFrame):
+
+    fig = go.Figure(
+        data=go.Histogram(
+            x=df['total_playtime_minutes'],
+            xbins=dict(
+                start=0,
+                end=df['total_playtime_minutes'].max(),
+                size=5   # adjust as you like
+            ),
+            marker=dict(color='orange')
+        )
+    )
+    fig.update_layout(
+        title='Total Playtime Distribution',
+        xaxis_title='Total Playtime (minutes)',
+        yaxis_title='Count of Playtime'
+    )
+
+    return fig.to_html(full_html=False, include_plotlyjs='cdn')
+
 
 
 def create_ads_per_question_heatmap(df: pd.DataFrame):
@@ -523,25 +546,6 @@ def create_session_last_event_chart(df: pd.DataFrame):
     )
     return fig.to_html(full_html=False, include_plotlyjs='cdn')
 
-def create_new_users_per_day_chart(df: pd.DataFrame):
-    """
-    Create a line chart showing the number of new users per day.
-    """
-    fig = go.Figure(
-        data=go.Scatter(
-            x=df['event_date'],
-            y=df['new_users'],
-            mode='lines+markers',
-            line=dict(color='orange'),
-            marker=dict(size=6)
-        )
-    )
-    fig.update_layout(
-        title='New Users Per Day',
-        xaxis_title='Date',
-        yaxis_title='Number of New Users',
-        xaxis=dict(tickformat='%Y-%m-%d'),
-        yaxis=dict(dtick=1)
-    )
 
-    return fig.to_html(full_html=False, include_plotlyjs='cdn')
+
+

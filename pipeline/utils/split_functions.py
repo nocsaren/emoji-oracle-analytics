@@ -292,7 +292,7 @@ def create_df_by_users(df: pd.DataFrame) -> pd.DataFrame:
         user_df["passed_10_min"] = (
             user_df["total_playtime_minutes"] >= 10
         ).astype(int)
-
+        user_df["total_playtime_minutes"] = user_df["total_playtime_minutes"].round(2)
         return user_df
 
     except Exception as e:

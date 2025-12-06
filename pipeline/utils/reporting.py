@@ -18,9 +18,18 @@ from pipeline.utils.plotting.plot_functions import (create_wrong_answers_heatmap
                                              create_ads_per_day_chart,
                                              create_user_last_event_chart,
                                              create_session_last_event_chart,
-                                             create_new_users_per_day_chart,
-                                             create_cum_install_uninstall_chart
+                                             create_cum_install_uninstall_chart,
+                                             create_total_playtime_histogram
                                              )
+
+
+
+from pipeline.utils.plotting.user_plots import (create_user_behaviour_per_day_chart,
+                                                create_user_last_event_chart, 
+                                                create_uninstall_last_event_chart,
+                                                create_question_progress_histogram,
+                                                create_character_progress_histogram,
+                                                create_session_counts_histogram)
 
 
 def generate_report(df, dfs_dict, kpis, context):
@@ -50,10 +59,16 @@ def generate_report(df, dfs_dict, kpis, context):
     item_histograms = [create_item_per_question_heatmap(item, df_by_questions) for item in item_list]
     ads_per_day_chart = create_ads_per_day_chart(df_by_date)
     sessions_per_day_chart = create_sessions_per_day_chart(df_by_date)
-    user_last_event_chart = create_user_last_event_chart(df_by_users)
     session_last_event_chart = create_session_last_event_chart(df_by_sessions)
-    new_users_per_day_chart = create_new_users_per_day_chart(df_by_date)
+    user_behaviour_per_day_chart = create_user_behaviour_per_day_chart(df)
     cum_install_uninstall_chart = create_cum_install_uninstall_chart(df)
+    total_playtime_histogram = create_total_playtime_histogram(df_by_users)
+    user_last_event_chart = create_user_last_event_chart(df_by_users)
+    uninstall_last_event_chart = create_uninstall_last_event_chart(df_by_users)
+    question_progress_histogram = create_question_progress_histogram(df_by_users)
+    character_progress_histogram = create_character_progress_histogram(df_by_users)
+    session_counts_histogram = create_session_counts_histogram(df_by_users)
+    
 
     # --- Jinja2 setup ---
     from jinja2 import Environment, FileSystemLoader
@@ -73,9 +88,14 @@ def generate_report(df, dfs_dict, kpis, context):
             dict(
                 title="Users",
                 users_chart=users_per_day_chart,
-                new_users_per_day_chart=new_users_per_day_chart,
+                user_behaviour_per_day_chart=user_behaviour_per_day_chart,
                 user_last_event_chart=user_last_event_chart,
                 cum_install_uninstall_chart = cum_install_uninstall_chart,
+                total_playtime_histogram = total_playtime_histogram,
+                uninstall_last_event_chart = uninstall_last_event_chart,
+                question_progress_histogram = question_progress_histogram,
+                character_progress_histogram = character_progress_histogram,
+                session_counts_histogram = session_counts_histogram,
                 new_users=(
                     df_by_users.sort_values("first_event_date", ascending=False)
                                .head(100)
