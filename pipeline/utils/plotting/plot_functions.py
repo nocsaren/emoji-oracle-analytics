@@ -3,6 +3,13 @@ import plotly.graph_objects as go
 
 
 from config.logging import get_logger
+from config.plot_style import (DEFAULT_LAYOUT,
+                               BAR_LAYOUT,
+                               LINE_LAYOUT,
+                               HIST_LAYOUT,
+                               HEAT_LAYOUT,
+                               PIE_LAYOUT
+)
 
 import datetime as dt
 
@@ -16,10 +23,6 @@ def create_wrong_answers_heatmap(df: pd.DataFrame):
     header_px = 100      # space for x-axis labels
     left_px = 100        # space for y-axis labels
 
-    min_height = 400
-    max_height = 1800
-    min_width = 700
-    max_width = 1800
 
     # ------------------ aggregation ------------------
     heat = (
@@ -50,19 +53,13 @@ def create_wrong_answers_heatmap(df: pd.DataFrame):
     n_rows = len(pivot.index)
     n_cols = len(pivot.columns)
 
-    height = header_px + n_rows * row_px
-    height = max(min_height, min(height, max_height))
-
-    width = left_px + n_cols * col_px
-    width = max(min_width, min(width, max_width))
-
     # ------------------ figure ------------------
     fig = go.Figure(
         data=go.Heatmap(            
             z=pivot.values,
             x=[tiers, questions],
             y=pivot.index.tolist(),
-            colorscale='Oranges',
+            colorscale='OrRd',
             showscale=False,
             hovertemplate=(
                 "Character: %{y}<br>"
@@ -88,40 +85,18 @@ def create_wrong_answers_heatmap(df: pd.DataFrame):
         xaxis=dict(type='multicategory'),
         yaxis=dict(title='Character'),
         xaxis_title='Tier - Question',
-        height=height,
-        width=width,
-        autosize=False,
+        autosize=True,
         margin=dict(l=left_px, r=40, t=160, b=80)
     )
+    fig.update_layout(**DEFAULT_LAYOUT)
+    fig.update_layout(**HEAT_LAYOUT)
 
-    fig.update_xaxes(side='top')
+    return fig.to_html(full_html=False, 
+                       include_plotlyjs='cdn',
+                       config={'responsive': True})
 
-    return fig.to_html(full_html=False, include_plotlyjs='cdn')
 
 
-def create_users_per_day_chart(df: pd.DataFrame):
-    """
-    Create a line chart showing the number of unique users per day.
-    """
-
-    fig = go.Figure(
-        data=go.Scatter(
-            x=df['event_date'],
-            y=df['unique_users'],
-            mode='lines+markers',
-            line=dict(color='blue'),
-            marker=dict(size=6)
-        )
-    )
-    fig.update_layout(
-        title='Unique Users Per Day',
-        xaxis_title='Date',
-        yaxis_title='Number of Unique Users',
-        xaxis=dict(tickformat='%Y-%m-%d'),
-        yaxis=dict(dtick=1)
-    )
-
-    return fig.to_html(full_html=False, include_plotlyjs='cdn')
 
 def create_cumulative_users_chart(df: pd.DataFrame):
     """
@@ -144,8 +119,12 @@ def create_cumulative_users_chart(df: pd.DataFrame):
         xaxis=dict(tickformat='%Y-%m-%d'),
         yaxis=dict(dtick=5)
     )
+    fig.update_layout(**DEFAULT_LAYOUT)
+    fig.update_layout(**LINE_LAYOUT)
 
-    return fig.to_html(full_html=False, include_plotlyjs='cdn')
+    return fig.to_html(full_html=False, 
+                       include_plotlyjs='cdn',
+                       config={'responsive': True})
 
 
 def create_cum_install_uninstall_chart(df: pd.DataFrame):
@@ -190,8 +169,12 @@ def create_cum_install_uninstall_chart(df: pd.DataFrame):
         xaxis_title='Date',
         yaxis_title='Count',
     )
+    fig.update_layout(**DEFAULT_LAYOUT)
+    fig.update_layout(**LINE_LAYOUT)
 
-    return fig.to_html(full_html=False, include_plotlyjs='cdn')
+    return fig.to_html(full_html=False, 
+                       include_plotlyjs='cdn',
+                       config={'responsive': True})
 
 
 
@@ -214,10 +197,14 @@ def create_sessions_per_day_chart(df: pd.DataFrame):
         xaxis_title='Date',
         yaxis_title='Number of Sessions',
         xaxis=dict(tickformat='%Y-%m-%d'),
-        yaxis=dict(dtick=1)
+        yaxis=dict(dtick=1),
     )
+    fig.update_layout(**DEFAULT_LAYOUT)
+    fig.update_layout(**LINE_LAYOUT)
 
-    return fig.to_html(full_html=False, include_plotlyjs='cdn')
+    return fig.to_html(full_html=False, 
+                       include_plotlyjs='cdn',
+                       config={'responsive': True})
 
 def create_session_duration_histogram(df: pd.DataFrame):
     """
@@ -226,8 +213,7 @@ def create_session_duration_histogram(df: pd.DataFrame):
 
     fig = go.Figure(
         data=go.Histogram(
-            x=df['session_duration_seconds'] / 60,
-            marker=dict(color='orange')
+            x=df['session_duration_seconds'] / 60
         )
     )
     fig.update_layout(
@@ -235,8 +221,12 @@ def create_session_duration_histogram(df: pd.DataFrame):
         xaxis_title='Session Duration (minutes)',
         yaxis_title='Count of Sessions'
     )
+    fig.update_layout(**DEFAULT_LAYOUT)
+    fig.update_layout(**HIST_LAYOUT)
 
-    return fig.to_html(full_html=False, include_plotlyjs='cdn')
+    return fig.to_html(full_html=False, 
+                       include_plotlyjs='cdn',
+                       config={'responsive': True})
 
 def create_total_playtime_histogram(df: pd.DataFrame):
 
@@ -247,8 +237,7 @@ def create_total_playtime_histogram(df: pd.DataFrame):
                 start=0,
                 end=df['total_playtime_minutes'].max(),
                 size=5   # adjust as you like
-            ),
-            marker=dict(color='orange')
+            )
         )
     )
     fig.update_layout(
@@ -256,8 +245,12 @@ def create_total_playtime_histogram(df: pd.DataFrame):
         xaxis_title='Total Playtime (minutes)',
         yaxis_title='Count of Playtime'
     )
+    fig.update_layout(**DEFAULT_LAYOUT)
+    fig.update_layout(**HIST_LAYOUT)
 
-    return fig.to_html(full_html=False, include_plotlyjs='cdn')
+    return fig.to_html(full_html=False, 
+                       include_plotlyjs='cdn',
+                       config={'responsive': True})
 
 
 
@@ -269,10 +262,6 @@ def create_ads_per_question_heatmap(df: pd.DataFrame):
     header_px = 100      # space for x-axis labels
     left_px = 100        # space for y-axis labels
 
-    min_height = 400
-    max_height = 1800
-    min_width = 700
-    max_width = 1800
 
     # ------------------ aggregation ------------------
     heat = (
@@ -303,19 +292,13 @@ def create_ads_per_question_heatmap(df: pd.DataFrame):
     n_rows = len(pivot.index)
     n_cols = len(pivot.columns)
 
-    height = header_px + n_rows * row_px
-    height = max(min_height, min(height, max_height))
-
-    width = left_px + n_cols * col_px
-    width = max(min_width, min(width, max_width))
-
     # ------------------ figure ------------------
     fig = go.Figure(
         data=go.Heatmap(
             z=pivot.values,
             x=[tiers, questions],
             y=pivot.index.tolist(),
-            colorscale='Oranges',
+            colorscale='Purples',
             showscale=False,
             hovertemplate=(
                 "Character: %{y}<br>"
@@ -341,15 +324,17 @@ def create_ads_per_question_heatmap(df: pd.DataFrame):
         xaxis=dict(type='multicategory'),
         yaxis=dict(title='Character'),
         xaxis_title='Tier - Question',
-        height=height,
-        width=width,
-        autosize=False,
+        autosize=True,
         margin=dict(l=left_px, r=40, t=160, b=80)
     )
 
-    fig.update_xaxes(side='top')
+    fig.update_layout(**DEFAULT_LAYOUT)
+    fig.update_layout(**HEAT_LAYOUT)
 
-    return fig.to_html(full_html=False, include_plotlyjs='cdn')
+
+    return fig.to_html(full_html=False, 
+                       include_plotlyjs='cdn',
+                       config={'responsive': True})
 
 
 def create_item_per_question_heatmap(item, df: pd.DataFrame):
@@ -360,10 +345,6 @@ def create_item_per_question_heatmap(item, df: pd.DataFrame):
     header_px = 100      # space for x-axis labels
     left_px = 100        # space for y-axis labels
 
-    min_height = 400
-    max_height = 1800
-    min_width = 700
-    max_width = 1800
 
     # ------------------ aggregation ------------------
     heat = (
@@ -394,19 +375,13 @@ def create_item_per_question_heatmap(item, df: pd.DataFrame):
     n_rows = len(pivot.index)
     n_cols = len(pivot.columns)
 
-    height = header_px + n_rows * row_px
-    height = max(min_height, min(height, max_height))
-
-    width = left_px + n_cols * col_px
-    width = max(min_width, min(width, max_width))
-
     # ------------------ figure ------------------
     fig = go.Figure(
         data=go.Heatmap(
             z=pivot.values,
             x=[tiers, questions],
             y=pivot.index.tolist(),
-            colorscale='Oranges',
+            colorscale='Blues',
             showscale=False,
             hovertemplate=(
                 "Character: %{y}<br>"
@@ -433,15 +408,18 @@ def create_item_per_question_heatmap(item, df: pd.DataFrame):
         xaxis=dict(type='multicategory'),
         yaxis=dict(title='Character'),
         xaxis_title='Tier - Question',
-        height=height,
-        width=width,
-        autosize=False,
+        autosize=True,
         margin=dict(l=left_px, r=40, t=160, b=80)
     )
+    
+    fig.update_layout(**DEFAULT_LAYOUT)
+    fig.update_layout(**HEAT_LAYOUT)
 
-    fig.update_xaxes(side='top')
+    
 
-    return fig.to_html(full_html=False, include_plotlyjs='cdn')
+    return fig.to_html(full_html=False, 
+                       include_plotlyjs='cdn',
+                       config={'responsive': True})
 
 def create_ads_per_day_chart(df: pd.DataFrame):
     """
@@ -462,10 +440,14 @@ def create_ads_per_day_chart(df: pd.DataFrame):
         xaxis_title='Date',
         yaxis_title='Number of Ads Viewed',
         xaxis=dict(tickformat='%Y-%m-%d'),
-        yaxis=dict(dtick=1)
+        yaxis=dict(dtick=1),
     )
+    fig.update_layout(**DEFAULT_LAYOUT)
+    fig.update_layout(**LINE_LAYOUT)
 
-    return fig.to_html(full_html=False, include_plotlyjs='cdn')
+    return fig.to_html(full_html=False, 
+                       include_plotlyjs='cdn',
+                       config={'responsive': True})
 
 import datetime as dt
 import pandas as pd
@@ -475,11 +457,15 @@ def create_user_last_event_chart(df: pd.DataFrame, threshold: int = 7):
     """
     Create a histogram of the last event users generated, for users inactive > threshold days.
     """
+
+
     if df.empty:
         # return an empty figure HTML if no data
         fig = go.Figure()
         fig.update_layout(title="No data")
-        return fig.to_html(full_html=False, include_plotlyjs='cdn')
+        return fig.to_html(full_html=False, 
+                       include_plotlyjs='cdn',
+                       config={'responsive': True})
 
     # Ensure last_event_date is datetime
     last_dates = pd.to_datetime(df['last_event_date'], errors='coerce')
@@ -500,51 +486,67 @@ def create_user_last_event_chart(df: pd.DataFrame, threshold: int = 7):
     if df.empty:
         fig = go.Figure()
         fig.update_layout(title=f'No users inactive for more than {threshold} days')
-        return fig.to_html(full_html=False, include_plotlyjs='cdn')
+        return fig.to_html(full_html=False, 
+                       include_plotlyjs='cdn',
+                       config={'responsive': True})
 
     # Count events (ordered by count)
     counts = df['last_event_name'].value_counts()
+    
+    colors = [BAR_LAYOUT["colorway"][i % len(BAR_LAYOUT["colorway"])] 
+          for i in range(len(counts))]
 
     fig = go.Figure(
         data=go.Bar(
             x=counts.index,
             y=counts.values,
-            marker=dict(color='cyan')
+            marker=dict(color=colors)
         )
     )
     fig.update_layout(
         title=f'Last Event Generated by Users Inactive for More Than {threshold} Days',
         xaxis_title='Event Name',
-        yaxis_title='Number of Users'
+        yaxis_title='Number of Users',
     )
-    return fig.to_html(full_html=False, include_plotlyjs='cdn')
+    fig.update_layout(**DEFAULT_LAYOUT)
+    fig.update_layout(**BAR_LAYOUT)
+    return fig.to_html(full_html=False, 
+                       include_plotlyjs='cdn',
+                       config={'responsive': True})
 
 def create_session_last_event_chart(df: pd.DataFrame):
-    """
-    Create a histogram of the last event sessions had, for sessions inactive > threshold days.
-    """
+
     if df.empty:
         # return an empty figure HTML if no data
         fig = go.Figure()
         fig.update_layout(title="No data")
-        return fig.to_html(full_html=False, include_plotlyjs='cdn')
+        return fig.to_html(full_html=False, 
+                       include_plotlyjs='cdn',
+                       config={'responsive': True})
 
     # Count events (ordered by count)
+
     counts = df['last_event_name'].value_counts()
+    colors = [BAR_LAYOUT["colorway"][i % len(BAR_LAYOUT["colorway"])] 
+          for i in range(len(counts))]
 
     fig = go.Figure(
         data=go.Bar(
             x=counts.index,
             y=counts.values,
-            marker=dict(color='magenta')
+            marker=dict(color=colors)
         )
     )
     fig.update_layout(
         title=f'Last Event in Sessions',
         xaxis_title='Event Name',
-        yaxis_title='Number of Sessions'
+        yaxis_title='Number of Sessions',
     )
-    return fig.to_html(full_html=False, include_plotlyjs='cdn')
+    fig.update_layout(**DEFAULT_LAYOUT)
+    fig.update_layout(**BAR_LAYOUT)
+    return fig.to_html(full_html=False, 
+                       include_plotlyjs='cdn',
+                       config={'responsive': True})
 
 
 

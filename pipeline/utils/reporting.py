@@ -8,8 +8,7 @@ import numpy as np
 
 logger = get_logger(__name__)
 
-from pipeline.utils.plotting.plot_functions import (create_wrong_answers_heatmap, 
-                                             create_users_per_day_chart, 
+from pipeline.utils.plotting.plot_functions import (create_wrong_answers_heatmap,                                              
                                              create_cumulative_users_chart,
                                              create_session_duration_histogram,
                                              create_sessions_per_day_chart,
@@ -24,12 +23,15 @@ from pipeline.utils.plotting.plot_functions import (create_wrong_answers_heatmap
 
 
 
-from pipeline.utils.plotting.user_plots import (create_user_behaviour_per_day_chart,
+from pipeline.utils.plotting.user_plots import (create_users_per_day_chart,
+                                                create_user_behaviour_per_day_chart,
                                                 create_user_last_event_chart, 
                                                 create_uninstall_last_event_chart,
                                                 create_question_progress_histogram,
                                                 create_character_progress_histogram,
-                                                create_session_counts_histogram)
+                                                create_session_counts_histogram,
+                                                create_daily_install_uninstall_delta_chart,
+                                                )
 
 
 def generate_report(df, dfs_dict, kpis, context):
@@ -54,7 +56,6 @@ def generate_report(df, dfs_dict, kpis, context):
     questions_heatmap = create_wrong_answers_heatmap(df_by_questions)
     ads_per_question_heatmap = create_ads_per_question_heatmap(df_by_questions)
     users_per_day_chart = create_users_per_day_chart(df_by_date)
-    cumulative_users_chart = create_cumulative_users_chart(df_by_date)
     session_duration_histogram = create_session_duration_histogram(df_by_sessions)
     item_histograms = [create_item_per_question_heatmap(item, df_by_questions) for item in item_list]
     ads_per_day_chart = create_ads_per_day_chart(df_by_date)
@@ -68,6 +69,7 @@ def generate_report(df, dfs_dict, kpis, context):
     question_progress_histogram = create_question_progress_histogram(df_by_users)
     character_progress_histogram = create_character_progress_histogram(df_by_users)
     session_counts_histogram = create_session_counts_histogram(df_by_users)
+    daily_install_uninstall_delta_chart = create_daily_install_uninstall_delta_chart(df)
     
 
     # --- Jinja2 setup ---
@@ -96,6 +98,7 @@ def generate_report(df, dfs_dict, kpis, context):
                 question_progress_histogram = question_progress_histogram,
                 character_progress_histogram = character_progress_histogram,
                 session_counts_histogram = session_counts_histogram,
+                daily_install_uninstall_delta_chart = daily_install_uninstall_delta_chart,
                 new_users=(
                     df_by_users.sort_values("first_event_date", ascending=False)
                                .head(100)
