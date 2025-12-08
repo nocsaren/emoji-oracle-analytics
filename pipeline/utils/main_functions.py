@@ -40,7 +40,7 @@ def filter_events_by_date(df, context):
     return filtered_df
 
 def filter_events_by_country(df, context):
-    """Filter events in the DataFrame to only include those on or after start_date (UTC)."""
+    
     # Convert date to pandas Timestamp (assumed UTC)
     country = context['country']
     filtered_df = df[df['geo__country'].isin(country)]
@@ -49,3 +49,17 @@ def filter_events_by_country(df, context):
         f"Filtered events from {len(df)} to {len(filtered_df)} based on countries: {country}."
     )
     return filtered_df
+
+def filter_events_by_user(df, context):
+    
+    # Convert date to pandas Timestamp (assumed UTC)
+    not_user = context['not_user']
+    filtered_df = df[~df['user_pseudo_id'].isin(not_user)]
+
+    logger.info(
+        f"Filtered events from {len(df)} to {len(filtered_df)} based on users: {not_user}."
+    )
+    print(filtered_df.head())
+    return filtered_df
+
+

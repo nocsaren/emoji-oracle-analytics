@@ -24,7 +24,10 @@ PIPELINE_STAGES = [
 ]
 
 def run_pipeline(df: pd.DataFrame, context: dict) -> pd.DataFrame:
-    from pipeline.utils.main_functions import filter_events_by_date, filter_events_by_country
+    from pipeline.utils.main_functions import (filter_events_by_date, 
+                                               filter_events_by_country,
+                                               filter_events_by_user
+    )
     from pipeline.utils.lists_and_maps import map_of_maps
     from pipeline.utils.pull_functions import pull_from_bq
     from pipeline.utils.flattening_functions import flatten_dataframe
@@ -62,6 +65,7 @@ def run_pipeline(df: pd.DataFrame, context: dict) -> pd.DataFrame:
         flatten_dataframe,
         dots_to_underscores,
         filter_events_by_country,
+        filter_events_by_user,
         transform_datetime_fields,
         add_time_based_features,
         add_durations,

@@ -81,7 +81,8 @@ if __name__ == "__main__":
         "dataset": settings.DATASET,
         'start_date': settings.START_DATE,
         'report_path': settings.REPORT_PATH,
-        'country': settings.COUNTRY
+        'country': settings.COUNTRY,
+        'not_user': settings.NOT_USER
     }
     
 
