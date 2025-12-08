@@ -32,7 +32,8 @@ from pipeline.utils.plotting.user_plots import (create_users_per_day_chart,
                                                 create_session_counts_histogram,
                                                 create_daily_install_uninstall_delta_chart,
                                                 )
-
+from pipeline.utils.plotting.inferential import (create_inferential_user_last_event_chart,
+                                                 create_inferential_session_last_event_chart)
 
 def generate_report(df, dfs_dict, kpis, context):
     """
@@ -71,6 +72,12 @@ def generate_report(df, dfs_dict, kpis, context):
     session_counts_histogram = create_session_counts_histogram(df_by_users)
     daily_install_uninstall_delta_chart = create_daily_install_uninstall_delta_chart(df)
     
+
+    # Inferential
+
+    inferential_user_last_event_chart = create_inferential_user_last_event_chart(df_by_users)
+    inferential_session_last_event_chart = create_inferential_session_last_event_chart(df_by_sessions)
+
 
     # --- Jinja2 setup ---
     from jinja2 import Environment, FileSystemLoader
@@ -149,6 +156,15 @@ def generate_report(df, dfs_dict, kpis, context):
                                        .to_dict(orient="records")
                 ),
                 technical_cols=list(df_technical_events.columns),
+                kpis=kpis
+            )
+        ),
+        "inferential.html": (            
+            "inferential_template.html",
+            dict(
+                title="Inferential",
+                inferential_user_last_event_chart = inferential_user_last_event_chart,
+                inferential_session_last_event_chart = inferential_session_last_event_chart,
                 kpis=kpis
             )
         ),

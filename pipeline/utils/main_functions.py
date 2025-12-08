@@ -59,7 +59,7 @@ def filter_events_by_user(df, context):
     logger.info(
         f"Filtered events from {len(df)} to {len(filtered_df)} based on users: {not_user}."
     )
-    print(filtered_df.head())
+    
     return filtered_df
 
 
