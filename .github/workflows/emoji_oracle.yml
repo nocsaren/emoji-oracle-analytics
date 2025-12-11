@@ -10,7 +10,6 @@ on:
 
 permissions:
   contents: write
-  actions: read     # required so we can download artifacts from previous runs
 
 jobs:
   run-etl:
@@ -24,20 +23,24 @@ jobs:
       uses: actions/checkout@v4
 
     # ----------------------------------------------------------
-    # 2. Restore parquet-store from previous run if it exists
+    # 2. Restore parquet-store cache
     # ----------------------------------------------------------
-    - name: Download previous parquet-store (ignore if missing)
-      uses: actions/download-artifact@v4
+    - name: Restore parquet-store cache
+      uses: actions/cache@v4
       with:
-        name: parquet-store
         path: parquet-store
-      continue-on-error: true
+        key: parquet-store-${{ runner.os }}  # you can add more entropy if needed
+        restore-keys: |
+          parquet-store-${{ runner.os }}
 
+    # ----------------------------------------------------------
+    # 3. Ensure parquet-store directory exists
+    # ----------------------------------------------------------
     - name: Ensure parquet-store directory exists
       run: mkdir -p parquet-store
 
     # ----------------------------------------------------------
-    # 3. Set up Python
+    # 4. Set up Python
     # ----------------------------------------------------------
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -45,13 +48,13 @@ jobs:
         python-version: "3.11"
 
     # ----------------------------------------------------------
-    # 4. Install dependencies
+    # 5. Install dependencies
     # ----------------------------------------------------------
     - name: Install dependencies
       run: pip install -r requirements.txt
 
     # ----------------------------------------------------------
-    # 5. Run ETL script
+    # 6. Run ETL script
     # ----------------------------------------------------------
     - name: Run ETL script
       env:
@@ -60,30 +63,10 @@ jobs:
         python main.py
 
     # ----------------------------------------------------------
-    # 6. Upload updated parquet-store for next run
+    # 7. Save parquet-store cache
     # ----------------------------------------------------------
-    - name: Upload updated parquet-store
-      uses: actions/upload-artifact@v4
+    - name: Save parquet-store cache
+      uses: actions/cache@v4
       with:
-        name: parquet-store
         path: parquet-store
-        retention-days: 30
-
-    # ----------------------------------------------------------
-    # 7. Commit and push docs (only if changed)
-    # ----------------------------------------------------------
-    - name: Commit and push changes
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        git config --global user.email "actions@github.com"
-        git config --global user.name "github-actions"
-
-        git add docs
-
-        if git diff --cached --quiet; then
-          echo "No changes to commit"
-        else
-          git commit -m "Daily ETL update $(date)"
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
-        fi
+        key: parquet-store-${{ runner.os }}  # must match restore key
