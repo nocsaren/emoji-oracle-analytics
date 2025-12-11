@@ -178,3 +178,38 @@ BAR_LAYOUT = {
 }
 
 
+FUNNEL_LAYOUT = {
+
+    'height': 768,
+
+    # Funnel chart style
+    'showlegend': False,
+    
+    # Legend placement
+    'legend': {
+        'orientation': 'v',   # vertical legend is common
+        'y': 0.5,
+        'x': 1.05,
+        'yanchor': 'middle',
+        'xanchor': 'left',
+        'font': {'size': 12, 'family': 'Arial'}
+    },
+
+    # Hover formatting
+    'hovermode': 'closest',
+    'hoverlabel': {
+        'bgcolor': 'white',
+        'font_size': 12,
+        'font_family': 'Arial'
+    },
+
+    # Margins
+    'margin': {'l': 40, 'r': 40, 't': 20, 'b': 20},
+
+    # Optional: default color sequence for funnel steps
+    'colorway': ['#636EFA', '#EF553B', '#00CC96', '#AB63FA', '#FFA15A', '#19D3F3'],
+
+    # Optional: text position defaults
+    'uniformtext_minsize': 12,
+    'uniformtext_mode': 'show'
+}

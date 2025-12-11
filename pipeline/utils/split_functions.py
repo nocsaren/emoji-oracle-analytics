@@ -256,6 +256,20 @@ def create_df_by_users(df: pd.DataFrame) -> pd.DataFrame:
         else:
             tutorials = pd.Series(0, index=user_df[user_key], name="tutorial_completed")
 
+        # Welcome video detection (robust)
+        if "event_params__wecolme_video" in df.columns:
+            wecolme_video_played = (
+                (df["event_params__wecolme_video"] == "wecolme_video")
+                .groupby(df[user_key])
+                .any()                # True if any row matches
+                .astype(int)          # Convert True/False → 1/0
+                .rename("wecolme_video_played")
+            )
+        else:
+            wecolme_video_played = pd.Series(0, index=user_df[user_key], name="wecolme_video_played")
+        
+        
+        counts = counts.merge(wecolme_video_played, on=user_key, how="left")
         counts = counts.merge(tutorials, on=user_key, how="left")
 
         # Replace NaN from users with no events
@@ -289,6 +303,11 @@ def create_df_by_users(df: pd.DataFrame) -> pd.DataFrame:
         )
 
         # Derived KPI
+
+        user_df['saw_first_question'] = (user_df['total_characters_opened'] > 0).astype(int)
+        user_df['answered_first_question'] = (user_df['Question Completed'] > 0).astype(int)
+
+
         user_df["passed_10_min"] = (
             user_df["total_playtime_minutes"] >= 10
         ).astype(int)
@@ -297,6 +316,41 @@ def create_df_by_users(df: pd.DataFrame) -> pd.DataFrame:
 
     except Exception as e:
         logger.error(f"Error in df_by_users: {e}", exc_info=True)
+        return pd.DataFrame()
+    
+def create_user_summary_df(df: pd.DataFrame) -> pd.DataFrame:
+    
+    try:
+        column_map = {
+            'user_pseudo_id': 'User ID',
+            'first_event_date': 'First Open',
+            'total_sessions': 'Sessions',
+            'total_playtime_minutes': 'Playtime (minutes)',
+            'Question Completed': 'Completed Questions',
+            'Ad Rewarded': 'Ads Watched',
+            'passed_10_min': 'Played 10+ Minutes',
+            'tutorial_completed': 'Completed Tutorial',
+            'Game Ended': 'Game Ended',
+            'App Removed': 'App Removed',
+        }
+
+        df['first_event_date'] = pd.to_datetime(df['first_event_date']).dt.date
+
+
+
+        summary_df = (
+            df[df['App Removed'] != 1][list(column_map.keys())]
+            .rename(columns=column_map)
+            .drop(columns=['App Removed']) 
+            .sort_values(by='Completed Questions', ascending=False)
+            .reset_index(drop=True)
+            .copy()
+        )
+
+        return summary_df
+
+    except Exception as e:
+        logger.error(f"Error in create_user_summary_df: {e}", exc_info=True)
         return pd.DataFrame()
 
 def create_df_by_questions(df: pd.DataFrame) -> pd.DataFrame:

@@ -140,6 +140,14 @@ main.content {
     border-collapse: collapse;
     font-size: 14px;
 }
+/* Freeze the header row */
+.table-scroll thead th {
+    position: sticky;
+    top: 0;
+    background: white;      /* important, or text overlaps */
+    z-index: 10;
+}
+
 
 .table-scroll th,
 .table-scroll td {

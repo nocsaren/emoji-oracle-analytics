@@ -449,10 +449,6 @@ def create_ads_per_day_chart(df: pd.DataFrame):
                        include_plotlyjs='cdn',
                        config={'responsive': True})
 
-import datetime as dt
-import pandas as pd
-import plotly.graph_objects as go
-
 def create_user_last_event_chart(df: pd.DataFrame, threshold: int = 7):
     """
     Create a histogram of the last event users generated, for users inactive > threshold days.

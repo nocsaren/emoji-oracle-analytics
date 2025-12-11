@@ -8,6 +8,8 @@ import numpy as np
 
 logger = get_logger(__name__)
 
+
+
 from pipeline.utils.plotting.plot_functions import (create_wrong_answers_heatmap,                                              
                                              create_cumulative_users_chart,
                                              create_session_duration_histogram,
@@ -32,8 +34,14 @@ from pipeline.utils.plotting.user_plots import (create_users_per_day_chart,
                                                 create_session_counts_histogram,
                                                 create_daily_install_uninstall_delta_chart,
                                                 )
+
+from pipeline.utils.plotting.funnel_plots import create_funnel_chart
+
 from pipeline.utils.plotting.inferential import (create_inferential_user_last_event_chart,
-                                                 create_inferential_session_last_event_chart)
+                                                 create_inferential_session_last_event_chart,
+                                                 create_inferential_user_behaviour_per_day_chart)
+
+from pipeline.utils.split_functions import create_user_summary_df
 
 def generate_report(df, dfs_dict, kpis, context):
     """
@@ -50,8 +58,20 @@ def generate_report(df, dfs_dict, kpis, context):
     df_by_questions = dfs_dict.get('by_questions')
     df_by_date = dfs_dict.get('by_date')
     df_technical_events = dfs_dict.get('technical_events')
+    user_summary_df = dfs_dict.get('user_summary_df')
+
+
 
     item_list = ['alicin', 'coffee', 'cauldron', 'scroll']
+    funnel_stages = [
+        'wecolme_video_played',
+        'saw_first_question',
+        'answered_first_question',
+        'passed_10_min',
+        'tutorial_completed',
+        'Game Ended',
+        'App Removed'
+    ]   
 
     # --- Visualizations ---
     questions_heatmap = create_wrong_answers_heatmap(df_by_questions)
@@ -71,13 +91,22 @@ def generate_report(df, dfs_dict, kpis, context):
     character_progress_histogram = create_character_progress_histogram(df_by_users)
     session_counts_histogram = create_session_counts_histogram(df_by_users)
     daily_install_uninstall_delta_chart = create_daily_install_uninstall_delta_chart(df)
+
+
+    # Funnel
+
+    funnel_user_lifetime = create_funnel_chart(df_by_users, funnel_stages)
     
 
     # Inferential
 
     inferential_user_last_event_chart = create_inferential_user_last_event_chart(df_by_users)
     inferential_session_last_event_chart = create_inferential_session_last_event_chart(df_by_sessions)
+    inferential_user_behaviour_per_day_chart = create_inferential_user_behaviour_per_day_chart(df)
 
+
+    
+    user_summary_df = create_user_summary_df(df_by_users)
 
     # --- Jinja2 setup ---
     from jinja2 import Environment, FileSystemLoader
@@ -106,9 +135,18 @@ def generate_report(df, dfs_dict, kpis, context):
                 character_progress_histogram = character_progress_histogram,
                 session_counts_histogram = session_counts_histogram,
                 daily_install_uninstall_delta_chart = daily_install_uninstall_delta_chart,
+
+                funnel_user_lifetime=funnel_user_lifetime,
+
+                user_summary=(
+                    user_summary_df.head(20).to_dict(orient="records")
+                    
+                ),
+                users_sum_cols=list(user_summary_df.columns),
+                
                 new_users=(
                     df_by_users.sort_values("first_event_date", ascending=False)
-                               .head(100)
+                               .head(20)
                                .to_dict(orient="records")
                 ),
                 users_cols=list(df_by_users.columns),
@@ -165,6 +203,7 @@ def generate_report(df, dfs_dict, kpis, context):
                 title="Inferential",
                 inferential_user_last_event_chart = inferential_user_last_event_chart,
                 inferential_session_last_event_chart = inferential_session_last_event_chart,
+                inferential_user_behaviour_per_day_chart = inferential_user_behaviour_per_day_chart,
                 kpis=kpis
             )
         ),

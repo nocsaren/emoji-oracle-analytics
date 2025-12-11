@@ -12,9 +12,6 @@ from config.plot_style import (DEFAULT_LAYOUT,
                                
 
 def create_user_behaviour_per_day_chart(df: pd.DataFrame):
-    """
-    Create a line chart showing the number of new users per day.
-    """
 
     df_sessions = (
         df[["user_pseudo_id", "event_params__ga_session_id", "session_duration_minutes"]]
