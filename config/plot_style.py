@@ -204,7 +204,7 @@ FUNNEL_LAYOUT = {
     },
 
     # Margins
-    'margin': {'l': 40, 'r': 40, 't': 20, 'b': 20},
+    'margin': {'l': 40, 'r': 40, 't': 80, 'b': 20},
 
     # Optional: default color sequence for funnel steps
     'colorway': ['#636EFA', '#EF553B', '#00CC96', '#AB63FA', '#FFA15A', '#19D3F3'],

@@ -6,6 +6,9 @@ from config.logging import get_logger
 import os
 import numpy as np
 
+
+from pipeline.utils.lists_and_maps import conversion_events
+
 logger = get_logger(__name__)
 
 
@@ -72,6 +75,11 @@ def generate_report(df, dfs_dict, kpis, context):
         'Game Ended',
         'App Removed'
     ]   
+    df_conversion = df_by_users[['user_pseudo_id'] + list(conversion_events.keys()) + ['version']].copy()
+    df_conversion.columns = ['user_pseudo_id'] + list(conversion_events.values()) + ['version']
+    
+    df_conversion_stages = list(conversion_events.values())
+    print(df_conversion_stages)
 
     # --- Visualizations ---
     questions_heatmap = create_wrong_answers_heatmap(df_by_questions)
@@ -83,19 +91,16 @@ def generate_report(df, dfs_dict, kpis, context):
     sessions_per_day_chart = create_sessions_per_day_chart(df_by_date)
     session_last_event_chart = create_session_last_event_chart(df_by_sessions)
     user_behaviour_per_day_chart = create_user_behaviour_per_day_chart(df)
-    cum_install_uninstall_chart = create_cum_install_uninstall_chart(df)
     total_playtime_histogram = create_total_playtime_histogram(df_by_users)
     user_last_event_chart = create_user_last_event_chart(df_by_users)
-    uninstall_last_event_chart = create_uninstall_last_event_chart(df_by_users)
     question_progress_histogram = create_question_progress_histogram(df_by_users)
     character_progress_histogram = create_character_progress_histogram(df_by_users)
     session_counts_histogram = create_session_counts_histogram(df_by_users)
-    daily_install_uninstall_delta_chart = create_daily_install_uninstall_delta_chart(df)
 
 
     # Funnel
 
-    funnel_user_lifetime = create_funnel_chart(df_by_users, funnel_stages)
+    funnel_user_lifetime = create_funnel_chart('User Lifecycle', df_by_users, funnel_stages)
     
 
     # Inferential
@@ -104,7 +109,12 @@ def generate_report(df, dfs_dict, kpis, context):
     inferential_session_last_event_chart = create_inferential_session_last_event_chart(df_by_sessions)
     inferential_user_behaviour_per_day_chart = create_inferential_user_behaviour_per_day_chart(df)
 
-
+    # Conversion
+    
+    cum_install_uninstall_chart = create_cum_install_uninstall_chart(df)
+    uninstall_last_event_chart = create_uninstall_last_event_chart(df_by_users)
+    daily_install_uninstall_delta_chart = create_daily_install_uninstall_delta_chart(df)
+    funnel_new_user_events = create_funnel_chart('First Few Seconds', df_conversion, df_conversion_stages, 'user_pseudo_id', version='1.0.6')
     
     user_summary_df = create_user_summary_df(df_by_users)
 
@@ -121,28 +131,16 @@ def generate_report(df, dfs_dict, kpis, context):
             "main_template.html",
             dict(title="Main", kpis=kpis)
         ),
-        "users.html": (
-            "users_template.html",
+        "conversion.html": (
+            "conversion_template.html",
             dict(
-                title="Users",
-                users_chart=users_per_day_chart,
-                user_behaviour_per_day_chart=user_behaviour_per_day_chart,
-                user_last_event_chart=user_last_event_chart,
+                title="Conversion",
                 cum_install_uninstall_chart = cum_install_uninstall_chart,
-                total_playtime_histogram = total_playtime_histogram,
                 uninstall_last_event_chart = uninstall_last_event_chart,
-                question_progress_histogram = question_progress_histogram,
-                character_progress_histogram = character_progress_histogram,
-                session_counts_histogram = session_counts_histogram,
                 daily_install_uninstall_delta_chart = daily_install_uninstall_delta_chart,
 
-                funnel_user_lifetime=funnel_user_lifetime,
+                funnel_new_user_events=funnel_new_user_events,
 
-                user_summary=(
-                    user_summary_df.head(20).to_dict(orient="records")
-                    
-                ),
-                users_sum_cols=list(user_summary_df.columns),
                 
                 new_users=(
                     df_by_users.sort_values("first_event_date", ascending=False)
@@ -154,6 +152,33 @@ def generate_report(df, dfs_dict, kpis, context):
                 kpis=kpis
             )
         ),
+
+        "users.html": (
+            "users_template.html",
+            dict(
+                title="Users",
+                users_chart=users_per_day_chart,
+                user_behaviour_per_day_chart=user_behaviour_per_day_chart,
+                user_last_event_chart=user_last_event_chart,
+                total_playtime_histogram = total_playtime_histogram,
+                question_progress_histogram = question_progress_histogram,
+                character_progress_histogram = character_progress_histogram,
+                session_counts_histogram = session_counts_histogram,
+
+                funnel_user_lifetime=funnel_user_lifetime,
+
+                user_summary=(
+                    user_summary_df.head(20).to_dict(orient="records")
+                    
+                ),
+                users_sum_cols=list(user_summary_df.columns),
+                              
+                kpis=kpis
+            )
+        ),
+
+
+
         "sessions.html": (
             "sessions_template.html",
             dict(

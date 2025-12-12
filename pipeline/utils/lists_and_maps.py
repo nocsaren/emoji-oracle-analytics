@@ -6,6 +6,8 @@ designed to be used in conjunction with the main application logic.
 
 # This is a list and order of the column names that I used for conveniancy in EDA and LookerStudio. 
 
+# THIS IS UNUSED, I DON'T KNOW WHEN AND WHY I STOPPED USING IT.
+
 df_column_names_map = {
 
     # 🎯 Event Core Info
@@ -145,9 +147,42 @@ df_column_names_map = {
     'user__first_open_date': 'user_first_open_date',
     'event_params__previous_first_open_count': 'previous_first_open_count',
 
+    # New User
+
+    "event_params__pp_accepted": "Privacy Policy Accepted",
+    "event_params__video_start": "Welcome Video Started",
+    "event_params__video_finished": "Welcome Video Finished",
+    "event_params__entered": "T Entered",
+    "event_params__shown": "Slot Machine Shown",
+    "event_params__opened": "Help Opened",
+    "event_params__return": "Help Returned",
+    "event_params__closed": "Help Closed",
+    "event_params__drag": "Answer Dragged",
+    "answered_first_question": "Answered First Question",
+    "passed_10_min": "Passed 10 Minutes",
+    "tutorial_completed": "Completed Tutorial",
+
+
+
 }
 
+    # New User Events Mapping
+conversion_events = {
+    "event_params__pp_accepted": "Privacy Policy Accepted",
+    "event_params__video_start": "Welcome Video Started",
+    "event_params__video_finished": "Welcome Video Finished",
+    "event_params__entered": "T Entered",
+    "event_params__shown": "Slot Machine Shown",
+    "event_params__opened": "Help Opened",
+    "event_params__return": "Help Returned",
+    "event_params__closed": "Help Closed",
+    "event_params__drag": "Answer Dragged",
+    "answered_first_question": "Answered First Question",
+    "passed_10_min": "Passed 10 Minutes",
+    "tutorial_completed": "Completed Tutorial",
 
+
+}
 
 
 columns_to_drop = ['event_timestamp',

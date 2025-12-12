@@ -3,6 +3,9 @@ import pandas as pd
 from pipeline.utils.utils import summarize_gold # summarize_energy
 from config.logging import get_logger
 
+
+
+
 logger = get_logger(__name__)
 
 def create_df_by_sessions(df: pd.DataFrame) -> pd.DataFrame:
@@ -244,6 +247,42 @@ def create_df_by_users(df: pd.DataFrame) -> pd.DataFrame:
         counts = counts.merge(count_events("Game Ended"), on=user_key, how="left")
         counts = counts.merge(count_events("App Removed"), on=user_key, how="left")
         counts = counts.merge(count_events("Session Started"), on=user_key, how="left")
+
+        conversion_events = [
+            "event_params__pp_accepted",
+            "event_params__video_start",
+            "event_params__video_finished",
+            "event_params__entered",
+            "event_params__shown",
+            "event_params__opened",
+            "event_params__return",
+            "event_params__closed",
+            "event_params__drag"
+        ]
+
+
+        def check_bool_event(df, event):
+
+            print(df[event].unique() if event in df.columns else f"{event}: MISSING")
+
+            if event not in df.columns:
+                # Column missing → NA for all users
+                return pd.Series(0, index=user_df[user_key], name=event)
+
+            # Normalize all "truthy" values
+            s = df[event].astype(str).str.lower()
+            col = s.isin(["true", "1", "yes", "y"]).astype(int)
+
+            # Per-user boolean reduction
+            return (
+                col.groupby(df[user_key])
+                .max()              # robust for bool/int
+                .rename(event)
+            )
+
+        for event in conversion_events:
+            bool_event_series = check_bool_event(df, event)
+            counts = counts.merge(bool_event_series, on=user_key, how="left")
 
         # Tutorial detection (robust)
         if "event_params__tutorial_video" in df.columns:
@@ -645,3 +684,7 @@ def create_df_by_ads(df: pd.DataFrame) -> pd.DataFrame:
     except Exception as e:
         logger.error(f"Error in df_by_ads: {e}", exc_info=True)
         return pd.DataFrame()
+    
+
+
+

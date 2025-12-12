@@ -1,31 +1,29 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {{ users_chart }}
-    {{ user_behaviour_per_day_chart }}
-    {{ funnel_user_lifetime }}    
-    {{ session_counts_histogram }}
-    {{ daily_install_uninstall_delta_chart }}   
-    {{ total_playtime_histogram }}
-    {{ user_last_event_chart }}
-    {{ question_progress_histogram }}
-    {{ character_progress_histogram }}
+    {{ funnel_new_user_events }}    
+    {{ daily_install_uninstall_delta_chart }}    
+    {{ cum_install_uninstall_chart }}
+    {{ uninstall_last_event_chart }}
 
 
-<h3>Active User Summary (max 50)</h3>
+
+
+
+<h3>New Users (max 20)</h3>
 <div class="table-scroll-container">
     <table class="table-scroll new-user-table">
             <thead>
                 <tr>
-                    {% for col in users_sum_cols %}
+                    {% for col in users_cols %}
                         <th>{{ col }}</th>
                     {% endfor %}
                 </tr>
             </thead>
             <tbody>
-                {% for row in user_summary %}
+                {% for row in new_users %}
                 <tr>
-                    {% for col in users_sum_cols %}
+                    {% for col in users_cols %}
                         <td>{{ row[col] }}</td>
                     {% endfor %}
                 </tr>
@@ -33,6 +31,4 @@
             </tbody>
         </table>
     </div>
-
-
 {% endblock %}

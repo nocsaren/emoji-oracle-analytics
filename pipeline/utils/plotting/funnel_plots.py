@@ -10,13 +10,17 @@ from config.plot_style import (DEFAULT_LAYOUT,
                                FUNNEL_LAYOUT
 )
 
-def create_funnel_chart(df, stage_list, user_col='user_pseudo_id'):
+def create_funnel_chart(title, df, stage_list, user_col='user_pseudo_id', version=None):
     """
     df: dataframe where each stage column is 0/1
     stage_list: ordered list of stages in the funnel
     user_col: column representing unique users
     """
     try:
+
+        # Version Filtering
+        if version is not None:
+            df = df[df['version'] == version]
         # Values
         values = [df[user_col].nunique()] + [df[s].sum() for s in stage_list]
         labels = ["Total Installs"] + stage_list
@@ -35,6 +39,7 @@ def create_funnel_chart(df, stage_list, user_col='user_pseudo_id'):
         )
 
         fig.update_layout(
+            title = title,
             funnelmode="stack"
         )
 
@@ -48,3 +53,6 @@ def create_funnel_chart(df, stage_list, user_col='user_pseudo_id'):
 
     except Exception as e:
         return f"<p>Error: {e}</p>"
+    
+
+

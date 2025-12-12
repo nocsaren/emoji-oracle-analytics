@@ -63,3 +63,36 @@ def filter_events_by_user(df, context):
     return filtered_df
 
 
+def vers(v1, v2):
+    """
+    Compare two version strings like '1.0.3' and '1.0.12'.
+    Returns:
+        -1 if v1 < v2
+         0 if v1 == v2
+         1 if v1 > v2
+    """
+    # Convert version strings to tuples of integers
+    t1 = tuple(int(x) for x in str(v1).split('.'))
+    t2 = tuple(int(x) for x in str(v2).split('.'))
+    
+    # Compare tuples
+    if t1 < t2:
+        return -1
+    elif t1 > t2:
+        return 1
+    else:
+        return 0
+    
+def filter_events_by_version(df, context):
+    """
+    Filter events in the DataFrame to only include those with app_version >= specified version.
+    """
+    version_filter = context['version_filter']
+    
+    # Apply version comparison
+    filtered_df = df[df['app_info__version'].apply(lambda v: vers(v, version_filter) >= 0)]
+
+    logger.info(
+        f"Filtered events from {len(df)} to {len(filtered_df)} based on app version >= {version_filter}."
+    )
+    return filtered_df

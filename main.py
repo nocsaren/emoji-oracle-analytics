@@ -82,7 +82,8 @@ if __name__ == "__main__":
         'start_date': settings.START_DATE,
         'report_path': settings.REPORT_PATH,
         'country': settings.COUNTRY,
-        'not_user': settings.NOT_USER
+        'not_user': settings.NOT_USER,
+        'version_filter': settings.VERSION_FILTER
     }
     
 
@@ -103,10 +104,12 @@ if __name__ == "__main__":
 
 #    sliced_data.to_csv(os.path.join(settings.CSV_DIR, "sliced_data.csv"), index=False)
 
-#    df.to_csv(os.path.join(settings.CSV_DIR, "processed_data.csv"), index=False)
+    df.to_csv(os.path.join(settings.CSV_DIR, "processed_data.csv"), index=False)
 
     for name, dataframe in dfs.items():
         dataframe.to_csv(os.path.join(settings.CSV_DIR, f"{name}_data.csv"), index=False)
     
     logger.info("Data pipeline complete. Processed data saved.")
     generate_report(df=df, dfs_dict = dfs, kpis = kpis, context = context)
+
+
