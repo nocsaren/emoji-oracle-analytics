@@ -42,7 +42,8 @@ from pipeline.utils.plotting.funnel_plots import create_funnel_chart
 
 from pipeline.utils.plotting.inferential import (create_inferential_user_last_event_chart,
                                                  create_inferential_session_last_event_chart,
-                                                 create_inferential_user_behaviour_per_day_chart)
+                                                 create_inferential_user_behaviour_per_day_chart,
+                                                 create_funnel_bar_with_ci)
 
 from pipeline.utils.split_functions import create_user_summary_df
 
@@ -108,6 +109,7 @@ def generate_report(df, dfs_dict, kpis, context):
     inferential_user_last_event_chart = create_inferential_user_last_event_chart(df_by_users)
     inferential_session_last_event_chart = create_inferential_session_last_event_chart(df_by_sessions)
     inferential_user_behaviour_per_day_chart = create_inferential_user_behaviour_per_day_chart(df)
+    funnel_bar_with_ci = create_funnel_bar_with_ci('First Few Seconds (with CI)',df_conversion, df_conversion_stages, 'user_pseudo_id', version='1.0.6')
 
     # Conversion
     
@@ -229,6 +231,7 @@ def generate_report(df, dfs_dict, kpis, context):
                 inferential_user_last_event_chart = inferential_user_last_event_chart,
                 inferential_session_last_event_chart = inferential_session_last_event_chart,
                 inferential_user_behaviour_per_day_chart = inferential_user_behaviour_per_day_chart,
+                funnel_bar_with_ci = funnel_bar_with_ci,
                 kpis=kpis
             )
         ),
