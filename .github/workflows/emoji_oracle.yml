@@ -29,12 +29,12 @@ jobs:
       uses: actions/cache@v4
       with:
         path: parquet-store
-        key: parquet-store-${{ runner.os }}  # you can add more entropy if needed
+        key: parquet-store-${{ runner.os }}
         restore-keys: |
           parquet-store-${{ runner.os }}
 
     # ----------------------------------------------------------
-    # 3. Ensure parquet-store directory exists
+    # 3. Ensure directory exists
     # ----------------------------------------------------------
     - name: Ensure parquet-store directory exists
       run: mkdir -p parquet-store
@@ -54,19 +54,37 @@ jobs:
       run: pip install -r requirements.txt
 
     # ----------------------------------------------------------
-    # 6. Run ETL script
+    # 6. Run ETL
     # ----------------------------------------------------------
     - name: Run ETL script
       env:
         BQ_SERVICE_ACCOUNT: ${{ secrets.BQ_SERVICE_ACCOUNT }}
-      run: |
-        python main.py
+      run: python main.py
 
     # ----------------------------------------------------------
-    # 7. Save parquet-store cache
+    # 7. Commit & push docs for GitHub Pages
+    # ----------------------------------------------------------
+    - name: Commit and push docs
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "github-actions"
+
+        git add docs
+
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Daily ETL update $(date)"
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git HEAD:main
+        fi
+
+    # ----------------------------------------------------------
+    # 8. Save updated cache
     # ----------------------------------------------------------
     - name: Save parquet-store cache
       uses: actions/cache@v4
       with:
         path: parquet-store
-        key: parquet-store-${{ runner.os }}  # must match restore key
+        key: parquet-store-${{ runner.os }}
