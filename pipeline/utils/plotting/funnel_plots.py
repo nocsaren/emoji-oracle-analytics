@@ -26,7 +26,20 @@ def create_funnel_chart(title, df, stage_list, user_col='user_pseudo_id', versio
         labels = ["Total Installs"] + stage_list
 
         # Define colors (one per step)
-        colors = ["#636EFA", "#EF553B", "#00CC96", "#AB63FA", "#FFA15A", "#19D3F3", "#FF6692"]
+        colors = [
+                "#4C6EF5",
+                "#5C7CFA",
+                "#748FFC",
+                "#4DABF7",
+                "#3BC9DB",
+                "#38D9A9",
+                "#69DB7C",
+                "#94D82D",
+                "#FCC419",
+                "#FFB000",
+                "#F59F00",
+                "#2F9E44",
+            ]
         colors = colors[:len(labels)]  # just in case list is shorter than needed
 
         fig = go.Figure(
