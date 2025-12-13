@@ -171,7 +171,7 @@ conversion_events = {
     "event_params__pp_accepted": "Privacy Policy Accepted",
     "event_params__video_start": "Welcome Video Started",
     "event_params__video_finished": "Welcome Video Finished",
-    "event_params__entered": "Tutorial Entered",
+    "event_params__entered": "Met T",
     "saw_first_question": "Saw First Question",
     "event_params__shown": "Slot Machine Shown",
     "event_params__opened": "Help Opened",
