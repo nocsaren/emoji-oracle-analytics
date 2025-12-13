@@ -167,7 +167,7 @@ def create_funnel_bar_with_ci(title, df, stage_list, user_col='user_pseudo_id', 
     try:
         # Version Filtering
         if version is not None:
-            df = df[df['version'] == version]
+            df = df[df['start_version'] == version]
 
         # Core values
         total_installs = df[user_col].nunique()
