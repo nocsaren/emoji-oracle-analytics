@@ -184,7 +184,7 @@ def create_df_by_sessions(df: pd.DataFrame) -> pd.DataFrame:
 
 
 
-def create_df_by_users(df: pd.DataFrame) -> pd.DataFrame:
+def create_df_by_users(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     try:
         user_key = "user_pseudo_id"
 
@@ -213,6 +213,7 @@ def create_df_by_users(df: pd.DataFrame) -> pd.DataFrame:
                   operating_system_version=("device__operating_system_version", "first") if "device__operating_system_version" in df.columns else ("event_name", "first"),
                   is_limited_ad_tracking=("device__is_limited_ad_tracking", "first") if "device__is_limited_ad_tracking" in df.columns else ("event_name", "first"),
                   device_language=("device__language", "first") if "device__language" in df.columns else ("event_name", "first"),
+                  start_version=("app_info__version", "first") if "app_info__version" in df.columns else ("event_name", "first"),
                   version=("app_info__version", "last") if "app_info__version" in df.columns else ("event_name", "last"),
               )
         )
@@ -342,20 +343,54 @@ def create_df_by_users(df: pd.DataFrame) -> pd.DataFrame:
         )
 
         # Derived KPI
-
+        
         user_df['saw_first_question'] = (user_df['total_characters_opened'] > 0).astype(int)
         user_df['answered_first_question'] = (user_df['Question Completed'] > 0).astype(int)
+        user_df['answered_second_question'] = (user_df['Question Completed'] > 1).astype(int)
+        user_df['answered_third_question'] = (user_df['Question Completed'] > 2).astype(int)
+        user_df['saw_mi'] = (user_df['total_characters_opened'] >= 2).astype(int)
+        user_df['answered_ten_questions'] = (user_df['Question Completed'] >= 10).astype(int)
+        user_df['second_session_started'] = (user_df['total_sessions'] >= 2).astype(int)
+        user_df['second_day_active'] = (user_df['last_event_date'] > user_df['first_event_date']).astype(int)
 
 
         user_df["passed_10_min"] = (
             user_df["total_playtime_minutes"] >= 10
         ).astype(int)
         user_df["total_playtime_minutes"] = user_df["total_playtime_minutes"].round(2)
-        return user_df
+
+        
+        boolean_cols = ['user_pseudo_id',
+                        "event_params__pp_accepted",
+                        "event_params__video_start",
+                        "event_params__video_finished",
+                        "event_params__entered",
+                        "saw_first_question",
+                        "event_params__shown",
+                        "event_params__opened",
+                        "event_params__return",
+                        "event_params__closed",
+                        "event_params__drag",
+                        "answered_first_question",
+                        "answered_second_question",
+                        "answered_third_question",
+                        "saw_mi",
+                        "passed_10_min",
+                        "answered_ten_questions",
+                        "second_session_started",
+                        "second_day_active",
+                        "tutorial_completed"
+                        ]
+        
+        
+        user_bool_df = user_df[boolean_cols].copy()
+        user_bool_df['start_version'] = user_df['start_version'].copy()
+
+        return user_df, user_bool_df
 
     except Exception as e:
         logger.error(f"Error in df_by_users: {e}", exc_info=True)
-        return pd.DataFrame()
+        return pd.DataFrame(), pd.DataFrame()
     
 def create_user_summary_df(df: pd.DataFrame) -> pd.DataFrame:
     

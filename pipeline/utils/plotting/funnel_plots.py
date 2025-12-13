@@ -1,6 +1,8 @@
 import plotly.graph_objects as go
 
 from config.logging import get_logger
+
+from pipeline.utils.plotting.plot_helpers import funnel_gradient
 from config.plot_style import (DEFAULT_LAYOUT,
                                BAR_LAYOUT,
                                LINE_LAYOUT,
@@ -20,26 +22,14 @@ def create_funnel_chart(title, df, stage_list, user_col='user_pseudo_id', versio
 
         # Version Filtering
         if version is not None:
-            df = df[df['version'] == version]
+            df = df[df['start_version'] == version]
         # Values
         values = [df[user_col].nunique()] + [df[s].sum() for s in stage_list]
         labels = ["Total Installs"] + stage_list
 
         # Define colors (one per step)
-        colors = [
-                "#4C6EF5",
-                "#5C7CFA",
-                "#748FFC",
-                "#4DABF7",
-                "#3BC9DB",
-                "#38D9A9",
-                "#69DB7C",
-                "#94D82D",
-                "#FCC419",
-                "#FFB000",
-                "#F59F00",
-                "#2F9E44",
-            ]
+        colors = funnel_gradient(len(labels))
+
         colors = colors[:len(labels)]  # just in case list is shorter than needed
 
         fig = go.Figure(

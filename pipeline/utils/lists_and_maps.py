@@ -171,18 +171,24 @@ conversion_events = {
     "event_params__pp_accepted": "Privacy Policy Accepted",
     "event_params__video_start": "Welcome Video Started",
     "event_params__video_finished": "Welcome Video Finished",
-    "event_params__entered": "T Entered",
+    "event_params__entered": "Tutorial Entered",
+    "saw_first_question": "Saw First Question",
     "event_params__shown": "Slot Machine Shown",
     "event_params__opened": "Help Opened",
     "event_params__return": "Help Returned",
     "event_params__closed": "Help Closed",
     "event_params__drag": "Answer Dragged",
     "answered_first_question": "Answered First Question",
+    "answered_second_question": "Answered Second Question",
+    "answered_third_question": "Answered Third Question",
+    "saw_mi": "Met Mi",
     "passed_10_min": "Passed 10 Minutes",
-    "tutorial_completed": "Completed Tutorial",
-
-
+    "answered_ten_questions": "Answered Ten Questions",
+    "second_session_started": "Second Session Started",
+    "second_day_active": "Active on Second Day",
+    "tutorial_completed": "Tutorial Completed",
 }
+
 
 
 columns_to_drop = ['event_timestamp',

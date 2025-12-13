@@ -63,6 +63,7 @@ def generate_report(df, dfs_dict, kpis, context):
     df_by_date = dfs_dict.get('by_date')
     df_technical_events = dfs_dict.get('technical_events')
     user_summary_df = dfs_dict.get('user_summary_df')
+    users_meta = dfs_dict.get('users_meta')
 
 
 
@@ -76,10 +77,11 @@ def generate_report(df, dfs_dict, kpis, context):
         'Game Ended',
         'App Removed'
     ]   
-    df_conversion = df_by_users[['user_pseudo_id'] + list(conversion_events.keys()) + ['version']].copy()
-    df_conversion.columns = ['user_pseudo_id'] + list(conversion_events.values()) + ['version']
+    df_conversion = users_meta[['user_pseudo_id'] + list(conversion_events.keys()) + ['start_version']].copy()
+    df_conversion.columns = ['user_pseudo_id'] + list(conversion_events.values()) + ['start_version']
     
     df_conversion_stages = list(conversion_events.values())
+    print(df_conversion.head())
     print(df_conversion_stages)
 
     # --- Visualizations ---
@@ -101,7 +103,7 @@ def generate_report(df, dfs_dict, kpis, context):
 
     # Funnel
 
-    funnel_user_lifetime = create_funnel_chart('User Lifecycle', df_by_users, funnel_stages)
+    funnel_user_lifetime = create_funnel_chart('User Lifecycle (WIP)', df_by_users, funnel_stages)
     
 
     # Inferential
@@ -116,7 +118,7 @@ def generate_report(df, dfs_dict, kpis, context):
     cum_install_uninstall_chart = create_cum_install_uninstall_chart(df)
     uninstall_last_event_chart = create_uninstall_last_event_chart(df_by_users)
     daily_install_uninstall_delta_chart = create_daily_install_uninstall_delta_chart(df)
-    funnel_new_user_events = create_funnel_chart('First Few Seconds', df_conversion, df_conversion_stages, 'user_pseudo_id', version='1.0.6')
+    funnel_new_user_events = create_funnel_chart(f'First Few Seconds (ver. >= 1.0.6)', df_conversion, df_conversion_stages, 'user_pseudo_id', version='1.0.6')
     
     user_summary_df = create_user_summary_df(df_by_users)
 
