@@ -81,8 +81,6 @@ def generate_report(df, dfs_dict, kpis, context):
     df_conversion.columns = ['user_pseudo_id'] + list(conversion_events.values()) + ['start_version']
     
     df_conversion_stages = list(conversion_events.values())
-    print(df_conversion.head())
-    print(df_conversion_stages)
 
     # --- Visualizations ---
     questions_heatmap = create_wrong_answers_heatmap(df_by_questions)
