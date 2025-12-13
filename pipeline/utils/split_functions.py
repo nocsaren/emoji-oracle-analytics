@@ -264,8 +264,6 @@ def create_df_by_users(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
 
         def check_bool_event(df, event):
 
-            print(df[event].unique() if event in df.columns else f"{event}: MISSING")
-
             if event not in df.columns:
                 # Column missing → NA for all users
                 return pd.Series(0, index=user_df[user_key], name=event)
