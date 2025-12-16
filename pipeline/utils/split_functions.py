@@ -286,7 +286,7 @@ def create_df_by_users(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
         # Tutorial detection (robust)
         if "event_params__tutorial_video" in df.columns:
             tutorials = (
-                df[df["event_params__tutorial_video"] == "tutorial_video"]
+                df[(df["event_params__tutorial_video"] == "tutorial_video") & (df["event_params__event_name"] == "video_watched")]
                 .groupby(user_key)
                 .size()
                 .rename("tutorial_completed")
