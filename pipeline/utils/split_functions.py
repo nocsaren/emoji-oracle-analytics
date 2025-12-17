@@ -342,7 +342,6 @@ def create_df_by_users(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
 
         # Derived KPI
         
-        user_df['saw_first_question'] = (user_df['total_characters_opened'] > 0).astype(int)
         user_df['answered_first_question'] = (user_df['Question Completed'] > 0).astype(int)
         user_df['answered_second_question'] = (user_df['Question Completed'] > 1).astype(int)
         user_df['answered_third_question'] = (user_df['Question Completed'] > 2).astype(int)
@@ -363,7 +362,6 @@ def create_df_by_users(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
                         "event_params__video_start",
                         "event_params__video_finished",
                         "event_params__entered",
-                        "saw_first_question",
                         "event_params__shown",
                         "event_params__opened",
                         "event_params__return",
