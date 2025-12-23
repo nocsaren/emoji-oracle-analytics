@@ -130,7 +130,12 @@ nav.sidebar a:hover {
 
 .chart-card {
     padding: 12px;
-    overflow: hidden;
+    overflow: visible;
+}
+
+/* Plotly often uses absolutely-positioned UI (modebar); avoid clipping. */
+.chart-card > * {
+    max-width: 100%;
 }
 
 h3 {

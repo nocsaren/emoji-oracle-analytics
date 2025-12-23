@@ -22,7 +22,11 @@ def create_funnel_chart(title, df, stage_list, user_col='user_pseudo_id', versio
 
         # Version Filtering
         if version is not None:
+<<<<<<< Updated upstream:emoji_oracle_analytics/pipeline/utils/plotting/funnel_plots.py
             df = df[df['start_version'] == version]
+=======
+            df = df[df['version'] == version]
+>>>>>>> Stashed changes:pipeline/utils/plotting/funnel_plots.py
         # Values
         values = [df[user_col].nunique()] + [df[s].sum() for s in stage_list]
         labels = ["Total Installs"] + stage_list

@@ -48,7 +48,15 @@ def pull_from_bq(df, context):
     for table_name in new_tables:
         logger.info(f"Processing {table_name}...")
 
-        df = client.query(f"SELECT * FROM `{dataset}.{table_name}`").to_dataframe()
+        query_job = client.query(f"SELECT * FROM `{dataset}.{table_name}`")
+        try:
+            df = query_job.to_dataframe(create_bqstorage_client=True)
+        except Exception as exc:
+            logger.warning(
+                "BigQuery Storage API fetch failed (%s); falling back to REST.",
+                exc.__class__.__name__,
+            )
+            df = query_job.to_dataframe(create_bqstorage_client=False)
 
         # --- Example transformation (replace with yours)
         df["source_table"] = table_name

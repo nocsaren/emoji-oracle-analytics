@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<<<<<<< Updated upstream
     <section class="card chart-card">{{ funnel_new_user_events }}</section>
     <section class="card chart-card">{{ daily_install_uninstall_delta_chart }}</section>
     <section class="card chart-card">{{ cum_install_uninstall_chart }}</section>
@@ -10,6 +11,20 @@
         <h3>New Users (max 20)</h3>
         <div class="table-scroll-container">
             <table class="table-scroll new-user-table">
+=======
+    {{ funnel_new_user_events }}    
+    {{ daily_install_uninstall_delta_chart }}    
+    {{ cum_install_uninstall_chart }}
+    {{ uninstall_last_event_chart }}
+
+
+
+
+
+<h3>New Users (max 20)</h3>
+<div class="table-scroll-container">
+    <table class="table-scroll new-user-table">
+>>>>>>> Stashed changes
             <thead>
                 <tr>
                     {% for col in users_cols %}
@@ -26,7 +41,12 @@
                 </tr>
                 {% endfor %}
             </tbody>
+<<<<<<< Updated upstream
             </table>
         </div>
     </section>
+=======
+        </table>
+    </div>
+>>>>>>> Stashed changes
 {% endblock %}
