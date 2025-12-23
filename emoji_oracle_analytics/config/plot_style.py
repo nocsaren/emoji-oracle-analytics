@@ -180,7 +180,7 @@ BAR_LAYOUT = {
 
 FUNNEL_LAYOUT = {
 
-    'height': 768,
+    'height': 1024,
 
     # Funnel chart style
     'showlegend': False,

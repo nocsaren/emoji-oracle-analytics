@@ -27,9 +27,12 @@ def create_funnel_chart(title, df, stage_list, user_col='user_pseudo_id', versio
         values = [df[user_col].nunique()] + [df[s].sum() for s in stage_list]
         labels = ["Total Installs"] + stage_list
 
+        # Sort descending (largest -> smallest)
+        pairs = sorted(zip(labels, values), key=lambda t: t[1], reverse=True)
+        labels, values = map(list, zip(*pairs))
+
         # Define colors (one per step)
         colors = funnel_gradient(len(labels))
-
         colors = colors[:len(labels)]  # just in case list is shorter than needed
 
         fig = go.Figure(

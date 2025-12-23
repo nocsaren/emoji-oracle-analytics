@@ -317,7 +317,24 @@ def create_df_by_users(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
         else:
             wecolme_video_played = pd.Series(0, index=user_df[user_key], name="wecolme_video_played")
         
+        # Did encounter which Menu_opened event
+
+        menu_options = df['event_params__menu_name'].unique() if 'event_params__menu_name' in df.columns else []
+        menu_opened_data = {}
+        for menu in menu_options:
+            if pd.isna(menu):
+                continue
+            col_name = f"menu_opened__{menu.replace(' ', '_').lower()}"
+            menu_opened_series = (
+                (df['event_params__menu_name'] == menu) & (df['event_name'] == 'Menu Opened')
+            ).groupby(df[user_key]).any().astype(int).rename(col_name)
+            menu_opened_data[col_name] = menu_opened_series
+
+        for col_name, series in menu_opened_data.items():
+            counts = counts.merge(series, on=user_key, how="left")
+
         
+
         counts = counts.merge(wecolme_video_played, on=user_key, how="left")
         counts = counts.merge(tutorials, on=user_key, how="left")
 
@@ -386,7 +403,19 @@ def create_df_by_users(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
                         "answered_ten_questions",
                         "second_session_started",
                         "second_day_active",
-                        "tutorial_completed"
+                        "tutorial_completed",
+                        "menu_opened__crystal_menu",
+                        "menu_opened__crystal_cauldron_menu",
+                        "menu_opened__crystal_energy_menu",
+                        "menu_opened__crystal_alignin_menu",
+                        "menu_opened__scroll_menu",
+                        "menu_opened__crystal_coffee_menu",
+                        "menu_opened__wanna_play_menu",
+                        "menu_opened__board_menu",
+                        "menu_opened__shop_menu",
+                        "menu_opened__energy_gold_exchange",
+                        "menu_opened__crystal_character_menu",                   
+
                         ]
         
         

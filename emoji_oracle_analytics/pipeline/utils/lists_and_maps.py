@@ -167,6 +167,7 @@ df_column_names_map = {
 }
 
     # New User Events Mapping
+# New User Events Mapping
 conversion_events = {
     "event_params__pp_accepted": "Privacy Policy Accepted",
     "event_params__video_start": "Welcome Video Started",
@@ -186,7 +187,22 @@ conversion_events = {
     "second_session_started": "Second Session Started",
     "second_day_active": "Active on Second Day",
     "tutorial_completed": "Tutorial Completed",
+
+    # Menu Opens
+    "menu_opened__crystal_menu": "Crystal Menu Opened",
+    "menu_opened__crystal_cauldron_menu": "Crystal Cauldron Menu Opened",
+    "menu_opened__crystal_energy_menu": "Crystal Energy Menu Opened",
+    "menu_opened__crystal_alignin_menu": "Crystal Aligning Menu Opened",
+    "menu_opened__scroll_menu": "Scroll Menu Opened",
+    "menu_opened__crystal_coffee_menu": "Crystal Coffee Menu Opened",
+    "menu_opened__wanna_play_menu": "Wanna Play Menu Opened",
+    "menu_opened__board_menu": "Board Menu Opened",
+    "menu_opened__shop_menu": "Shop Menu Opened",
+    "menu_opened__energy_gold_exchange": "Energy–Gold Exchange Opened",
+    "menu_opened__crystal_character_menu": "Crystal Character Menu Opened",
 }
+
+
 
 
 
@@ -221,6 +237,9 @@ columns_to_drop = ['event_timestamp',
                     'collected_traffic_source',
                     'event_params__system_app'
 ]
+
+
+
 
 
 
