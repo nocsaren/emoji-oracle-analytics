@@ -7,11 +7,7 @@ import os
 import numpy as np
 
 
-<<<<<<< Updated upstream:emoji_oracle_analytics/pipeline/utils/reporting.py
 from emoji_oracle_analytics.pipeline.utils.lists_and_maps import conversion_events
-=======
-from pipeline.utils.lists_and_maps import conversion_events
->>>>>>> Stashed changes:pipeline/utils/reporting.py
 
 logger = get_logger(__name__)
 
@@ -80,18 +76,10 @@ def generate_report(df, dfs_dict, kpis, context):
         'Game Ended',
         'App Removed'
     ]   
-<<<<<<< Updated upstream:emoji_oracle_analytics/pipeline/utils/reporting.py
     df_conversion = users_meta[['user_pseudo_id'] + list(conversion_events.keys()) + ['start_version']].copy()
     df_conversion.columns = ['user_pseudo_id'] + list(conversion_events.values()) + ['start_version']
     
     df_conversion_stages = list(conversion_events.values())
-=======
-    df_conversion = df_by_users[['user_pseudo_id'] + list(conversion_events.keys()) + ['version']].copy()
-    df_conversion.columns = ['user_pseudo_id'] + list(conversion_events.values()) + ['version']
-    
-    df_conversion_stages = list(conversion_events.values())
-    print(df_conversion_stages)
->>>>>>> Stashed changes:pipeline/utils/reporting.py
 
     # --- Visualizations ---
     questions_heatmap = create_wrong_answers_heatmap(df_by_questions)
@@ -112,11 +100,7 @@ def generate_report(df, dfs_dict, kpis, context):
 
     # Funnel
 
-<<<<<<< Updated upstream:emoji_oracle_analytics/pipeline/utils/reporting.py
     funnel_user_lifetime = create_funnel_chart('User Lifecycle (WIP)', df_by_users, funnel_stages)
-=======
-    funnel_user_lifetime = create_funnel_chart('User Lifecycle', df_by_users, funnel_stages)
->>>>>>> Stashed changes:pipeline/utils/reporting.py
     
 
     # Inferential
@@ -131,11 +115,7 @@ def generate_report(df, dfs_dict, kpis, context):
     cum_install_uninstall_chart = create_cum_install_uninstall_chart(df)
     uninstall_last_event_chart = create_uninstall_last_event_chart(df_by_users)
     daily_install_uninstall_delta_chart = create_daily_install_uninstall_delta_chart(df)
-<<<<<<< Updated upstream:emoji_oracle_analytics/pipeline/utils/reporting.py
     funnel_new_user_events = create_funnel_chart(f'First Few Seconds (ver. >= 1.0.6)', df_conversion, df_conversion_stages, 'user_pseudo_id', version='1.0.6')
-=======
-    funnel_new_user_events = create_funnel_chart('First Few Seconds', df_conversion, df_conversion_stages, 'user_pseudo_id', version='1.0.6')
->>>>>>> Stashed changes:pipeline/utils/reporting.py
     
     user_summary_df = create_user_summary_df(df_by_users)
 

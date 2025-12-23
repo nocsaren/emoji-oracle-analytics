@@ -171,18 +171,13 @@ conversion_events = {
     "event_params__pp_accepted": "Privacy Policy Accepted",
     "event_params__video_start": "Welcome Video Started",
     "event_params__video_finished": "Welcome Video Finished",
-<<<<<<< Updated upstream:emoji_oracle_analytics/pipeline/utils/lists_and_maps.py
     "event_params__entered": "Met T",
-=======
-    "event_params__entered": "T Entered",
->>>>>>> Stashed changes:pipeline/utils/lists_and_maps.py
     "event_params__shown": "Slot Machine Shown",
     "event_params__opened": "Help Opened",
     "event_params__return": "Help Returned",
     "event_params__closed": "Help Closed",
     "event_params__drag": "Answer Dragged",
     "answered_first_question": "Answered First Question",
-<<<<<<< Updated upstream:emoji_oracle_analytics/pipeline/utils/lists_and_maps.py
     "answered_second_question": "Answered Second Question",
     "answered_third_question": "Answered Third Question",
     "saw_mi": "Met Mi",
@@ -192,13 +187,7 @@ conversion_events = {
     "second_day_active": "Active on Second Day",
     "tutorial_completed": "Tutorial Completed",
 }
-=======
-    "passed_10_min": "Passed 10 Minutes",
-    "tutorial_completed": "Completed Tutorial",
->>>>>>> Stashed changes:pipeline/utils/lists_and_maps.py
 
-
-}
 
 
 columns_to_drop = ['event_timestamp',

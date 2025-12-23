@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<<<<<<< Updated upstream
     <section class="card chart-card">{{ users_chart }}</section>
     <section class="card chart-card">{{ user_behaviour_per_day_chart }}</section>
     <section class="card chart-card">{{ funnel_user_lifetime }}</section>
@@ -16,22 +15,6 @@
         <h3>Active User Summary (max 50)</h3>
         <div class="table-scroll-container">
             <table class="table-scroll new-user-table">
-=======
-    {{ users_chart }}
-    {{ user_behaviour_per_day_chart }}
-    {{ funnel_user_lifetime }}    
-    {{ session_counts_histogram }}
-    {{ daily_install_uninstall_delta_chart }}   
-    {{ total_playtime_histogram }}
-    {{ user_last_event_chart }}
-    {{ question_progress_histogram }}
-    {{ character_progress_histogram }}
-
-
-<h3>Active User Summary (max 50)</h3>
-<div class="table-scroll-container">
-    <table class="table-scroll new-user-table">
->>>>>>> Stashed changes
             <thead>
                 <tr>
                     {% for col in users_sum_cols %}
