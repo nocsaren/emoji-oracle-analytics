@@ -1,173 +1,272 @@
-/* ------------------- General Layout ------------------- */
+/* ------------------- Theme ------------------- */
+:root {
+    color-scheme: light;
+    --bg: #f6f7f8;
+    --surface: #ffffff;
+    --surface-2: #fbfbfc;
+    --border: #e6e7eb;
+    --text: #111827;
+    --muted: #6b7280;
+    --muted-2: #9ca3af;
+    --accent: #2f6feb;
+    --accent-soft: #ecf2ff;
+    --radius: 12px;
+    --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 12px 28px rgba(16, 24, 40, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Inter, Roboto, sans-serif;
     margin: 0;
     padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
 }
 
+a {
+    color: inherit;
+}
+
+/* ------------------- App Layout ------------------- */
 .container {
     display: flex;
     height: 100vh;
     width: 100vw;
     max-width: 100%;
-    overflow: hidden;        
+    overflow: hidden;
 }
 
 .container > * {
-    min-width: 0;            /* critical for preventing horizontal overflow */
+    min-width: 0;
+}
+
+main.content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 22px;
+}
+
+.content-inner {
+    max-width: 1280px;
+    margin: 0 auto;
 }
 
 /* ------------------- Sidebar ------------------- */
 nav.sidebar {
-    width: 120px;
-    background: #f7f7f7;
-    border-right: 1px solid #ccc;
-    padding: 20px;
+    width: 200px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    color: var(--text);
+    margin: 4px 8px 14px;
 }
 
 nav.sidebar a {
     display: block;
-    margin-bottom: 10px;
+    padding: 10px 12px;
+    margin: 4px 0;
+    border-radius: 10px;
     text-decoration: none;
-    color: #333;
-    font-weight: 500;
+    color: var(--muted);
+    font-weight: 600;
 }
 
 nav.sidebar a:hover {
-    color: #0077ff;
+    background: var(--accent-soft);
+    color: var(--accent);
 }
 
-/* ------------------- Main Content ------------------- */
-main.content {
-    flex: 1;
-    padding: 20px;
-
-    /* This is the element that should scroll vertically */
-    overflow-y: scroll;
-    overflow-x: hidden;
+/* ------------------- Page Header ------------------- */
+.page-header {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px 18px;
+    margin-bottom: 16px;
 }
 
-.kpi-header {
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: 500;
-    color: #222;
-    text-align: center;
+.page-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.page-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.page-meta-item {
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 10px;
+}
+
+/* ------------------- Cards ------------------- */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px 18px;
+    margin: 14px 0;
+}
+
+.chart-card {
+    padding: 12px;
+    overflow: hidden;
+}
+
+h3 {
+    margin: 0 0 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
 }
 
 /* ------------------- KPI Table ------------------- */
 .kpi-table {
     width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-    font-size: 16px;
+    border-collapse: separate;
+    border-spacing: 12px;
+    text-align: left;
 }
 
 .kpi-table td {
-    padding: 10px 15px;
-    border: 1px solid #e0e0e0;
-    font-size: 14px;
-    color: #222;
+    padding: 14px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface-2);
+    font-size: 13px;
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.35;
 }
 
-.kpi-table tr:nth-child(odd) {
-    background: #fafafa;
-}
-
-/* ------------------- Reusable Table Container Scrollbars ------------------- */
-.table-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: #b8b8b8 #f0f0f0;
-}
-
-.table-scrollbar::-webkit-scrollbar {
-    width: 16px;
-    height: 16px;
-}
-
-.table-scrollbar::-webkit-scrollbar-track {
-    background: #f0f0f0;
-    border-radius: 8px;
-}
-
-.table-scrollbar::-webkit-scrollbar-thumb {
-    background: #b8b8b8;
-    border-radius: 8px;
-}
-
-.table-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #999;
-}
-
+/* ------------------- Table Scroll Container ------------------- */
 .table-scroll-container {
-    margin: 20px 0;
-    border-radius: 10px;
-    max-height: 500px;
+    margin: 10px 0 0;
+    border-radius: var(--radius);
+    max-height: 520px;
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    overflow-x: auto;
-    overflow-y: scroll;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    border: 1px solid #e3e3e3;
+    overflow: auto;
+    border: 1px solid var(--border);
+    background: var(--surface);
 
     scrollbar-width: thin;
-    scrollbar-color: #b8b8b8 #f0f0f0;
+    scrollbar-color: #b8b8b8 transparent;
 }
 
 .table-scroll-container::-webkit-scrollbar {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
 }
 
 .table-scroll-container::-webkit-scrollbar-track {
-    background: #f0f0f0;
-    border-radius: 8px;
+    background: transparent;
 }
 
 .table-scroll-container::-webkit-scrollbar-thumb {
-    background: #b8b8b8;
-    border-radius: 8px;
+    background: #c6c6c6;
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
 }
 
 .table-scroll-container::-webkit-scrollbar-thumb:hover {
-    background: #999;
+    background: #adadad;
+    border: 3px solid transparent;
+    background-clip: padding-box;
 }
 
 .table-scroll {
     width: max-content;
+    min-width: 100%;
     table-layout: auto;
     border-collapse: collapse;
-    font-size: 14px;
+    font-size: 13px;
 }
-/* Freeze the header row */
+
 .table-scroll thead th {
     position: sticky;
     top: 0;
-    background: white;      /* important, or text overlaps */
+    background: var(--surface);
     z-index: 10;
 }
 
-
 .table-scroll th,
 .table-scroll td {
-    padding: 10px 14px;
-    border-bottom: 1px solid #e6e6e6;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
     white-space: nowrap;
     min-width: 140px;
 }
 
-.table-scroll thead {
-    background: linear-gradient(90deg, #fafafa, #f1f1f1);
+.table-scroll th {
+    font-size: 11px;
+    letter-spacing: 0.6px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    font-weight: 600;
+    color: var(--muted);
 }
 
 .table-scroll tbody tr:nth-child(odd) {
-    background: #fcfcfc;
+    background: var(--surface-2);
 }
 
 .table-scroll tbody tr:hover {
-    background: #eef5ff;
+    background: var(--accent-soft);
+}
+
+/* ------------------- Responsive ------------------- */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    nav.sidebar {
+        width: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
+    }
+
+    .sidebar-header {
+        margin: 4px 8px;
+        flex-basis: 100%;
+    }
+
+    nav.sidebar a {
+        margin: 0;
+    }
+
+    main.content {
+        padding: 14px;
+    }
+
+    .kpi-table {
+        border-spacing: 10px;
+    }
 }

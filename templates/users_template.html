@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {{ users_chart }}
-    {{ user_behaviour_per_day_chart }}
-    {{ funnel_user_lifetime }}    
-    {{ session_counts_histogram }}
-    {{ daily_install_uninstall_delta_chart }}   
-    {{ total_playtime_histogram }}
-    {{ user_last_event_chart }}
-    {{ question_progress_histogram }}
-    {{ character_progress_histogram }}
+    <section class="card chart-card">{{ users_chart }}</section>
+    <section class="card chart-card">{{ user_behaviour_per_day_chart }}</section>
+    <section class="card chart-card">{{ funnel_user_lifetime }}</section>
+    <section class="card chart-card">{{ session_counts_histogram }}</section>
+    <section class="card chart-card">{{ daily_install_uninstall_delta_chart }}</section>
+    <section class="card chart-card">{{ total_playtime_histogram }}</section>
+    <section class="card chart-card">{{ user_last_event_chart }}</section>
+    <section class="card chart-card">{{ question_progress_histogram }}</section>
+    <section class="card chart-card">{{ character_progress_histogram }}</section>
 
-
-<h3>Active User Summary (max 50)</h3>
-<div class="table-scroll-container">
-    <table class="table-scroll new-user-table">
+    <section class="card">
+        <h3>Active User Summary (max 50)</h3>
+        <div class="table-scroll-container">
+            <table class="table-scroll new-user-table">
             <thead>
                 <tr>
                     {% for col in users_sum_cols %}
@@ -31,8 +31,9 @@
                 </tr>
                 {% endfor %}
             </tbody>
-        </table>
-    </div>
+            </table>
+        </div>
+    </section>
 
 
 {% endblock %}

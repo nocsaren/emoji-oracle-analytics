@@ -1,4 +1,4 @@
-from config.logging import get_logger
+from emoji_oracle_analytics.config.logging import get_logger
 import pandas as pd
 
 

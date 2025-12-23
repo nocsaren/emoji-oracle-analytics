@@ -2,10 +2,10 @@
 
 {% block content %}
 
-    {{inferential_user_behaviour_per_day_chart}}
-    {{ inferential_user_last_event_chart }}
-    {{ inferential_session_last_event_chart }}
-    {{ funnel_bar_with_ci }}
+    <section class="card chart-card">{{ inferential_user_behaviour_per_day_chart }}</section>
+    <section class="card chart-card">{{ inferential_user_last_event_chart }}</section>
+    <section class="card chart-card">{{ inferential_session_last_event_chart }}</section>
+    <section class="card chart-card">{{ funnel_bar_with_ci }}</section>
 
 
 {% endblock %}

@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {{ questions_heatmap }}
-    {{ ads_per_question_heatmap }}
+    <section class="card chart-card">
+        {{ questions_heatmap }}
+    </section>
+    <section class="card chart-card">
+        {{ ads_per_question_heatmap }}
+    </section>
     {% for fig in item_histograms %}
-    {{ fig | safe }}
+    <section class="card chart-card">
+        {{ fig | safe }}
+    </section>
     {% endfor %}
 {% endblock %}

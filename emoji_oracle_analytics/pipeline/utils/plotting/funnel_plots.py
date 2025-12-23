@@ -1,9 +1,9 @@
 import plotly.graph_objects as go
 
-from config.logging import get_logger
+from emoji_oracle_analytics.config.logging import get_logger
 
-from pipeline.utils.plotting.plot_helpers import funnel_gradient
-from config.plot_style import (DEFAULT_LAYOUT,
+from emoji_oracle_analytics.pipeline.utils.plotting.plot_helpers import funnel_gradient
+from emoji_oracle_analytics.config.plot_style import (DEFAULT_LAYOUT,
                                BAR_LAYOUT,
                                LINE_LAYOUT,
                                HIST_LAYOUT,

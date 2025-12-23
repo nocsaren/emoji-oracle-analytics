@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.graph_objects as go
 
-from config.plot_style import (DEFAULT_LAYOUT,
+from emoji_oracle_analytics.config.plot_style import (DEFAULT_LAYOUT,
                                BAR_LAYOUT,
                                LINE_LAYOUT,
                                HIST_LAYOUT,

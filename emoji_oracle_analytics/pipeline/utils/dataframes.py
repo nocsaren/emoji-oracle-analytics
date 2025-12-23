@@ -1,14 +1,14 @@
-from config.logging import get_logger
-from pipeline.utils.split_functions import (create_df_by_sessions,
-                                            create_df_by_users,
-                                            create_df_by_questions,
-                                            create_df_by_ads,
-                                            create_df_by_date,
-                                            create_df_technical_events,
-                                            
-                                            )
+from emoji_oracle_analytics.config.logging import get_logger
+from emoji_oracle_analytics.pipeline.utils.split_functions import (
+    create_df_by_sessions,
+    create_df_by_users,
+    create_df_by_questions,
+    create_df_by_ads,
+    create_df_by_date,
+    create_df_technical_events,
+)
 
-from pipeline.utils.lists_and_maps import conversion_events
+from emoji_oracle_analytics.pipeline.utils.lists_and_maps import conversion_events
 import pandas as pd
 
 logger = get_logger(__name__)

@@ -1,6 +1,6 @@
 import pandas as pd
-from config.logging import get_logger
-from pipeline.utils.lists_and_maps import map_of_maps
+from emoji_oracle_analytics.config.logging import get_logger
+from emoji_oracle_analytics.pipeline.utils.lists_and_maps import map_of_maps
 
 logger = get_logger(__name__)
 

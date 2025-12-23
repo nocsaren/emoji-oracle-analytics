@@ -1,7 +1,7 @@
 import pandas as pd
 
-from pipeline.utils.utils import summarize_gold # summarize_energy
-from config.logging import get_logger
+from emoji_oracle_analytics.pipeline.utils.utils import summarize_gold  # summarize_energy
+from emoji_oracle_analytics.config.logging import get_logger
 
 
 

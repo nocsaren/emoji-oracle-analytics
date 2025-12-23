@@ -1,7 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {{ sessions_per_day_chart }}
-    {{ session_duration_histogram }}
-    {{ session_last_event_chart }}
+    <section class="card chart-card">
+        {{ sessions_per_day_chart }}
+    </section>
+    <section class="card chart-card">
+        {{ session_duration_histogram }}
+    </section>
+    <section class="card chart-card">
+        {{ session_last_event_chart }}
+    </section>
 {% endblock %}

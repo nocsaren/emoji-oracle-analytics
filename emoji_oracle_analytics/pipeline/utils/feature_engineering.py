@@ -1,5 +1,5 @@
 import pandas as pd
-from config.logging import get_logger
+from emoji_oracle_analytics.config.logging import get_logger
 
 logger = get_logger(__name__)
 

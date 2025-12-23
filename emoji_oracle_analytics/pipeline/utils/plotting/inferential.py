@@ -3,10 +3,10 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 
-from pipeline.utils.inferential_helpers import (compute_ci_counts,
+from emoji_oracle_analytics.pipeline.utils.inferential_helpers import (compute_ci_counts,
                                                 binomial_count_ci)
 
-from config.plot_style import (DEFAULT_LAYOUT,
+from emoji_oracle_analytics.config.plot_style import (DEFAULT_LAYOUT,
                                BAR_LAYOUT,
                                LINE_LAYOUT,
                                HIST_LAYOUT,

@@ -2,7 +2,7 @@ import pandas as pd
 
 
 def test_flatten_dataframe_smoke_handles_nested_and_empty_items():
-    from pipeline.utils.flattening_functions import flatten_dataframe
+    from emoji_oracle_analytics.pipeline.utils.flattening_functions import flatten_dataframe
 
     df = pd.DataFrame(
         [
@@ -31,7 +31,7 @@ def test_flatten_dataframe_smoke_handles_nested_and_empty_items():
 
 
 def test_add_durations_smoke():
-    from pipeline.utils.time_and_date_functions import add_durations
+    from emoji_oracle_analytics.pipeline.utils.time_and_date_functions import add_durations
 
     df = pd.DataFrame(
         [
@@ -56,7 +56,7 @@ def test_add_durations_smoke():
 
 
 def test_create_df_by_sessions_smoke():
-    from pipeline.utils.split_functions import create_df_by_sessions
+    from emoji_oracle_analytics.pipeline.utils.split_functions import create_df_by_sessions
 
     # Minimal rows + columns to avoid KeyErrors in groupby/utility code.
     df = pd.DataFrame(
@@ -106,7 +106,7 @@ def test_create_df_by_sessions_smoke():
 
 
 def test_create_df_by_questions_smoke():
-    from pipeline.utils.split_functions import create_df_by_questions
+    from emoji_oracle_analytics.pipeline.utils.split_functions import create_df_by_questions
 
     df = pd.DataFrame(
         [

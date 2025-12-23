@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{{ title }}</title>
 
 {% block head %}
@@ -14,6 +15,7 @@
 
 <div class="container">
     <nav class="sidebar">
+        <div class="sidebar-header">Emoji Oracle</div>
         <a href="index.html">Main</a>
         <a href="conversion.html">Conversion</a>
         <a href="users.html">Users</a>
@@ -25,11 +27,18 @@
     </nav>
 
     <main class="content">
-        <div class="kpi-header">
-            {{ kpis['From'] }} - {{ kpis['To'] }} <br> {{ kpis['Total Days'] }} days <br> {{ kpis['Total Users']}} users
-        </div>
+        <div class="content-inner">
+            <header class="page-header">
+                <div class="page-title">{{ title }}</div>
+                <div class="page-meta">
+                    <div class="page-meta-item">{{ kpis['From'] }} – {{ kpis['To'] }}</div>
+                    <div class="page-meta-item">{{ kpis['Total Days'] }} days</div>
+                    <div class="page-meta-item">{{ kpis['Total Users'] }} users</div>
+                </div>
+            </header>
 
-        {% block content %}{% endblock %}
+            {% block content %}{% endblock %}
+        </div>
     </main>
 </div>
 

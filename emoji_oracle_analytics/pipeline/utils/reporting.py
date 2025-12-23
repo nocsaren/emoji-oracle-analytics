@@ -2,18 +2,18 @@ from jinja2 import Environment, FileSystemLoader
 import pandas as pd
 import plotly.express as px
 from pathlib import Path
-from config.logging import get_logger
+from emoji_oracle_analytics.config.logging import get_logger
 import os
 import numpy as np
 
 
-from pipeline.utils.lists_and_maps import conversion_events
+from emoji_oracle_analytics.pipeline.utils.lists_and_maps import conversion_events
 
 logger = get_logger(__name__)
 
 
 
-from pipeline.utils.plotting.plot_functions import (create_wrong_answers_heatmap,                                              
+from emoji_oracle_analytics.pipeline.utils.plotting.plot_functions import (create_wrong_answers_heatmap,                                              
                                              create_cumulative_users_chart,
                                              create_session_duration_histogram,
                                              create_sessions_per_day_chart,
@@ -28,7 +28,7 @@ from pipeline.utils.plotting.plot_functions import (create_wrong_answers_heatmap
 
 
 
-from pipeline.utils.plotting.user_plots import (create_users_per_day_chart,
+from emoji_oracle_analytics.pipeline.utils.plotting.user_plots import (create_users_per_day_chart,
                                                 create_user_behaviour_per_day_chart,
                                                 create_user_last_event_chart, 
                                                 create_uninstall_last_event_chart,
@@ -38,14 +38,14 @@ from pipeline.utils.plotting.user_plots import (create_users_per_day_chart,
                                                 create_daily_install_uninstall_delta_chart,
                                                 )
 
-from pipeline.utils.plotting.funnel_plots import create_funnel_chart
+from emoji_oracle_analytics.pipeline.utils.plotting.funnel_plots import create_funnel_chart
 
-from pipeline.utils.plotting.inferential import (create_inferential_user_last_event_chart,
+from emoji_oracle_analytics.pipeline.utils.plotting.inferential import (create_inferential_user_last_event_chart,
                                                  create_inferential_session_last_event_chart,
                                                  create_inferential_user_behaviour_per_day_chart,
                                                  create_funnel_bar_with_ci)
 
-from pipeline.utils.split_functions import create_user_summary_df
+from emoji_oracle_analytics.pipeline.utils.split_functions import create_user_summary_df
 
 def generate_report(df, dfs_dict, kpis, context):
     """

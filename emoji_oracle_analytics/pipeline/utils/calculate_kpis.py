@@ -1,9 +1,9 @@
-from config.logging import get_logger
+from emoji_oracle_analytics.config.logging import get_logger
 
 import pandas as pd
 import numpy as np
 
-from pipeline.utils.kpi_functions import retention_rate
+from emoji_oracle_analytics.pipeline.utils.kpi_functions import retention_rate
 
 logger = get_logger(__name__)
 

@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from config.logging import get_logger
+from emoji_oracle_analytics.config.logging import get_logger
 from pathlib import Path
 
 logger = get_logger(__name__)

@@ -1,5 +1,5 @@
 import pandas as pd
-from config.logging import get_logger
+from emoji_oracle_analytics.config.logging import get_logger
 
 logger = get_logger(__name__)
 
@@ -24,22 +24,22 @@ PIPELINE_STAGES = [
 ]
 
 def run_pipeline(df: pd.DataFrame, context: dict) -> pd.DataFrame:
-    from pipeline.utils.main_functions import (filter_events_by_date, 
+    from emoji_oracle_analytics.pipeline.utils.main_functions import (filter_events_by_date, 
                                                filter_events_by_country,
                                                filter_events_by_user,
                                                filter_events_by_version
     )
-    from pipeline.utils.lists_and_maps import map_of_maps
-    from pipeline.utils.pull_functions import pull_from_bq
-    from pipeline.utils.flattening_functions import flatten_dataframe
-    from pipeline.utils.time_and_date_functions import (
+    from emoji_oracle_analytics.pipeline.utils.lists_and_maps import map_of_maps
+    from emoji_oracle_analytics.pipeline.utils.pull_functions import pull_from_bq
+    from emoji_oracle_analytics.pipeline.utils.flattening_functions import flatten_dataframe
+    from emoji_oracle_analytics.pipeline.utils.time_and_date_functions import (
         transform_datetime_fields,
         add_time_based_features,
         add_durations
     )
 
        
-    from pipeline.utils.feature_engineering import (              
+    from emoji_oracle_analytics.pipeline.utils.feature_engineering import (              
         forward_fill_progress,
         question_cumulative_qi,
         mini_game_features,
@@ -53,7 +53,7 @@ def run_pipeline(df: pd.DataFrame, context: dict) -> pd.DataFrame:
         question_addressable_index,
         question_answer_wrong_zeros
     )
-    from pipeline.utils.cleaning_functions import (
+    from emoji_oracle_analytics.pipeline.utils.cleaning_functions import (
         question_index_cleanup,
         dots_to_underscores,
         apply_value_maps)

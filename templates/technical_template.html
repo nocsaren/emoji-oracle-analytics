@@ -1,20 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
+<section class="card">
     <table class ="kpi-table">
 
-	<tbody>
+    <tbody>
 		<tr>
 			<td>App Exceptions per Session<br /> {{ kpis['App Exceptions per Session']}}</td>
 			<td>Ad Load Failures per Session<br /> {{ kpis['Ad Load Failures per Session']}}</td>
         </tr>       
 
-            </tbody>         
-</table></div>
+			</tbody>         
+    </table>
+</section>
 
-<div class="table-scroll-container">
-    <table class="table-scroll new-user-table">
+<section class="card">
+    <h3>Technical Events</h3>
+    <div class="table-scroll-container">
+        <table class="table-scroll new-user-table">
 
             <thead>
                 <tr>
@@ -34,4 +37,5 @@
             </tbody>
         </table>
     </div>
+</section>
 {% endblock %}
