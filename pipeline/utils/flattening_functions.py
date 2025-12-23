@@ -1,10 +1,64 @@
-import pandas as pd
+from __future__ import annotations
+
 import json
+from typing import Any, Mapping, MutableMapping, Optional
+
+import pandas as pd
 from config.logging import get_logger
 
 logger = get_logger(__name__)
 
-def flatten_dataframe(df, context=None):
+
+def _is_missing(value: Any) -> bool:
+    if value is None:
+        return True
+
+    # Treat empty containers/arrays as "missing" for our flattening use-cases.
+    if isinstance(value, (list, tuple, set, dict)):
+        return len(value) == 0
+
+    size = getattr(value, "size", None)
+    if isinstance(size, int) and size == 0:
+        return True
+
+    try:
+        is_na = pd.isna(value)
+    except Exception:
+        return False
+
+    # pd.isna on scalars returns a bool; on array-likes it returns an array/Series.
+    if isinstance(is_na, bool):
+        return is_na
+    if getattr(is_na, "shape", None) == ():
+        return bool(is_na)
+    return False
+
+
+def _parse_json_if_str(value: Any) -> Any:
+    if not isinstance(value, str):
+        return value
+    try:
+        return json.loads(value)
+    except json.JSONDecodeError:
+        return value
+
+
+def _coerce_mapping(value: Any) -> Mapping[str, Any]:
+    if _is_missing(value):
+        return {}
+    parsed = _parse_json_if_str(value)
+    return parsed if isinstance(parsed, dict) else {}
+
+
+def _update_with_prefixed_dict(
+    flat: MutableMapping[str, Any],
+    prefix: str,
+    mapping: Mapping[str, Any],
+) -> None:
+    flat.update({f"{prefix}.{k}": v for k, v in mapping.items()})
+
+
+def flatten_dataframe(df: pd.DataFrame, context: Optional[dict] = None) -> pd.DataFrame:
     """
     Flattens a DataFrame by expanding nested dictionaries in each row.
     
@@ -14,11 +68,21 @@ def flatten_dataframe(df, context=None):
     Returns:
     - A new pandas DataFrame with flattened structure.
     """
-    return pd.DataFrame([flatten_row(row) for _, row in df.iterrows()])
+    _ = context
+    records = [flatten_row(row.to_dict()) for _, row in df.iterrows()]
+    return pd.DataFrame.from_records(records)
 
 
 
-def flatten_extract_params(params_list):
+def _firebase_param_value(value_dict: Mapping[str, Any]) -> Any:
+    # Prioritize types: string > int > float > double
+    for key in ("string_value", "int_value", "float_value", "double_value"):
+        if key in value_dict and value_dict[key] is not None:
+            return value_dict[key]
+    return None
+
+
+def flatten_extract_params(params_list: Any) -> dict[str, Any]:
     """
     Converts a list of Firebase-style param dicts into a flat {key: value} dict.
     Prioritizes value types: string > int > float > double.
@@ -30,23 +94,28 @@ def flatten_extract_params(params_list):
     try: 
         if isinstance(params_list, list):
             for param in params_list:
-                key = param.get('key')
-                val_dict = param.get('value', {})
-                # Prioritize types: string > int > float > double
-                val = (
-                    val_dict.get('string_value') or
-                    val_dict.get('int_value') or
-                    val_dict.get('float_value') or
-                    val_dict.get('double_value')
-                )
-                result[key] = val
+                if not isinstance(param, dict):
+                    continue
+                key = param.get("key")
+                if not key:
+                    continue
+                val_dict = param.get("value")
+                if not isinstance(val_dict, dict):
+                    val_dict = {}
+
+                result[key] = _firebase_param_value(val_dict)
         return result
-    except Exception as e:
-        logger.error(f"Error flattening params: {e}")
+    except Exception:
+        logger.exception("Error flattening params")
         return {}
 
 
-def flatten_nested_column(row, col_name, flat, default_keys=None):
+def flatten_nested_column(
+    row: Mapping[str, Any],
+    col_name: str,
+    flat: MutableMapping[str, Any],
+    default_keys: Optional[list[str]] = None,
+) -> None:
     """
     Flattens a nested column in the row if it's a dictionary. If the data is missing
     (None or NaN), it handles it by updating with `None` for default keys.
@@ -61,110 +130,76 @@ def flatten_nested_column(row, col_name, flat, default_keys=None):
     - None: This function updates the `flat` dictionary in place.
     """
     # Get the column value
-    col_data = row.get(col_name, None)  # Get the data for the given column
+    col_data = row.get(col_name, None)
     
     # Check if the data is a dictionary
     try:
         if isinstance(col_data, dict):
-            # Flatten the dictionary and add it to the 'flat' dictionary
-            flat.update({f'{col_name}.{k}': v for k, v in col_data.items()})
-        elif col_data is None or isinstance(col_data, float):  # Handle NaN or missing data
-            # If it's None or NaN, we update with default keys set to None
+            _update_with_prefixed_dict(flat, col_name, col_data)
+            return
+
+        if _is_missing(col_data):
             if default_keys is not None:
-                flat.update({f'{col_name}.{k}': None for k in default_keys})
+                flat.update({f"{col_name}.{k}": None for k in default_keys})
             else:
-                flat.update({f'{col_name}': None})  # Add the key with None if no default keys
-    except Exception as e:
-        logger.error(f"Error flattening column {col_name}: {e}")
+                flat[col_name] = None
+    except Exception:
+        logger.exception("Error flattening column %s", col_name)
         if default_keys is not None:
-            flat.update({f'{col_name}.{k}': None for k in default_keys})
+            flat.update({f"{col_name}.{k}": None for k in default_keys})
         else:
-            flat.update({f'{col_name}': None})  # Add the key with None if no default keys
+            flat[col_name] = None
 
 
-def flatten_row(row):
-    # Helper to parse JSON strings if necessary
-    def parse_json(value):
-        if isinstance(value, str):
-            try:
-                return json.loads(value)  # Convert string to dictionary
-            except json.JSONDecodeError:
-                return value  # Return as is if it's not a valid JSON string
-        return value
+_BASE_FIELDS: tuple[str, ...] = (
+    "event_date",
+    "event_timestamp",
+    "event_name",
+    "event_previous_timestamp",
+    "event_value_in_usd",
+    "event_bundle_sequence_id",
+    "event_server_timestamp_offset",
+    "user_id",
+    "user_pseudo_id",
+    "user_first_touch_timestamp",
+    "stream_id",
+    "platform",
+    "is_active_user",
+    "batch_event_index",
+    "batch_page_id",
+    "batch_ordering_id",
+)
 
-    # Base-level fields
-    flat = {
-        'event_date': row.get('event_date'),
-        'event_timestamp': row.get('event_timestamp'),
-        'event_name': row.get('event_name'),
-        'event_previous_timestamp': row.get('event_previous_timestamp'),
-        'event_value_in_usd': row.get('event_value_in_usd'),        
-        'event_bundle_sequence_id': row.get('event_bundle_sequence_id'),        
-        'event_server_timestamp_offset': row.get('event_server_timestamp_offset'),        
-        'user_id': row.get('user_id'),
-        'user_pseudo_id': row.get('user_pseudo_id'),
-        'user_first_touch_timestamp': row.get('user_first_touch_timestamp'),
-        'stream_id': row.get('stream_id'),
-        'platform': row.get('platform'),
-        'is_active_user': row.get('is_active_user'),
-        'batch_event_index': row.get('batch_event_index'),
-        'batch_page_id': row.get('batch_page_id'),
-        'batch_ordering_id': row.get('batch_ordering_id'),
-        'batch_page_id': row.get('batch_page_id')
-    }
 
-    # Parse nested columns if they're in string format
-    row['device'] = parse_json(row.get('device', {}))
-    row['geo'] = parse_json(row.get('geo', {}))
-    row['app_info'] = parse_json(row.get('app_info', {}))
-    row['traffic_source'] = parse_json(row.get('traffic_source', {}))
-    row['user_ltv'] = parse_json(row.get('user_ltv', {}))
+def flatten_row(row: Mapping[str, Any]) -> dict[str, Any]:
+    flat: dict[str, Any] = {field: row.get(field) for field in _BASE_FIELDS}
 
-    # Nested: event_params
-    event_params = flatten_extract_params(row.get('event_params', []))
-    flat.update({f'event_params.{k}': v for k, v in event_params.items()})
-    
-    # Nested: user_properties
-    user_props = flatten_extract_params(row.get('user_properties', []))
-    flat.update({f'user.{k}': v for k, v in user_props.items()})
+    device = _coerce_mapping(row.get("device"))
+    geo = _coerce_mapping(row.get("geo"))
+    app_info = _coerce_mapping(row.get("app_info"))
+    traffic_source = _coerce_mapping(row.get("traffic_source"))
+    user_ltv = _coerce_mapping(row.get("user_ltv"))
+    privacy_info = _coerce_mapping(row.get("privacy_info"))
 
-    # Nested: privacy_info (flat dict)
-    privacy = row.get('privacy_info', {})
-    flat.update({f'privacy_info.{k}': v for k, v in privacy.items()})
+    event_params = flatten_extract_params(row.get("event_params", []))
+    _update_with_prefixed_dict(flat, "event_params", event_params)
 
-    # Nested: user_ltv
-    flatten_nested_column(row, 'user_ltv', flat, default_keys=None)  # Provide keys if needed
-    
-    # Nested: device
-    device = row.get('device', {})
-    flat.update({f'device.{k}': v for k, v in device.items()})
+    user_props = flatten_extract_params(row.get("user_properties", []))
+    _update_with_prefixed_dict(flat, "user", user_props)
 
-    # Nested: geo
-    geo = row.get('geo', {})
-    flat.update({f'geo.{k}': v for k, v in geo.items()})
+    _update_with_prefixed_dict(flat, "privacy_info", privacy_info)
+    _update_with_prefixed_dict(flat, "user_ltv", user_ltv)
+    _update_with_prefixed_dict(flat, "device", device)
+    _update_with_prefixed_dict(flat, "geo", geo)
+    _update_with_prefixed_dict(flat, "app_info", app_info)
+    _update_with_prefixed_dict(flat, "traffic_source", traffic_source)
 
-    # Nested: app_info
-    app_info = row.get('app_info', {})
-    flat.update({f'app_info.{k}': v for k, v in app_info.items()})
+    flatten_nested_column(row, "event_dimensions", flat, default_keys=None)
+    flatten_nested_column(row, "ecommerce", flat, default_keys=None)
+    flatten_nested_column(row, "items", flat, default_keys=None)
+    flatten_nested_column(row, "collected_traffic_source", flat, default_keys=None)
 
-    # Nested: event_dimensions
-    flatten_nested_column(row, 'event_dimensions', flat, default_keys=None)  # Provide keys if needed
-
-    # Nested: traffic_source
-    traffic_source = row.get('traffic_source', {})
-    flat.update({f'traffic_source.{k}': v for k, v in traffic_source.items()}),
-    
-    # Nested: ecommerce
-    flatten_nested_column(row, 'ecommerce', flat, default_keys=None)  # Provide keys if needed
-
-    # Nested: items
-    flatten_nested_column(row, 'items', flat, default_keys=None)  # Provide keys if needed
-
-    # Nested: item_params
-    item_params = flatten_extract_params(row.get('item_params', []))
-    flat.update({f'item_params.{k}': v for k, v in item_params.items()})
-
-    # Nested: collected_traffic_source
-    flatten_nested_column(row, 'collected_traffic_source', flat, default_keys=None)  # Provide keys if needed
+    item_params = flatten_extract_params(row.get("item_params", []))
+    _update_with_prefixed_dict(flat, "item_params", item_params)
 
     return flat

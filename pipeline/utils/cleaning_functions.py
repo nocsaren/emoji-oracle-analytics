@@ -32,7 +32,19 @@ def question_index_cleanup(df: pd.DataFrame, context=None) -> pd.DataFrame:
     # Hiccups
     problems_mask = notna_mask & ~df['event_params__current_tier'].isin([1, 2, 3, 4])
     if df[problems_mask].shape[0] > 0:
-        logger.warning(f"Something wrong in: {df.loc[problems_mask, ['event_params__character_name', 'event_params__current_tier', 'event_params__current_qi']]}")
+        sample = (
+            df.loc[
+                problems_mask,
+                ['event_params__character_name', 'event_params__current_tier', 'event_params__current_qi'],
+            ]
+            .head(5)
+            .to_dict(orient='records')
+        )
+        logger.warning(
+            "Unexpected tiers in question index cleanup: count=%s sample=%s",
+            int(problems_mask.sum()),
+            sample,
+        )
     logger.info(f"Question index cleaned up for {df['event_params__current_question_index'].notna().sum()} rows.")
     return df
 

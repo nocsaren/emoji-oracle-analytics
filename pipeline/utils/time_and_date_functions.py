@@ -102,15 +102,27 @@ def add_durations(df: pd.DataFrame, context=None) -> pd.DataFrame:
     exclude_session_end_events = ['app_remove', 'app_update', 'app_clear_data']
 
     # Calculate session duration (ignoring session-end events)
-    df['session_duration_seconds'] = (
-        df.groupby(['user_pseudo_id', 'event_params__ga_session_id'])
-        .apply(
+    grouped = df.groupby(['user_pseudo_id', 'event_params__ga_session_id'])
+    try:
+        durations = grouped.apply(
+            lambda g: (
+                g.loc[~g['event_name'].isin(exclude_session_end_events), 'event_datetime'].max()
+                - g.loc[g['event_name'] == 'session_start', 'event_datetime'].min()
+            ).total_seconds()
+            if not g.loc[g['event_name'] == 'session_start'].empty else np.nan,
+            include_groups=False,
+        )
+    except TypeError:
+        durations = grouped.apply(
             lambda g: (
                 g.loc[~g['event_name'].isin(exclude_session_end_events), 'event_datetime'].max()
                 - g.loc[g['event_name'] == 'session_start', 'event_datetime'].min()
             ).total_seconds()
             if not g.loc[g['event_name'] == 'session_start'].empty else np.nan
         )
+
+    df['session_duration_seconds'] = (
+        durations
         .reindex(df.set_index(['user_pseudo_id', 'event_params__ga_session_id']).index)
         .round(3)
         .values

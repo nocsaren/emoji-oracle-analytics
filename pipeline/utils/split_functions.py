@@ -79,7 +79,11 @@ def create_df_by_sessions(df: pd.DataFrame) -> pd.DataFrame:
 
         # --- In-game currency ---
         try:
-            gold = df.groupby(session_groups, as_index=False).apply(summarize_gold)
+            grouped_gold = df.groupby(session_groups, as_index=False)
+            try:
+                gold = grouped_gold.apply(summarize_gold, include_groups=False)
+            except TypeError:
+                gold = grouped_gold.apply(summarize_gold)
             if isinstance(gold.index, pd.MultiIndex):
                 gold = gold.reset_index(drop=True)
         except Exception as e:
@@ -122,18 +126,23 @@ def create_df_by_sessions(df: pd.DataFrame) -> pd.DataFrame:
         def pick_last_valid(g):
             non_skip = g[~g['event_name'].isin(skip_events)]
             row = non_skip.iloc[0] if len(non_skip) > 0 else g.iloc[0]
+
+            group_keys = g.name
+            if not isinstance(group_keys, tuple):
+                group_keys = (group_keys,)
+            group_map = dict(zip(session_groups, group_keys))
             return pd.DataFrame({
-                'event_params__ga_session_id': [row['event_params__ga_session_id']],
-                'user_pseudo_id': [row['user_pseudo_id']],
+                'event_params__ga_session_id': [group_map.get('event_params__ga_session_id')],
+                'user_pseudo_id': [group_map.get('user_pseudo_id')],
                 'last_event_name': [row['event_name']],
                 'last_event_time': [row['event_datetime']],
             })
 
-        session_last_event = (
-            df_l_sorted.groupby(session_groups, group_keys=False)
-            .apply(pick_last_valid)
-            .reset_index(drop=True)
-        )
+        grouped_last = df_l_sorted.groupby(session_groups, group_keys=False)
+        try:
+            session_last_event = grouped_last.apply(pick_last_valid, include_groups=False).reset_index(drop=True)
+        except TypeError:
+            session_last_event = grouped_last.apply(pick_last_valid).reset_index(drop=True)
 
         # --- Merge everything ---
         result = (
@@ -148,21 +157,23 @@ def create_df_by_sessions(df: pd.DataFrame) -> pd.DataFrame:
             .merge(consumable, on=session_groups, how='left')
             .merge(energy, on=session_groups, how='left')
             .merge(session_last_event, on=session_groups, how='left')
-            .fillna({
-                'average_tier': 0,
-                'average_wrong_answers': 0,
-                'Ads_Watched_Count': 0,
-                'Wheel_Impression': 0,
-                'Wheel_Skips': 0,
-                'Wheel_Spins': 0,
-                'Potions_Bought': 0,
-                'Incenses_Bought': 0,
-                'Amulets_Bought': 0,
-                'AliCin_Used': 0,
-                'Cauldron_Used': 0,
-                'Coffee_Used': 0,
-            })
         )
+
+        # Avoid pandas FutureWarning about silent downcasting on fillna.
+        result = result.infer_objects(copy=False).fillna({
+            'average_tier': 0,
+            'average_wrong_answers': 0,
+            'Ads_Watched_Count': 0,
+            'Wheel_Impression': 0,
+            'Wheel_Skips': 0,
+            'Wheel_Spins': 0,
+            'Potions_Bought': 0,
+            'Incenses_Bought': 0,
+            'Amulets_Bought': 0,
+            'AliCin_Used': 0,
+            'Cauldron_Used': 0,
+            'Coffee_Used': 0,
+        })
 
         # --- Derived metric ---
         if 'customer_character_count' in result.columns:
@@ -477,7 +488,10 @@ def create_df_by_questions(df: pd.DataFrame) -> pd.DataFrame:
 
         # --- Derived ratios ---
         def safe_ratio(numer, denom):
-            return (numer / denom.replace(0, pd.NA)).fillna(0).round(3)
+            numer_f = pd.to_numeric(numer, errors='coerce').astype('float64')
+            denom_f = pd.to_numeric(denom, errors='coerce').astype('float64')
+            denom_f = denom_f.mask(denom_f == 0)
+            return (numer_f / denom_f).fillna(0).round(3)
 
         question_df['wrong_answer_ratio'] = safe_ratio(
             question_df['answered_wrong'], question_df['question_started']

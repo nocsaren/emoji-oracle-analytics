@@ -70,7 +70,6 @@ def generate_report(df, dfs_dict, kpis, context):
     item_list = ['alicin', 'coffee', 'cauldron', 'scroll']
     funnel_stages = [
         'wecolme_video_played',
-        'saw_first_question',
         'answered_first_question',
         'passed_10_min',
         'tutorial_completed',
@@ -244,4 +243,6 @@ def generate_report(df, dfs_dict, kpis, context):
         page_path.write_text(html, encoding="utf-8")
 
     logger.info(f"Report generated at {output_path}")
-    print(f"Report generated at {output_path}")  # optional for Actions logs
+    # Optional for CI logs where stdout is preferred
+    if os.getenv("GITHUB_ACTIONS") or os.getenv("CI"):
+        print(f"Report generated at {output_path}")

@@ -100,9 +100,9 @@ if __name__ == "__main__":
 
     kpis = calculate_kpis(df=df, dict=dfs)
     
-#    sliced_data = df[df['user_pseudo_id'] == 'a6bdeeb9060751b4b3a2c29d71b5e049'].copy()
+    sliced_data = df[df['user_pseudo_id'] == '00edf42bee4cb1b14a6ce0e90f9ad3f9'].copy()
 
-#    sliced_data.to_csv(os.path.join(settings.CSV_DIR, "sliced_data.csv"), index=False)
+    sliced_data.to_csv(os.path.join(settings.CSV_DIR, "sliced_data.csv"), index=False)
 
     df.to_csv(os.path.join(settings.CSV_DIR, "processed_data.csv"), index=False)
 

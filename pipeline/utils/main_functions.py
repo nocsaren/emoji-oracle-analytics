@@ -16,9 +16,9 @@ def ensure_directories(directories):
             path.mkdir(parents=True, exist_ok=True)
             logger.info(f"Directory exists or created: {path}")
         logger.info("All folder structures validated.")
-    except Exception as e:
-        logger.error(f"Error creating directories: {e}")
-        exit(1)
+    except Exception:
+        logger.exception("Error creating directories")
+        raise SystemExit(1)
 
 
 def filter_events_by_date(df, context):
