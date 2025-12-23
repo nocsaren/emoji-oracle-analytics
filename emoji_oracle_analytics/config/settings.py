@@ -13,8 +13,8 @@ DATASET = "emoji-oracle-74368.analytics_501671751"
 
 START_DATE = date(2025, 11, 27)
 
-COUNTRY= ['United States', 'Türkiye'] 
+COUNTRY= ['United States'] 
 NOT_USER=[]
 
 
-VERSION_FILTER = "1.0.5" # >=
+VERSION_FILTER = "1.0.6" # >=
