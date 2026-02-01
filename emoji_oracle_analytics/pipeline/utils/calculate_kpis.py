@@ -68,6 +68,9 @@ def calculate_kpis (df: pd.DataFrame, dict):
             df_by_users[df_by_users['tutorial_completed'] == True]['user_pseudo_id'].nunique(),
             user_count
         ) * 100,
+        'Overall Wrong Answer Ratio': safe(
+            df_by_questions['wrong_answer_ratio'].sum(),
+            df_by_questions.shape[0])
     }])
 
     logger.info("✅ KPIs calculated.")

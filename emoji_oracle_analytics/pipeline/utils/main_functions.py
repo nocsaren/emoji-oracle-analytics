@@ -40,9 +40,16 @@ def filter_events_by_date(df, context):
     return filtered_df
 
 def filter_events_by_country(df, context):
-    
-    # Convert date to pandas Timestamp (assumed UTC)
-    country = context['country']
+    country = context.get('country')
+    # Treat empty/None as "no filter" (common local default).
+    if not country:
+        logger.info(f"No country filter applied (country={country}). Keeping {len(df)} events.")
+        return df
+
+    if 'geo__country' not in df.columns:
+        logger.warning("'geo__country' missing; skipping country filter.")
+        return df
+
     filtered_df = df[df['geo__country'].isin(country)]
 
     logger.info(

@@ -1,6 +1,11 @@
 {% extends "base.html" %}
-
 {% block content %}
+    <section class="card chart-card"">
+        <p>Overall Wrong Answer Ratio: {{ kpis['Overall Wrong Answer Ratio']}}</p> 
+        <p>Yanlış cevap verme oranı, her doğru cevaptan önce ortalama kaç yanlış cevap verildiğini gösterir.</p>
+        <p>Bu sayı doğası gereği tam olarak sağlıklı değil, çünkü 3 seçenekli sorularla 5 seçeneklileri aynı torbadan hesaplıyoruz.</p>
+        <p>Hemen alttaki soru başına yanlış oranı heatmapi matematiksel olarak çok daha güvenilir.</p>
+    </section>
     <section class="card chart-card">
         {{ questions_heatmap }}
     </section>

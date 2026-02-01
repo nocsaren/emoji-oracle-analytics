@@ -499,8 +499,8 @@ def create_df_by_questions(df: pd.DataFrame) -> pd.DataFrame:
                 & df['event_params__menu_name'].eq('Scroll Menu')
             ),
             'answered_correct': df['event_name'].eq('Question Completed'),
-            'answered_wrong': df['event_params__answered_wrong'].fillna(0),
-            'ads_watched': df['event_name'].eq('Ad Rewarded').fillna(0),
+            'answered_wrong': df['event_params__answered_wrong'],
+            'ads_watched': df['event_name'].eq('Ad Rewarded'),
         }
 
         # --- Convert masks to DataFrame of ints ---

@@ -20,5 +20,3 @@ __pycache__
 Thumbs.db
 
 .~lock.*
-
-/parquet-store

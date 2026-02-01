@@ -31,7 +31,9 @@ def transform_datetime_fields(df: pd.DataFrame, context=None) -> pd.DataFrame:
     
     # Derive normalized date/time components
     for base in ['event', 'event_previous', 'event_first_touch', 'user__first_open']:
-        df[f'{base}_date'] = df[f'{base}_datetime'].dt.normalize()
+        # Use floor("D") instead of normalize() to keep behavior equivalent and
+        # avoid Pylance/stub false-positives about DatetimeProperties.normalize.
+        df[f'{base}_date'] = df[f'{base}_datetime'].dt.floor('D')
         df[f'{base}_time'] = df[f'{base}_datetime'].dt.time
 
     # Unit conversions and renames
@@ -94,6 +96,32 @@ def add_time_based_features(df: pd.DataFrame, context=None) -> pd.DataFrame:
 
 
 def add_durations(df: pd.DataFrame, context=None) -> pd.DataFrame:
+
+    def _squeeze_1d(value, *, label: str) -> pd.Series:
+        """Coerce a groupby/apply result into a 1D Series.
+
+        Local environments can sometimes end up with duplicate column names or
+        pandas returning a single-column DataFrame from apply/reindex.
+        """
+        if isinstance(value, pd.Series):
+            return value
+        if isinstance(value, pd.DataFrame):
+            if value.shape[1] == 1:
+                return value.iloc[:, 0]
+            raise ValueError(f"Expected 1D result for {label}, got DataFrame with shape={value.shape}")
+        # Fall back to Series constructor for array-likes/scalars
+        return pd.Series(value)
+
+    # If upstream filters removed all events, keep the pipeline moving with empty outputs.
+    if df.empty:
+        df['session_duration_seconds'] = pd.Series(dtype='float64')
+        df['session_duration_minutes'] = pd.Series(dtype='float64')
+        df['session_duration_hours'] = pd.Series(dtype='float64')
+        df['session_start_time'] = pd.Series(dtype='datetime64[ns]')
+        df['session_end_time'] = pd.Series(dtype='datetime64[ns]')
+        df['event_duration_seconds'] = pd.Series(dtype='float64')
+        logger.info("add_durations: input DataFrame is empty; skipping duration calculations.")
+        return df
     
     # Ensure event_datetime is in datetime format
     df['event_datetime'] = pd.to_datetime(df['event_datetime'])
@@ -121,12 +149,17 @@ def add_durations(df: pd.DataFrame, context=None) -> pd.DataFrame:
             if not g.loc[g['event_name'] == 'session_start'].empty else np.nan
         )
 
-    df['session_duration_seconds'] = (
-        durations
-        .reindex(df.set_index(['user_pseudo_id', 'event_params__ga_session_id']).index)
-        .round(3)
-        .values
-    )
+    if not df.columns.is_unique:
+        dupes = df.columns[df.columns.duplicated()].unique().tolist()
+        logger.warning("DataFrame has duplicate columns (showing up to 20): %s", dupes[:20])
+
+    durations = _squeeze_1d(durations, label="durations")
+
+    session_index = df.set_index(['user_pseudo_id', 'event_params__ga_session_id']).index
+    aligned = _squeeze_1d(durations.reindex(session_index), label="durations.reindex(session_index)")
+
+    # Ensure a flat 1D numpy array for assignment.
+    df['session_duration_seconds'] = pd.to_numeric(aligned, errors='coerce').round(3).to_numpy()
     df['session_duration_minutes'] = (df['session_duration_seconds'] / 60).round(2)
     df['session_duration_hours'] = (df['session_duration_seconds'] / 3600).round(3)
     # Session start and end times
